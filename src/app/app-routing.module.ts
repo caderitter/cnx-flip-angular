@@ -20,15 +20,12 @@ const routes: Routes = [
   {
     path: 'decks',
     component: DecksComponent,
-    children: [
-      
-      {
-        path: ':id',
-        component: DeckDetailComponent
-      }
-
-    ]
   },
+
+  {
+    path: 'decks/:id',
+    component: DeckDetailComponent,
+  }
 
 ];
 

@@ -11,3 +11,6 @@
   </li>
   <button (click)="goBack()">Back</button>
 </div>
+<div *ngIf="!deck">
+  That deck does not exist!
+</div>

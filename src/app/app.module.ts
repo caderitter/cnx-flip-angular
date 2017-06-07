@@ -1,3 +1,5 @@
+// module file which declares all dependencies/data sources (providers)/imports
+
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 

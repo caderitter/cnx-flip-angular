@@ -15,6 +15,6 @@ export class DeckService {
 
   getDeck(id: number): Deck {
     this.decks = this.getDecks();
-    return this.decks.find((deck:Deck) => deck.id === id);
+    return this.decks.find(deck => deck.id === id);
   }
 }

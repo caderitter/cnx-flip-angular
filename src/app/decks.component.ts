@@ -1,3 +1,5 @@
+// component to display set of decks
+
 import {Component, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {Router} from "@angular/router";
@@ -30,6 +32,7 @@ export class DecksComponent implements OnInit {
 
   gotoDetail(): void {
     this.router.navigate(['/decks', this.selectedDeck.id]);
+    console.log("Navigating to deck %d...", this.selectedDeck.id);
   }
 
   ngOnInit(): void {
