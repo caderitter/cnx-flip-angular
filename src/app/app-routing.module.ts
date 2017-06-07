@@ -6,7 +6,7 @@ import {DeckDetailComponent} from "./deck-detail.component";
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
-  { path: 'detail', component: DeckDetailComponent },
+  { path: 'detail/:id', component: DeckDetailComponent },
 ];
 
 @NgModule({

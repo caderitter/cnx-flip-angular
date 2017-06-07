@@ -7,7 +7,7 @@ import {DECKS} from './mock-decks';
 
 @Injectable()
 export class DeckService {
-  private decks;
+  private decks:Deck[];
 
   getDecks(): Deck[] {
     return DECKS;
@@ -15,6 +15,6 @@ export class DeckService {
 
   getDeck(id: number): Deck {
     this.decks = this.getDecks();
-    return this.decks.find(deck => deck.id === id);
+    return this.decks.find((deck:Deck) => deck.id === id);
   }
 }

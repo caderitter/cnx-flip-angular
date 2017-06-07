@@ -1,1 +1,13 @@
-<h1>Deck Detail</h1>
+<div *ngIf="deck">
+  <h2>{{deck.name}}</h2>
+  <div>
+    <label>id: </label>{{deck.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="deck.name" placeholder="name" />
+  </div>
+  <li *ngFor="let card of deck">
+    <span class="badge">{{card.id}}</span> {{card.term}} {{card.definition}}
+  </li>
+  <button (click)="goBack()">Back</button>
+</div>

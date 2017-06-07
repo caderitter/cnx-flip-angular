@@ -4,15 +4,23 @@ import {BrowserModule} from '@angular/platform-browser';
 import {DashboardComponent}  from './dashboard.component';
 import {AppComponent} from "./app.component";
 import {DeckService} from "./deck.service";
+import {DecksComponent} from "./decks.component";
+import {DeckDetailComponent} from "./deck-detail.component";
+import {FormsModule} from "@angular/forms";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
 
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    DecksComponent,
+    DeckDetailComponent
   ],
 
   providers: [

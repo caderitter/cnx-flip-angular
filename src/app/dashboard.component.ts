@@ -5,7 +5,12 @@ import {Deck} from "./deck";
 
 @Component({
   selector: 'index',
-  template: `<h1>Index view</h1>`,
+  template: `
+  <h1>Dashboard</h1>
+  <decks></decks>
+  `,
 })
 
-export class DashboardComponent {}
+export class DashboardComponent {
+
+}
