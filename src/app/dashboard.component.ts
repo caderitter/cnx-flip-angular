@@ -6,8 +6,11 @@ import {Deck} from "./deck";
 @Component({
   selector: 'index',
   template: `
-  <h1>Dashboard</h1>
-  <decks></decks>
+  <h3>Dashboard</h3>
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/decks">Decks</a>  
+  </nav>
   `,
 })
 

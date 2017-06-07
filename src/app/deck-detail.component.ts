@@ -15,9 +15,11 @@ import {Deck} from "./deck";
 export class DeckDetailComponent implements OnInit {
   @Input() deck: Deck;
 
-  private deckService: DeckService;
-  private route: ActivatedRoute;
-  private location: Location;
+  constructor(
+    private deckService: DeckService,
+    private route: ActivatedRoute,
+    private location: Location,
+  ) {}
 
   ngOnInit(): void {
     this.deck = this.deckService.getDeck(+this.route.params['id']);

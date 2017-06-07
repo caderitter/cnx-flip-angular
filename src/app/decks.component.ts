@@ -29,7 +29,7 @@ export class DecksComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedDeck.id]);
+    this.router.navigate(['/decks', this.selectedDeck.id]);
   }
 
   ngOnInit(): void {
