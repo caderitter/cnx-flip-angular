@@ -7,10 +7,7 @@ import {Deck} from "./deck";
   selector: 'index',
   template: `
   <h3>Dashboard</h3>
-  <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/decks">Decks</a>  
-  </nav>
+  <p>This is your dashboard</p>
   `,
 })
 

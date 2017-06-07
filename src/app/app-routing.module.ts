@@ -23,9 +23,10 @@ const routes: Routes = [
   },
 
   {
-    path: 'decks/:id',
+    path: 'deck-detail/:id',
     component: DeckDetailComponent,
-  }
+  },
+
 
 ];
 

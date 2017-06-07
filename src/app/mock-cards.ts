@@ -1,4 +1,4 @@
-import { Card } from './card';
+import {Card} from './card';
 
 export const CARDS: Card[] = [
   { id: 1, term: 'Term 1', definition: 'Definition' },

@@ -20,8 +20,7 @@ export class DecksComponent implements OnInit {
     private deckService: DeckService
   ) {}
 
-  // TODO: call to Pyramid API
-  // calls backend API to return decks, currently plugged into mock service
+  // gets decks from the deck service
   getDecks(): void {
     this.decks = this.deckService.getDecks();
   }
@@ -30,8 +29,8 @@ export class DecksComponent implements OnInit {
     this.selectedDeck = deck;
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/decks', this.selectedDeck.id]);
+  gotoDetail(id: number): void {
+    this.router.navigate(['/deck-detail', this.selectedDeck.id]);
     console.log("Navigating to deck %d...", this.selectedDeck.id);
   }
 

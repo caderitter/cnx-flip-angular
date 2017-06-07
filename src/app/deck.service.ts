@@ -13,6 +13,7 @@ export class DeckService {
     return DECKS;
   }
 
+  // TODO - plug into pyramid
   getDeck(id: number): Deck {
     this.decks = this.getDecks();
     return this.decks.find(deck => deck.id === id);

@@ -22,8 +22,7 @@ export class DeckDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.deck = this.deckService.getDeck(this.route.params['id']);
-    if (this.deck) {
+    if (this.deck = this.deckService.getDeck(this.route.params['id'])) {
       console.log("Loaded deck %d", this.deck.id);
     }
     else {
