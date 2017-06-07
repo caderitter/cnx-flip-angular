@@ -9,5 +9,5 @@ import {Deck} from "./deck";
 })
 
 export class DashboardComponent {
-  
+
 }
