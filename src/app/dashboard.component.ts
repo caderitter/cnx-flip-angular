@@ -9,6 +9,5 @@ import {Deck} from "./deck";
 })
 
 export class DashboardComponent {
-  name = 'OpenStax Flip';
-  decks: Deck[] = [];
+  
 }
