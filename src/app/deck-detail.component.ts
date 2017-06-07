@@ -9,7 +9,7 @@ import {Deck} from "./deck";
 
 @Component({
   selector: 'deck-detail',
-  templateUrl: './static/html/deck-detail.component.html'
+  templateUrl: './static/deck-detail.component.html'
 })
 
 export class DeckDetailComponent implements OnInit {

@@ -7,7 +7,12 @@ import {DeckService} from "./deck.service";
 
 @Component({
   selector: 'decks',
-  templateUrl: './static/html/decks.component.html'
+  templateUrl: './static/decks.component.html',
+  styleUrls: [
+    './static/css/3-col-portfolio.css',
+    './static/css/bootstrap.css',
+    './static/css/bootstrap.min.css'
+  ]
 })
 
 export class DecksComponent implements OnInit {
