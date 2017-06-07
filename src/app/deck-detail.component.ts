@@ -4,9 +4,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'deck-detail',
-  template: `<h1>Deck detail view</h1>`,
+  templateUrl: './static/html/deck-detail.component.html'
 })
 
-export class DeckDetailComponent  {
-  name = 'OpenStax Flip - Deck Detail';
-}
+export class DeckDetailComponent  {}
