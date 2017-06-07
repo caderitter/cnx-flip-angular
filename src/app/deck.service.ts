@@ -1,9 +1,9 @@
 // service to get decks - currently plugged to mock service
 
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Deck } from './deck';
-import { DECKS } from './mock-decks';
+import {Deck} from './deck';
+import {DECKS} from './mock-decks';
 
 @Injectable()
 export class DeckService {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {Router} from "@angular/router";
+import {DeckService} from "./deck.service";
 
 @Component({
   selector: 'decks',
@@ -14,11 +15,14 @@ export class DecksComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private deckService: DeckService
   ) {}
 
   // TODO: call to Pyramid API
-  // calls backend API to return decks
-  getDecks(): void {}
+  // calls backend API to return decks, currently plugged into mock service
+  getDecks(): void {
+    this.decks = this.deckService.getDecks();
+  }
 
   onSelect(deck: Deck): void {
     this.selectedDeck = deck;
@@ -28,5 +32,7 @@ export class DecksComponent implements OnInit {
     this.router.navigate(['/detail', this.selectedDeck.id]);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getDecks();
+  }
 }

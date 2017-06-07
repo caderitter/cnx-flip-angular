@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {DashboardComponent}  from './dashboard.component';
 import {AppComponent} from "./app.component";
+import {DeckService} from "./deck.service";
 
 @NgModule({
   imports: [
@@ -14,9 +15,13 @@ import {AppComponent} from "./app.component";
     DashboardComponent
   ],
 
+  providers: [
+    DeckService
+  ],
+
   bootstrap: [
     AppComponent,
   ]
-
 })
+
 export class AppModule { }
