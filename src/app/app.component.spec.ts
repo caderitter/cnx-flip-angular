@@ -1,4 +1,4 @@
-import { AppComponent } from './index.component';
+import { AppComponent } from './dashboard.component';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }           from '@angular/platform-browser';
