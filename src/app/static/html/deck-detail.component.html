@@ -1,0 +1,16 @@
+<div *ngIf="deck">
+  <h3>{{deck.name}}</h3>
+  <div>
+    <label>id: </label>{{deck.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="deck.name" placeholder="name" />
+  </div>
+  <li *ngFor="let card of deck">
+    <span class="badge">{{card.id}}</span> {{card.term}} {{card.definition}}
+  </li>
+  <button (click)="goBack()">Back</button>
+</div>
+<div *ngIf="!deck">
+  That deck does not exist!
+</div>
