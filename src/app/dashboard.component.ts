@@ -8,6 +8,4 @@ import {Deck} from "./deck";
   template: `<h1>Index view</h1>`,
 })
 
-export class DashboardComponent {
-
-}
+export class DashboardComponent {}
