@@ -6,7 +6,7 @@
     <label>name: </label>
     <input [(ngModel)]="deck.name" placeholder="name" />
   </div>
-  <li *ngFor="let card of deck">
+  <li *ngFor="let card of deck.cards">
     <span class="badge">{{card.id}}</span> {{card.term}} {{card.definition}}
   </li>
   <button (click)="goBack()">Back</button>

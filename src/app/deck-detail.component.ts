@@ -15,6 +15,9 @@ import {Deck} from "./deck";
 export class DeckDetailComponent implements OnInit {
   @Input() deck: Deck;
 
+  private sub: any;
+  id: number;
+
   constructor(
     private deckService: DeckService,
     private route: ActivatedRoute,
@@ -22,7 +25,8 @@ export class DeckDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.deck = this.deckService.getDeck(this.route.params['id'])) {
+    this.sub = this.route.params.subscribe(params => this.id = +params['id']);
+    if (this.deck = this.deckService.getDeck(this.id)) {
       console.log("Loaded deck %d", this.deck.id);
     }
     else {

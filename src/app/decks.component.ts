@@ -8,11 +8,6 @@ import {DeckService} from "./deck.service";
 @Component({
   selector: 'decks',
   templateUrl: './static/decks.component.html',
-  styleUrls: [
-    './static/css/3-col-portfolio.css',
-    './static/css/bootstrap.css',
-    './static/css/bootstrap.min.css'
-  ]
 })
 
 export class DecksComponent implements OnInit {
@@ -35,8 +30,8 @@ export class DecksComponent implements OnInit {
   }
 
   gotoDetail(id: number): void {
-    this.router.navigate(['/deck-detail', this.selectedDeck.id]);
-    console.log("Navigating to deck %d...", this.selectedDeck.id);
+    this.router.navigate(['/deck-detail', id]);
+    console.log("Navigating to deck %d...", id);
   }
 
   ngOnInit(): void {

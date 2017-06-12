@@ -7,7 +7,7 @@ import {DECKS} from './mock-decks';
 
 @Injectable()
 export class DeckService {
-  private decks:Deck[];
+  private decks;
 
   getDecks(): Deck[] {
     return DECKS;
