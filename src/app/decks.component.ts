@@ -29,6 +29,7 @@ export class DecksComponent implements OnInit {
     this.selectedDeck = deck;
   }
 
+  // currently unused - [routerLink] replaces its functionality in decks.component.html
   gotoDetail(id: number): void {
     this.router.navigate(['/deck-detail', id]);
     console.log("Navigating to deck %d...", id);

@@ -30,8 +30,6 @@
   <!-- Projects Row -->
   <div class="row">
     <div *ngFor="let deck of decks" class="col-md-4 portfolio-item">
-         <!--[class.selected]="deck === selectedDeck"-->
-         <!--(click)="onSelect(deck)">-->
       <a [routerLink]="['/deck-detail', deck.id]">
         <img class="img-responsive" src="http://www.candlechem.com/images/D156wedgewood.gif">
       </a>
