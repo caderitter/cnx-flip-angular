@@ -10,6 +10,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DeckService {
   private decks: Deck[];
+
+  // TODO - plug into pyramid
   private decksUrl = 'api/decks';
 
   constructor(private http: Http) {}
@@ -27,7 +29,6 @@ export class DeckService {
     return Promise.reject(error.message || error);
   }
 
-  // TODO - plug into pyramid
   getDeck(id: number): Promise<Deck> {
     const url = `${this.decksUrl}/${id}`;
     return this.http.get(url)
