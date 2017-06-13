@@ -13,31 +13,29 @@
   <!--<button (click)="gotoDetail()">View Deck</button>-->
 <!--</div>-->
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6 text-center">
-      <h1 class="page-header text-center">My Flashcards</h1>
-      <div class="btn-group text-right" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary text-right"><i class="glyphicon glyphicon-th-list"></i></button>
-        <button type="button" class="btn btn-secondary text-right"><i class="glyphicon glyphicon-th-large"></i></button>
-      </div>
-    </div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h1 class="page-header">My Flashcards</h1>
   </div>
-  <!-- /.row -->
+</div>
+<!-- /.row -->
 
-  <!-- /.row -->
+<!-- /.row -->
 
-  <!-- Projects Row -->
-  <div class="row">
-    <div *ngFor="let deck of decks" class="col-md-4 portfolio-item">
-      <a [routerLink]="['/deck-detail', deck.id]">
-        <img class="img-responsive" src="http://www.candlechem.com/images/D156wedgewood.gif">
-      </a>
+<!-- Projects Row -->
+<div class="row">
+  <div *ngFor="let deck of decks" class="col-md-4 portfolio-item">
+    <a [routerLink]="['/deck-detail', deck.id]">
+      <img class="img-responsive" src="http://www.candlechem.com/images/D156wedgewood.gif">
       <h3>
         {{deck.name}}
       </h3>
-    </div>
+    </a>
   </div>
-  <!-- /.row -->
-
 </div>
+
+
+<!-- /.row -->
+
+
