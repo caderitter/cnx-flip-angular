@@ -12,6 +12,6 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 5, name: "Test Deck 5", cards: CARDS},
     ];
 
-    return decks;
+    return {decks};
   }
 }
