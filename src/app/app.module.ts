@@ -10,23 +10,29 @@ import {DecksComponent} from "./decks.component";
 import {DeckDetailComponent} from "./deck-detail.component";
 import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
+import {HttpModule, JsonpModule} from "@angular/http";
+import {InMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryDataService}  from './in-memory-data.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule,
+    JsonpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
 
   declarations: [
     AppComponent,
     DashboardComponent,
     DecksComponent,
-    DeckDetailComponent
+    DeckDetailComponent,
   ],
 
   providers: [
-    DeckService
+    DeckService,
   ],
 
   bootstrap: [

@@ -13,23 +13,28 @@
   <!--<button (click)="gotoDetail()">View Deck</button>-->
 <!--</div>-->
 
+<div class="container-fluid">
+<!--<div class="row">-->
+  <!--<div class="col-lg-6">-->
+    <!--<h1 class="page-header">My Decks</h1>-->
+  <!--</div>-->
+<!--</div>-->
 
-<div class="row">
-  <div class="col-lg-6">
-    <h1 class="page-header">My Flashcards</h1>
-  </div>
+  <h1>My Decks</h1>
 </div>
 <!-- /.row -->
 
 <!-- /.row -->
 
 <!-- Projects Row -->
+<div class="container-fluid">
 <div class="row">
   <div *ngFor="let deck of decks" class="col-md-4 deck-container">
     <div [routerLink]="['/deck-detail', deck.id]" class="deck">
       <div class="deck-text">
         {{deck.name}}
       </div>
+      <div class="deck deck-footer"></div>
     </div>
   </div>
 
@@ -39,6 +44,8 @@
     </div>
   </div>
 </div>
+</div>
+
 
 
 <!-- /.row -->

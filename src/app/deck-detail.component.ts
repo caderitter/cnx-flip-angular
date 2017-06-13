@@ -1,7 +1,7 @@
 // component to display deck detail
 
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 
 import {DeckService} from "./deck.service";
@@ -25,13 +25,9 @@ export class DeckDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => this.id = +params['id']);
-    if (this.deck = this.deckService.getDeck(this.id)) {
-      console.log("Loaded deck %d", this.deck.id);
-    }
-    else {
-      console.log("Failed to load deck %d", this.route.params['id']);
-    }
+    this.route.params
+      .switchMap((params: Params) => this.deckService.getDeck(+params['id']))
+      .subscribe(deck => this.deck = deck);
   }
 
   goBack(): void {
