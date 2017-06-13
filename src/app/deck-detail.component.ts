@@ -1,3 +1,4 @@
+///<reference path="../../node_modules/rxjs/add/operator/switchMap.d.ts"/>
 // component to display deck detail
 
 import {Component, Input, OnInit} from '@angular/core';
@@ -6,6 +7,7 @@ import {Location} from "@angular/common";
 
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'deck-detail',
@@ -13,10 +15,7 @@ import {Deck} from "./deck";
 })
 
 export class DeckDetailComponent implements OnInit {
-  @Input() deck: Deck;
-
-  private sub: any;
-  id: number;
+  deck: Deck;
 
   constructor(
     private deckService: DeckService,
