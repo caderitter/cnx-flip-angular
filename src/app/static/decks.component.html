@@ -25,13 +25,18 @@
 
 <!-- Projects Row -->
 <div class="row">
-  <div *ngFor="let deck of decks" class="col-md-4 portfolio-item">
-    <a [routerLink]="['/deck-detail', deck.id]">
-      <img class="img-responsive" src="http://www.candlechem.com/images/D156wedgewood.gif">
-      <h3>
+  <div *ngFor="let deck of decks" class="col-md-4 deck-container">
+    <div [routerLink]="['/deck-detail', deck.id]" class="deck">
+      <div class="deck-text">
         {{deck.name}}
-      </h3>
-    </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 deck-container">
+    <div class="deck">
+      <span class="glyphicon glyphicon-plus deck-plus" aria-hidden="true"></span>
+    </div>
   </div>
 </div>
 
