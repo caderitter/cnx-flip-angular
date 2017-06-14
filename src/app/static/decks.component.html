@@ -13,32 +13,65 @@
   <!--<button (click)="gotoDetail()">View Deck</button>-->
 <!--</div>-->
 
+<div class="container-fluid">
+<!--<div class="row">-->
+  <!--<div class="col-lg-6">-->
+    <!--<h1 class="page-header">My Decks</h1>-->
+  <!--</div>-->
+<!--</div>-->
 
-<div class="row">
-  <div class="col-lg-6">
-    <h1 class="page-header">My Flashcards</h1>
-  </div>
+  <h1>My Decks</h1>
 </div>
 <!-- /.row -->
 
 <!-- /.row -->
 
 <!-- Projects Row -->
-<div class="row">
-  <div *ngFor="let deck of decks" class="col-md-4 deck-container">
-    <div [routerLink]="['/deck-detail', deck.id]" class="deck">
-      <div class="deck-text">
-        {{deck.name}}
+<div class="container-fluid">
+  <div class="row">
+
+    <div *ngFor="let deck of decks" class="col-md-4 deck-container">
+      <div [routerLink]="['/deck-detail', deck.id]" class="deck">
+        <div class="deck-text">
+          {{deck.name}}
+        </div>
+        <div class="deck deck-footer"></div>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-4 deck-container">
-    <div class="deck">
-      <span class="glyphicon glyphicon-plus deck-plus" aria-hidden="true"></span>
+    <div class="col-md-4 deck-container">
+
+      <div class="flip-container" onclick="this.classList.toggle('hover');">
+        <div class="flipper">
+
+          <div class="front">
+            <div class="glyphicon glyphicon-plus" style="font-size: 42px; color: white;"></div>
+          </div>
+
+          <div class="back">
+            <div class="form-group">
+              <div class="input-group">
+                <input #deckName class="form-control input" id="input" style="font-size: 25px" type="text" placeholder="name" />
+                <span class="input-group-btn">
+                  <button (click)="add(deckName.value); deckName.value=''" class="btn btn-default input" type="button">Save</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
+
   </div>
 </div>
+
+<script>
+  $(document).on("click", ".new-deck-container", function () {
+    $(this).toggleClass('flipped');
+  });
+</script>
 
 
 <!-- /.row -->
