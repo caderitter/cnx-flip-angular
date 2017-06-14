@@ -1,4 +1,3 @@
-///<reference path="../../node_modules/rxjs/add/operator/switchMap.d.ts"/>
 // component to display deck detail
 
 import {Component, Input, OnInit} from '@angular/core';
@@ -36,6 +35,11 @@ export class DeckDetailComponent implements OnInit {
   save(): void {
     this.deckService.updateDeck(this.deck)
       .then(() => this.goBack());
+  }
+
+  deleteDeck(deck: Deck): void {
+    this.deckService.deleteDeck(deck.id);
+    this.goBack();
   }
 
 }

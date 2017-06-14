@@ -24,18 +24,25 @@
           </tr>
         </tbody>
       </table>
-
     </div>
+
   </div>
 
 
 
   <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-  <button type="button" class="btn btn-default">Study</button>
-
+  <button type="button" class="btn btn-success">Study</button>
+  <button type="button" class="btn btn-danger" (click)="deleteDeck(deck);">Delete deck</button>
 
 </div>
 
 <div *ngIf="!deck">
-  Loading...
+  <span class="glyphicon glyphicon-refresh spinning"></span> Loading...
 </div>
+
+<script language="JavaScript">
+  jQuery(document).ready(function(){
+    $("#pop").popover();
+  });
+</script>
+

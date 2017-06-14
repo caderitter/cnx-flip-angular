@@ -11,7 +11,7 @@ h1 {
 }
 
 .deck {
-  background-color: #EF5F33;
+  background-color: #15837D;
   height: 200px;
   width: 350px;
   position: relative;
@@ -69,9 +69,12 @@ h1 {
 
 .flip-container {
   perspective: 1000px;
+  -webkit-perspective: 1000px;
 }
 .flip-container.hover .flipper {
   transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  transform-origin: center center;
   -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
 }
 
@@ -82,33 +85,58 @@ h1 {
   width: 350px;
 }
 .flipper {
-  background-color: #EF5F33;
+  background-color: #15837D;
   height: 200px;
   width: 350px;
   position: relative;
   margin: 15px;
-  transition: 0.5s;
-  transform-style: preserve-3d;
   cursor: pointer;
+
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-origin: left center;
   -webkit-transform-origin: left center;
 
 }
 .front,
 .back {
-  backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .front {
   z-index: 2;
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
 }
 .back {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 .flipper:hover {
-  -webkit-transform: rotateY(-3deg);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+
+  transform: rotateY(-3deg);
+  -webkit-transform: rotateY(-3deg);
+}
+
+.glyphicon.spinning {
+  animation: spin 1s infinite linear;
+  -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
 }
