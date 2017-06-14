@@ -10,9 +10,23 @@
   </div>
 
   <div class="panel panel-default">
+    <div class="panel-body">
+      <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
+      <button type="button" class="btn btn-danger pull-right" (click)="deleteDeck(deck);">Delete deck</button>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <button type="button" class="btn btn-lg btn-block btn-success">Study!</button>
+      <button type="button" class="btn btn-lg btn-block btn-info">Add cards from book</button>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h3 class="panel-title">Deck preview</h3>
+      <h3 class="panel-title">Flashcards</h3>
     </div>
 
     <div class="panel-body">
@@ -27,13 +41,6 @@
     </div>
 
   </div>
-
-
-
-  <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-  <button type="button" class="btn btn-success">Study</button>
-  <button type="button" class="btn btn-danger" (click)="deleteDeck(deck);">Delete deck</button>
-
 </div>
 
 <div *ngIf="!deck">

@@ -33,8 +33,7 @@ export class DeckDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.deckService.updateDeck(this.deck)
-      .then(() => this.goBack());
+    this.deckService.updateDeck(this.deck);
   }
 
   deleteDeck(deck: Deck): void {
