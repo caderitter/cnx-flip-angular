@@ -1,6 +1,6 @@
 h1 {
   color: #369;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Avenir, Helvetica, sans-serif;
   font-size: 250%;
 }
 
@@ -12,7 +12,7 @@ h1 {
 }
 
 .deck {
-  background-color: #1B2152;
+  background-color: #EF5F33;
   height: 200px;
   width: 350px;
   position: relative;
@@ -20,7 +20,7 @@ h1 {
   transition: all .2s ease;
   -webkit-transform: rotateY(0deg);
   -webkit-transform-origin: left center; /* Chrome, Safari, Opera */
-  box-shadow: 0 5px 5px rgba(0,0,0,0.15);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0);
   cursor: pointer;
 }
 
@@ -37,13 +37,14 @@ h1 {
 
 .deck:hover {
   -webkit-transform: rotateY(-3deg);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
 }
 
 .deck-text {
   font-family: Helvetica, sans-serif;
   font-size: 45px;
   font-weight: bold;
-  color: #FDB32F;
+  color: #ffffff;
   position: absolute;
   top: -15px;
   left: -1px;
@@ -65,4 +66,51 @@ h1 {
 #page-wrap {
   width: 1200px;
   margin: 0 auto;
+}
+
+.flip-container {
+  perspective: 1000px;
+}
+.flip-container.hover .flipper {
+  transform: rotateY(-180deg);
+  -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+}
+
+.flip-container,
+.front,
+.back {
+  width: 320px;
+  height: 480px;
+}
+.flipper {
+  background-color: #EF5F33;
+  height: 200px;
+  width: 350px;
+  position: relative;
+  margin: 15px;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  cursor: pointer;
+  -webkit-transform-origin: left center;
+
+}
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.back {
+  transform: rotateY(180deg);
+}
+
+.flipper:hover {
+  -webkit-transform: rotateY(-3deg);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
 }

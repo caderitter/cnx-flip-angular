@@ -33,4 +33,9 @@ export class DeckDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.deckService.updateDeck(this.deck)
+      .then(() => this.goBack());
+  }
+
 }

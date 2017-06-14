@@ -26,4 +26,14 @@ export class DecksComponent implements OnInit {
   ngOnInit(): void {
     this.getDecks();
   }
+
+  addDeck(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.deckService.createDeck(name)
+      .then(hero => {
+        this.decks.push(hero);
+      });
+  }
+
 }

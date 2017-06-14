@@ -39,19 +39,29 @@
   </div>
 
   <div class="col-md-4 deck-container">
-    <div class="deck">
-      <span class="glyphicon glyphicon-plus deck-plus" aria-hidden="true"></span>
-      <!--<div>-->
-        <!--<label>Deck name:</label> <input #deckName />-->
-        <!--<button (click)="addDeck(deckName.value); deckName.value=''">-->
-          <!--Add-->
-        <!--</button>-->
-      <!--</div>-->
+  <div class="flip-container" onclick="this.classList.toggle('hover');">
+    <div class="flipper">
+      <div class="front">
+        <div class="glyphicon glyphicon-plus"></div>
+      </div>
+      <div class="back">
+        <label>Hero name:</label> <input #heroName />
+        <button (click)="add(heroName.value); heroName.value=''">
+          Add
+        </button>
+      </div>
     </div>
   </div>
+    </div>
+
 </div>
 </div>
 
+<script>
+  $(document).on("click", ".new-deck-container", function () {
+    $(this).toggleClass('flipped');
+  });
+</script>
 
 
 <!-- /.row -->

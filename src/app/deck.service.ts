@@ -13,6 +13,7 @@ export class DeckService {
 
   // TODO - plug into pyramid
   private decksUrl = 'api/decks';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {}
 
@@ -36,4 +37,22 @@ export class DeckService {
       .then(response => response.json().data as Deck)
       .catch(this.handleError);
   }
+
+  updateDeck(deck: Deck): Promise<Deck> {
+    const url = `${this.decksUrl}/${deck.id}`;
+    return this.http
+      .put(url, JSON.stringify(deck), {headers: this.headers})
+      .toPromise()
+      .then(() => deck)
+      .catch(this.handleError);
+  }
+
+  createDeck(name: string): Promise<Deck> {
+    return this.http
+      .post(this.decksUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data as Deck)
+      .catch(this.handleError);
+  }
+
 }

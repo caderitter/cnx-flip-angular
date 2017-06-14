@@ -1,16 +1,39 @@
 <div *ngIf="deck">
-  <h3>{{deck.name}}</h3>
-  <div>
-    <label>id: </label>{{deck.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="deck.name" placeholder="name" />
+
+  <div class="form-group">
+    <div class="input-group">
+      <input [(ngModel)]="deck.name" class="form-control input-lg" id="inputlg" style="font-size: 25px" type="text" placeholder="name" />
+      <span class="input-group-btn">
+          <button (click)="save()" class="btn btn-default input-lg" type="button">Save</button>
+      </span>
+    </div>
   </div>
-  <li *ngFor="let card of deck.cards">
-    <span class="badge">{{card.id}}</span> {{card.term}} {{card.definition}}
-  </li>
-  <button (click)="goBack()">Back</button>
-  <button>Study</button>
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Deck preview</h3>
+    </div>
+
+    <div class="panel-body">
+      <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let card of deck.cards">
+            <td class="col-md-2">{{card.term}}</td>
+            <td class="col-md-2">{{card.definition}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+
+  <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
+  <button type="button" class="btn btn-default">Study</button>
+
+
 </div>
 
 <div *ngIf="!deck">
