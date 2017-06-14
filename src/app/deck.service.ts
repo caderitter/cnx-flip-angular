@@ -55,4 +55,12 @@ export class DeckService {
       .catch(this.handleError);
   }
 
+  deleteDeck(id: number): Promise<void> {
+    const url = `${this.decksUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
 }

@@ -7,7 +7,6 @@ h1 {
 .deck-container {
   -webkit-perspective: 1000px;
   perspective: 1000px;
-  -webkit-perspective-origin: center top;
   transform-style: preserve-3d;
 }
 
@@ -79,8 +78,8 @@ h1 {
 .flip-container,
 .front,
 .back {
-  width: 320px;
-  height: 480px;
+  height: 200px;
+  width: 350px;
 }
 .flipper {
   background-color: #EF5F33;
@@ -88,9 +87,8 @@ h1 {
   width: 350px;
   position: relative;
   margin: 15px;
-  transition: 0.6s;
+  transition: 0.5s;
   transform-style: preserve-3d;
-  position: relative;
   cursor: pointer;
   -webkit-transform-origin: left center;
 
