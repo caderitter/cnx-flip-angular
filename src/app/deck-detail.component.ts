@@ -7,6 +7,7 @@ import {Location} from "@angular/common";
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
+import {Card} from "./card";
 
 @Component({
   selector: 'deck-detail',
@@ -39,6 +40,11 @@ export class DeckDetailComponent implements OnInit {
   deleteDeck(deck: Deck): void {
     this.deckService.deleteDeck(deck.id);
     this.goBack();
+  }
+
+  addCard(term: string, def: string): void {
+    var card = new Card(1, term, def);
+
   }
 
 }

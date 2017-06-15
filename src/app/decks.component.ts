@@ -3,7 +3,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {DeckService} from "./deck.service";
-import {Location} from "@angular/common";
 import {Router} from "@angular/router";
 
 @Component({
@@ -17,7 +16,6 @@ export class DecksComponent implements OnInit {
 
   constructor(
     private deckService: DeckService,
-    private location: Location,
     private router: Router,
   ) {}
 
