@@ -5,10 +5,10 @@ import {Card} from "./card";
 export class Deck {
 
   constructor(
-    id: number,
-    name: string,
-    cards: Card[],
-    color: string,
+    public id: number,
+    public name: string,
+    public cards: Card[],
+    public color: string,
   ) {}
 
 }

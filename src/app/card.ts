@@ -4,9 +4,9 @@
 export class Card {
 
   constructor(
-    id: number,
-    term: string,
-    definition: string,
+    public id: number,
+    public term: string,
+    public definition: string,
   ) {}
 
 }
