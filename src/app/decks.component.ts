@@ -3,6 +3,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {DeckService} from "./deck.service";
+import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'decks',
@@ -14,7 +16,9 @@ export class DecksComponent implements OnInit {
   decks: Deck[];
 
   constructor(
-    private deckService: DeckService
+    private deckService: DeckService,
+    private location: Location,
+    private router: Router,
   ) {}
 
   // gets decks from the deck service
@@ -26,13 +30,13 @@ export class DecksComponent implements OnInit {
     this.getDecks();
   }
 
-  addDeck(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.deckService.createDeck(name)
-      .then(hero => {
-        this.decks.push(hero);
+  addDeck(): void {
+    this.deckService.createDeck("New deck")
+      .then(deck => {
+        this.decks.push(deck);
+        this.router.navigate(['/deck-detail/' + deck.id]);
       });
+
   }
 
 }

@@ -16,11 +16,27 @@ h1 {
   width: 350px;
   position: relative;
   margin: 15px;
-  transition: all .2s ease;
+  transition: all .3s ease;
+  box-shadow: 10px 0 15px -5px rgba(0,0,0,0);
   -webkit-transform: rotateY(0deg);
   -webkit-transform-origin: left center; /* Chrome, Safari, Opera */
-  box-shadow: 5px 5px 5px rgba(0,0,0,0);
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.deck:hover {
+  -webkit-transform: rotateY(-7deg);
+  box-shadow: 10px 0 15px -5px rgba(0,0,0,0.3);
+}
+
+.deck.deck-add {
+  box-shadow: 0 3px 6px rgba(0,0,0,0), 0 3px 6px rgba(0,0,0,0);
+  transition: all 0.3s;
+}
+.deck.deck-add:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  transform: translateZ(5px);
 }
 
 .deck.deck-footer{
@@ -32,28 +48,19 @@ h1 {
   bottom: -15px;
   left: -15px;
   box-shadow: none;
+  border-radius: 0px;
 }
 
-.deck:hover {
-  -webkit-transform: rotateY(-3deg);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-}
+
 
 .deck-text {
-  font-family: Helvetica, sans-serif;
-  font-size: 45px;
-  font-weight: bold;
+  font-family: Avenir, sans-serif;
+  font-size: 30px;
+  font-weight: lighter;
   color: #ffffff;
   position: absolute;
-  top: -15px;
-  left: -1px;
-}
-
-.glyphicon.glyphicon-plus.deck-plus {
-  font-size: 20px;
-  color: #FFF;
-  top: 15px;
-  left: 15px;
+  left: 5px;
+  top: 0;
 }
 
 .container-fluid.decks-header {
@@ -91,6 +98,8 @@ h1 {
   position: relative;
   margin: 15px;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 10px 0 15px -5px rgba(0,0,0,0);
 
   transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -120,7 +129,7 @@ h1 {
 }
 
 .flipper:hover {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+  box-shadow: 10px 0 15px -5px rgba(0,0,0,0.3);
 
   transform: rotateY(-3deg);
   -webkit-transform: rotateY(-3deg);
