@@ -8,6 +8,7 @@ import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
 import {Card} from "./card";
+import {CardService} from "./card.service";
 
 @Component({
   selector: 'deck-detail',
@@ -19,6 +20,7 @@ export class DeckDetailComponent implements OnInit {
 
   constructor(
     private deckService: DeckService,
+    private cardService: CardService,
     private route: ActivatedRoute,
     private location: Location,
   ) {}
@@ -43,7 +45,7 @@ export class DeckDetailComponent implements OnInit {
   }
 
   addCard(term: string, def: string): void {
-    var card = new Card(1, term, def);
-
+    this.cardService.createCard(term, def)
+      .then(card => this.deck.cards.push(card));
   }
 }
