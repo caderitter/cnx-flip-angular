@@ -46,5 +46,4 @@ export class DeckDetailComponent implements OnInit {
     var card = new Card(1, term, def);
 
   }
-
 }

@@ -1,37 +1,16 @@
-<!--<h3>Decks</h3>-->
-<!--<ul class="decks">-->
-  <!--<li *ngFor="let deck of decks"-->
-      <!--[class.selected]="deck === selectedDeck"-->
-      <!--(click)="onSelect(deck)">-->
-    <!--<span class="badge">{{deck.id}}</span> {{deck.name}}-->
-  <!--</li>-->
-<!--</ul>-->
-<!--<div *ngIf="selectedDeck">-->
-  <!--<h2>-->
-    <!--{{selectedDeck.name}}-->
-  <!--</h2>-->
-  <!--<button (click)="gotoDetail()">View Deck</button>-->
-<!--</div>-->
+
 
 <div class="container-fluid">
-<!--<div class="row">-->
-  <!--<div class="col-lg-6">-->
-    <!--<h1 class="page-header">My Decks</h1>-->
-  <!--</div>-->
-<!--</div>-->
 
   <h1>My Decks</h1>
 </div>
-<!-- /.row -->
 
-<!-- /.row -->
-
-<!-- Projects Row -->
 <div class="container-fluid">
   <div class="row">
 
     <div *ngFor="let deck of decks" class="col-md-4 deck-container">
-      <div [routerLink]="['/deck-detail', deck.id]" class="deck" [ngStyle]="{'background-color': deck.color}">
+      <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
+
         <div class="deck-text">
           {{deck.name}}
         </div>
@@ -65,7 +44,7 @@
     <!-- not fancy -->
 
     <div class="col-md-4 deck-container">
-      <div class="deck deck-add" (click)="addDeck()">
+      <div id="deck-add" class="deck deck-add" (click)="addDeck()">
         <div class="deck-text">
           +
         </div>
@@ -76,13 +55,15 @@
   </div>
 </div>
 
+<div class="test-box"></div>
+
 <script>
-  $(document).on("click", ".new-deck-container", function () {
-    $(this).toggleClass('flipped');
+//  $(document).on("click", ".new-deck-container", function () {
+//    $(this).toggleClass('flipped');
+//  });
+  $(document).ready(function() {
+    $(".test-box").show();
   });
 </script>
-
-
-<!-- /.row -->
 
 

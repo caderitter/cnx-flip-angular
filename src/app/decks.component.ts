@@ -34,7 +34,6 @@ export class DecksComponent implements OnInit {
         this.decks.push(deck);
         this.router.navigate(['/deck-detail/' + deck.id]);
       });
-
   }
 
 }

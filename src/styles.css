@@ -11,7 +11,7 @@ h1 {
 }
 
 .deck {
-  background-color: #15837D;
+  background-color: #5f5f5f;
   height: 200px;
   width: 350px;
   position: relative;
@@ -25,7 +25,7 @@ h1 {
 }
 
 .deck:hover {
-  -webkit-transform: rotateY(-7deg);
+   -webkit-transform: rotateY(-7deg);
   box-shadow: 10px 0 15px -5px rgba(0,0,0,0.3);
 }
 
@@ -33,6 +33,7 @@ h1 {
   box-shadow: 0 3px 6px rgba(0,0,0,0), 0 3px 6px rgba(0,0,0,0);
   transition: all 0.3s;
 }
+
 .deck.deck-add:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
   transition: all 0.3s;

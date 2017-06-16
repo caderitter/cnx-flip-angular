@@ -17,7 +17,6 @@ export class DeckService {
 
   constructor(private http: Http) {}
 
-
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl)
       .toPromise()
@@ -26,7 +25,7 @@ export class DeckService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
