@@ -6,6 +6,7 @@ import {Deck} from './deck';
 import {Headers, Http} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
+import {Card} from "./card";
 
 @Injectable()
 export class DeckService {
@@ -21,10 +22,10 @@ export class DeckService {
     return this.http.get(this.decksUrl)
       .toPromise()
       .then(response => response.json().data as Deck[])
-      .catch(this.handleError);
+      .catch(DeckService.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
+  private static handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
@@ -34,7 +35,7 @@ export class DeckService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Deck)
-      .catch(this.handleError);
+      .catch(DeckService.handleError);
   }
 
   updateDeck(deck: Deck): Promise<Deck> {
@@ -43,15 +44,15 @@ export class DeckService {
       .put(url, JSON.stringify(deck), {headers: this.headers})
       .toPromise()
       .then(() => deck)
-      .catch(this.handleError);
+      .catch(DeckService.handleError);
   }
 
   createDeck(name: string): Promise<Deck> {
     return this.http
-      .post(this.decksUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.decksUrl, JSON.stringify({name: name, cards: [], color: '#5f5f5f'}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Deck)
-      .catch(this.handleError);
+      .catch(DeckService.handleError);
   }
 
   deleteDeck(id: number): Promise<void> {
@@ -59,7 +60,7 @@ export class DeckService {
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
-      .catch(this.handleError);
+      .catch(DeckService.handleError);
   }
 
 }

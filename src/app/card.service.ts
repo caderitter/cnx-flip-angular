@@ -21,10 +21,10 @@ export class CardService {
     return this.http.get(this.cardsUrl)
       .toPromise()
       .then(response => response.json().data as Card[])
-      .catch(this.handleError);
+      .catch(CardService.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
+  private static handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
@@ -34,7 +34,7 @@ export class CardService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Card)
-      .catch(this.handleError);
+      .catch(CardService.handleError);
   }
 
   updateCard(card: Card): Promise<Card> {
@@ -43,15 +43,15 @@ export class CardService {
       .put(url, JSON.stringify(card), {headers: this.headers})
       .toPromise()
       .then(() => card)
-      .catch(this.handleError);
+      .catch(CardService.handleError);
   }
 
-  createCard(term: string, def: string): Promise<Card> {
+  createCard(card: Card): Promise<Card> {
     return this.http
-      .post(this.cardsUrl, JSON.stringify({term: term, def: def}), {headers: this.headers})
+      .post(this.cardsUrl, JSON.stringify({card: Card}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Card)
-      .catch(this.handleError);
+      .catch(CardService.handleError);
   }
 
   deleteCard(id: number): Promise<void> {
@@ -59,7 +59,10 @@ export class CardService {
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
-      .catch(this.handleError);
+      .catch(CardService.handleError);
   }
 
 }
+
+// take two args: card and deck-id
+//

@@ -17,6 +17,7 @@ import {CardService} from "./card.service";
 
 export class DeckDetailComponent implements OnInit {
   deck: Deck;
+  addCardButtonClicked: boolean = false;
 
   constructor(
     private deckService: DeckService,
@@ -44,8 +45,7 @@ export class DeckDetailComponent implements OnInit {
     this.goBack();
   }
 
-  addCard(term: string, def: string): void {
-    this.cardService.createCard(term, def)
-      .then(card => this.deck.cards.push(card));
+  toggleAddCardButton(): void {
+    this.addCardButtonClicked = !this.addCardButtonClicked;
   }
 }

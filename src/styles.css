@@ -68,6 +68,10 @@ body {
   top: 0;
 }
 
+#add-card-form {
+  display: none;
+}
+
 .container-fluid.decks-header {
   background-color: #e5e5e5;
   width: 100%;

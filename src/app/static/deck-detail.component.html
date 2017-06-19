@@ -13,6 +13,8 @@
     <div class="panel-body">
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
       <button type="button" class="btn btn-danger pull-right" (click)="deleteDeck(deck);">Delete deck</button>
+      <button type="button" class="btn btn-info">Edit</button>
+
     </div>
   </div>
 
@@ -21,15 +23,15 @@
 
       <button type="button" class="btn btn-lg btn-block btn-primary">Study!</button>
       <div class="btn-group btn-group-justified" role="group">
-      <a type="button" class="btn btn-lg  btn-default">Add cards from book</a>
-      <a type="button" class="btn btn-lg  btn-default">Add custom cards</a>
+      <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
+      <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>
       </div>
     </div>
   </div>
 
-  <div class="panel panel-default">
+  <div *ngIf="addCardButtonClicked" class="panel panel-default">
     <div class="panel-body">
-      <card-form></card-form>
+      <card-form [deck]="deck"></card-form>
     </div>
   </div>
 
@@ -57,9 +59,5 @@
   <span class="glyphicon glyphicon-refresh spinning"></span> Loading...
 </div>
 
-<script language="JavaScript">
-  jQuery(document).ready(function(){
-    $("#pop").popover();
-  });
-</script>
+
 
