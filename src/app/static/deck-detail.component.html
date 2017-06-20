@@ -15,7 +15,6 @@
       </div>
 
     </div>
-
   </div>
 
   <div *ngIf="!editTitle" class="panel panel-default title-edit-panel" style="height: 50px; cursor: pointer;" (click)="toggleEditTitle()">
@@ -29,10 +28,17 @@
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
       <button type="button" class="btn btn-danger pull-right" (click)="deleteDeck(deck);">Delete deck</button>
 
-      <div class="btn-group" role="group">
-        <button *ngFor="let color of colors" type="button" class="btn btn-default" (click)="changeDeckColor(color)" [style.background]="color" style="border: transparent">&nbsp;&nbsp;&nbsp;</button>
+      <!--<div class="btn-group" role="group">-->
+        <!--<button *ngFor="let color of colors" type="button" class="btn btn-default" (click)="changeDeckColor(color)" [style.background]="color" style="border: transparent">&nbsp;&nbsp;&nbsp;</button>-->
+      <!--</div>-->
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">
+          Color <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>
+        </ul>
       </div>
-
     </div>
   </div>
 
