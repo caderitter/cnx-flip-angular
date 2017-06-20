@@ -38,7 +38,7 @@ export class CardService {
   }
 
   updateCard(card: Card): Promise<Card> {
-    const url = `${this.cardsUrl}/${card.id}`;
+    const url = `${this.cardsUrl}/${card}`;
     return this.http
       .put(url, JSON.stringify(card), {headers: this.headers})
       .toPromise()

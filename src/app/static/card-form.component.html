@@ -1,12 +1,12 @@
 <form>
   <div class="form-group">
-    <input type="text" class="form-control" id="term" placeholder="Term" #newCardTerm [(ngModel)]="term" name="term">
+    <input type="text" class="form-control" id="term" placeholder="Term" #focusable [(ngModel)]="term" name="term">
   </div>
   <div class="form-group">
     <input (keyup.enter)="addCard()"
            (keydown.Tab)="addCard()"
            type="text" class="form-control" id="definition" placeholder="Definition"
-           #newCardDef [(ngModel)]="def" name="def">
+           [(ngModel)]="def" name="def">
   </div>
 <button class="btn btn-default" (click)="addCard()">Add term</button>
 </form>
