@@ -19,6 +19,7 @@ export class DeckDetailComponent implements OnInit {
   deck: Deck;
   addCardButtonClicked: boolean = false;
   editTitle: boolean = false;
+  colors: string[] = ["#15837D", "#EF5F33", "#1B2152", "#1BB3D3", "#B30B26", "#FDB32F", "#F0C916", "#65A234", "#5f5f5f"];
 
   constructor(
     private deckService: DeckService,
@@ -57,5 +58,10 @@ export class DeckDetailComponent implements OnInit {
 
   hideEditTitle(): void {
     this.editTitle = false;
+  }
+
+  changeDeckColor(color: string): void {
+    this.deck.color = color;
+    this.deckService.updateDeck(this.deck);
   }
 }

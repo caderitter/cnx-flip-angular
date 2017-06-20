@@ -28,7 +28,10 @@
     <div class="panel-body">
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
       <button type="button" class="btn btn-danger pull-right" (click)="deleteDeck(deck);">Delete deck</button>
-      <button type="button" class="btn btn-info">Edit</button>
+
+      <div class="btn-group" role="group">
+        <button *ngFor="let color of colors" type="button" class="btn btn-default" (click)="changeDeckColor(color)" [style.background]="color" style="border: transparent">&nbsp;&nbsp;&nbsp;</button>
+      </div>
 
     </div>
   </div>
@@ -52,20 +55,33 @@
 
   <div class="panel panel-default">
 
-    <div class="panel-heading">
-      <h3 class="panel-title">Flashcards</h3>
+    <!--<div class="panel-heading">-->
+      <!--<h3 class="panel-title">Flashcards</h3>-->
+    <!--</div>-->
+
+
+    <!--<table class="table table-striped">-->
+      <!--<thead>-->
+        <!--<th>Term</th>-->
+        <!--<th>Definition</th>-->
+        <!--<th>Delete</th>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+        <!--<tr *ngFor="let card of deck.cards">-->
+          <!--<td class="">{{card.term}}</td>-->
+          <!--<td class="">{{card.definition}}</td>-->
+          <!--<td class="glyphicon glyphicon-remove"></td>-->
+        <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+
+    <div class="list-group">
+      <a *ngFor="let card of deck.cards" href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">{{card.term}}</h4>
+        <p class="list-group-item-text">{{card.definition}}</p>
+      </a>
     </div>
 
-    <div class="panel-body">
-      <table class="table table-striped">
-        <tbody>
-          <tr *ngFor="let card of deck.cards">
-            <td class="col-md-2">{{card.term}}</td>
-            <td class="col-md-2">{{card.definition}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
   </div>
 </div>

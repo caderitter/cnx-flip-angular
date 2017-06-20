@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 })
 
 export class DecksComponent implements OnInit {
-
   decks: Deck[];
 
   constructor(
