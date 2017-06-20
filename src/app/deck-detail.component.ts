@@ -18,6 +18,7 @@ import {CardService} from "./card.service";
 export class DeckDetailComponent implements OnInit {
   deck: Deck;
   addCardButtonClicked: boolean = false;
+  editTitle: boolean = false;
 
   constructor(
     private deckService: DeckService,
@@ -38,6 +39,7 @@ export class DeckDetailComponent implements OnInit {
 
   save(): void {
     this.deckService.updateDeck(this.deck);
+    this.hideEditTitle();
   }
 
   deleteDeck(deck: Deck): void {
@@ -47,5 +49,13 @@ export class DeckDetailComponent implements OnInit {
 
   toggleAddCardButton(): void {
     this.addCardButtonClicked = !this.addCardButtonClicked;
+  }
+
+  toggleEditTitle(): void {
+    this.editTitle = !this.editTitle;
+  }
+
+  hideEditTitle(): void {
+    this.editTitle = false;
   }
 }

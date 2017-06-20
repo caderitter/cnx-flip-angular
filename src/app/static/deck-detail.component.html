@@ -1,11 +1,26 @@
 <div *ngIf="deck">
 
-  <div class="form-group">
+
+
+  <div *ngIf="editTitle" class="form-group">
+
     <div class="input-group">
-      <input [(ngModel)]="deck.name" class="form-control input-lg" id="inputlg" style="font-size: 25px" type="text" placeholder="name" />
-      <span class="input-group-btn">
-          <button (click)="save()" class="btn btn-default input-lg" type="button">Save</button>
-      </span>
+      <input [(ngModel)]="deck.name" class="form-control input-lg title-edit-input" id="inputlg"  type="text" placeholder="name" style="height: 50px; background-color: #f9f9f9"/>
+
+      <div class="input-group-btn">
+            <button (click)="save()" class="btn btn-default input-lg" type="button" style="height: 50px;">Save</button>
+            <button (click)="hideEditTitle()" class="btn btn-default input-lg" type="button" style="height: 50px;">
+              <div class="glyphicon glyphicon-remove"></div>
+            </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="!editTitle" class="panel panel-default title-edit-panel" style="height: 50px; cursor: pointer;" (click)="toggleEditTitle()">
+    <div class="panel-body" style="font-size: 18px;">
+      {{deck.name}}
     </div>
   </div>
 
