@@ -3,8 +3,8 @@
     <input type="text" class="form-control" id="term" placeholder="Term" #focusable [(ngModel)]="term" name="term">
   </div>
   <div class="form-group">
-    <input (keyup.enter)="addCard()"
-           (keydown.Tab)="addCard()"
+    <input (keyup.enter)="addCard($event)"
+           (keydown.Tab)="addCard($event)"
            type="text" class="form-control" id="definition" placeholder="Definition"
            [(ngModel)]="def" name="def">
   </div>

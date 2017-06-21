@@ -7,10 +7,7 @@ import {Location} from "@angular/common";
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
-import {trigger, state, style, animate, transition} from '@angular/animations';
 
-declare var jquery:any;
-declare var $ :any;
 
 @Component({
   selector: 'deck-detail',
@@ -19,12 +16,17 @@ declare var $ :any;
 
 export class DeckDetailComponent implements OnInit {
   deck: Deck;
+
   addCardButtonClicked: boolean = false;
   editTitle: boolean = false;
-  colors: string[] = ["#15837D", "#EF5F33", "#1B2152", "#1BB3D3", "#B30B26", "#FDB32F", "#F0C916", "#65A234", "#8f8f8f"];
-  top: string;
-  topBelow: string;
+  deleteButtonClicked: boolean = false;
+  deleteText: string = "Delete deck";
 
+  // style variables
+  colors: string[] = ["#15837D", "#EF5F33", "#1B2152", "#1BB3D3", "#B30B26", "#FDB32F", "#F0C916", "#65A234", "#8f8f8f"];
+  top: string = "-200px";
+  topBelow: string = "-180px";
+  deleteButtonStyle = "btn-default";
 
   constructor(
     private deckService: DeckService,
@@ -50,6 +52,25 @@ export class DeckDetailComponent implements OnInit {
   deleteDeck(deck: Deck): void {
     this.deckService.deleteDeck(deck.id);
     this.goBack();
+  }
+
+  deleteDeckClicked(deck: Deck): void {
+    if (this.deleteButtonClicked) {
+      this.deleteDeck(deck);
+      this.deleteText = "Delete deck";
+      this.deleteButtonClicked = false;
+      this.deleteButtonStyle = "btn-default";
+    } else {
+      this.deleteText = "Are you sure?";
+      this.deleteButtonClicked = true;
+      this.deleteButtonStyle = "btn-danger";
+    }
+  }
+
+  clickOutsideDeleteButton(): void {
+    if (this.deleteButtonClicked) {
+      this.deleteButtonClicked = !this.deleteButtonClicked;
+    }
   }
 
   toggleAddCardButton(): void {

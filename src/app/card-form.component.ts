@@ -26,7 +26,7 @@ export class CardFormComponent {
 
   onSubmit() { this.submitted = true; }
 
-  addCard(): void {
+  addCard(event: any): void {
     if (this.term && this.def) {
       console.log("Card added: " + this.term + ": " + this.def);
       var card = new Card(this.term, this.def);
@@ -34,7 +34,14 @@ export class CardFormComponent {
       this.deckService.updateDeck(this.deck);
       this.term = "";
       this.def = "";
-      this.vc.nativeElement.focus();
+
+      // prevent tab from refocusing when using tab to submit new card
+      if (event.keyCode == 9) {
+        event.preventDefault();
+        this.vc.nativeElement.focus();
+      } else {
+        this.vc.nativeElement.focus();
+      }
     }
   }
 }

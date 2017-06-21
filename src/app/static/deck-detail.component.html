@@ -24,7 +24,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-      <button type="button" class="btn btn-danger pull-right" (click)="deleteDeck(deck);">Delete deck</button>
+      <button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)" click-outside="clickOutsideDeleteButton()">{{deleteText}}</button>
 
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">
