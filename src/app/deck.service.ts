@@ -49,7 +49,7 @@ export class DeckService {
 
   createDeck(name: string): Promise<Deck> {
     return this.http
-      .post(this.decksUrl, JSON.stringify({name: name, cards: [], color: '#5f5f5f'}), {headers: this.headers})
+      .post(this.decksUrl, JSON.stringify({name: name, cards: [], color: '#8f8f8f'}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Deck)
       .catch(DeckService.handleError);

@@ -1,69 +1,33 @@
 
 
-<div class="container-fluid">
-
+<div class="page-header">
   <h1>My Decks</h1>
 </div>
 
 
-  <div class="row">
+<div *ngIf="decks" class="row">
 
-    <div *ngFor="let deck of decks" class="col-md-4 deck-container">
-      <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
+  <div *ngFor="let deck of decks" class="col-md-4 deck-container">
+    <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
 
-        <div class="deck-text">
-          {{deck.name}}
-        </div>
-        <div class="deck deck-footer"></div>
+      <div class="deck-text">
+        {{deck.name}}
       </div>
+      <div class="deck deck-footer"></div>
     </div>
-
-    <!-- fancy flipper -->
-
-    <!--<div class="col-md-4 deck-container">-->
-      <!--<div class="flip-container" onclick="this.classList.toggle('hover');">-->
-        <!--<div class="flipper">-->
-          <!--<div class="front">-->
-            <!--<div class="glyphicon glyphicon-plus deck-plus"></div>-->
-            <!--<div class="deck deck-footer"></div>-->
-          <!--</div>-->
-          <!--<div class="back">-->
-            <!--<div class="form-group">-->
-              <!--<div class="input-group">-->
-                <!--<input #deckName class="form-control input" id="input" style="font-size: 25px" type="text" placeholder="name" />-->
-                <!--<span class="input-group-btn">-->
-                  <!--<button (click)="add(deckName.value); deckName.value=''" class="btn btn-default input" type="button">Save</button>-->
-                <!--</span>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!-- not fancy -->
-
-    <div class="col-md-4 deck-container">
-      <div id="deck-add" class="deck deck-add" (click)="addDeck()">
-        <div class="deck-text">
-          +
-        </div>
-        <div class="deck deck-footer"></div>
-      </div>
-    </div>
-
   </div>
 
+  <div class="col-md-4 deck-container">
+    <div id="deck-add" class="deck deck-add" (click)="addDeck()">
+      <div class="deck-text">
+        <span class="glyphicon glyphicon-plus-sign"></span>
+      </div>
+      <div class="deck deck-footer"></div>
+    </div>
+  </div>
 
-<div class="test-box"></div>
+</div>
 
-<script>
-//  $(document).on("click", ".new-deck-container", function () {
-//    $(this).toggleClass('flipped');
-//  });
-  $(document).ready(function() {
-    $(".test-box").show();
-  });
-</script>
-
-
+<div *ngIf="!decks">
+  <span class="glyphicon glyphicon-refresh spinning"></span>
+</div>

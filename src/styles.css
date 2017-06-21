@@ -66,19 +66,48 @@ body {
 }
 
 
-
 .deck-text {
-  font-family: Avenir, sans-serif;
+  font-family: Helvetica, sans-serif;
   font-size: 30px;
   font-weight: lighter;
   color: #ffffff;
   position: absolute;
-  left: 5px;
-  top: 0;
+  left: 10px;
+  top: 10px;
 }
 
 #add-card-form {
   display: none;
+}
+
+.add-card-slide-container {
+  overflow: hidden;
+}
+
+.parent-slide-container {
+  position: relative;
+  top: 0;
+  z-index: 1;
+}
+
+.child-slide-container {
+  position: relative;
+  top: -200px;
+  z-index: 0;
+  -webkit-transition: top 0.5s;
+  -moz-transition: top 0.5s;
+  -o-transition: top 0.5s;
+  transition: top 0.5s;
+}
+
+.below-slide-container {
+  position: relative;
+  top: -180px;
+  z-index: 1;
+  -webkit-transition: top 0.5s;
+  -moz-transition: top 0.5s;
+  -o-transition: top 0.5s;
+  transition: top 0.5s;
 }
 
 .container-fluid.decks-header {
@@ -156,6 +185,8 @@ body {
 .glyphicon.spinning {
   animation: spin 1s infinite linear;
   -webkit-animation: spin2 1s infinite linear;
+  display:block;
+  text-align:center
 }
 
 @keyframes spin {

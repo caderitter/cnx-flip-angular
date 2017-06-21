@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 
 import {Card} from './card';
 import {CardService} from './card.service'
@@ -12,6 +12,7 @@ import {Deck} from "./deck";
 
 export class CardFormComponent {
   @Input() deck: Deck;
+  @ViewChild('focusable') vc: any;
   model = new Card("Cade", "A decent person");
   submitted = false;
   term: string;
@@ -33,6 +34,7 @@ export class CardFormComponent {
       this.deckService.updateDeck(this.deck);
       this.term = "";
       this.def = "";
+      this.vc.nativeElement.focus();
     }
   }
 }

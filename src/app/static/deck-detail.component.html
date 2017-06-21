@@ -1,7 +1,5 @@
 <div *ngIf="deck">
 
-
-
   <div *ngIf="editTitle" class="form-group">
 
     <div class="input-group">
@@ -28,9 +26,6 @@
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
       <button type="button" class="btn btn-danger pull-right" (click)="deleteDeck(deck);">Delete deck</button>
 
-      <!--<div class="btn-group" role="group">-->
-        <!--<button *ngFor="let color of colors" type="button" class="btn btn-default" (click)="changeDeckColor(color)" [style.background]="color" style="border: transparent">&nbsp;&nbsp;&nbsp;</button>-->
-      <!--</div>-->
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">
           Color <span class="caret"></span>
@@ -42,29 +37,28 @@
     </div>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="add-card-slide-container">
 
-      <button type="button" class="btn btn-lg btn-block btn-primary">Study!</button>
-      <div class="btn-group btn-group-justified" role="group">
-      <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
-      <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>
+    <div class="panel panel-default parent-slide-container">
+      <div class="panel-body">
+
+        <button type="button" class="btn btn-lg btn-block btn-primary">Study!</button>
+        <div class="btn-group btn-group-justified" role="group">
+        <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
+        <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div *ngIf="addCardButtonClicked" class="panel panel-default">
-    <div class="panel-body">
-      <card-form [deck]="deck"></card-form>
+    <div class="panel panel-default child-slide-container" [style.top]="top" id="slider">
+      <div class="panel-body">
+        <card-form [deck]="deck"></card-form>
+      </div>
     </div>
+
   </div>
 
-  <div class="panel panel-default">
-
-    <!--<div class="panel-heading">-->
-      <!--<h3 class="panel-title">Flashcards</h3>-->
-    <!--</div>-->
-
+  <div class="panel panel-default below-slide-container" [style.top]="topBelow">
 
     <!--<table class="table table-striped">-->
       <!--<thead>-->
@@ -81,7 +75,7 @@
       <!--</tbody>-->
     <!--</table>-->
 
-    <div class="list-group">
+    <div class="list-group" >
       <a *ngFor="let card of deck.cards" href="#" class="list-group-item">
         <h4 class="list-group-item-heading">{{card.term}}</h4>
         <p class="list-group-item-text">{{card.definition}}</p>
@@ -93,7 +87,7 @@
 </div>
 
 <div *ngIf="!deck">
-  <span class="glyphicon glyphicon-refresh spinning"></span> Loading...
+  <span class="glyphicon glyphicon-refresh spinning"></span>
 </div>
 
 
