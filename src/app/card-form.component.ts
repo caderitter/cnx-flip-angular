@@ -14,7 +14,6 @@ export class CardFormComponent {
   @Input() deck: Deck;
   @ViewChild('focusable') vc: any;
   model = new Card("Cade", "A decent person");
-  submitted = false;
   term: string;
   def: string;
 
@@ -24,11 +23,8 @@ export class CardFormComponent {
     private deckService: DeckService
   ) {}
 
-  onSubmit() { this.submitted = true; }
-
   addCard(event: any): void {
     if (this.term && this.def) {
-      console.log("Card added: " + this.term + ": " + this.def);
       var card = new Card(this.term, this.def);
       this.deck.cards.push(card);
       this.deckService.updateDeck(this.deck);

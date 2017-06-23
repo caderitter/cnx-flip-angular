@@ -15,6 +15,8 @@ import {InMemoryDataService}  from './in-memory-data.service';
 import {CardFormComponent} from "./card-form.component";
 import {CardService} from "./card.service";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgLoadingBarModule} from 'ng-loading-bar';
+import {TooltipModule} from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     JsonpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserAnimationsModule,
+    NgLoadingBarModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
 
   declarations: [

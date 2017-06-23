@@ -110,6 +110,13 @@ body {
   transition: top 0.5s;
 }
 
+.add-card-help {
+  font-size: 25px;
+  color: #5e5e5e;
+  bottom: 10px;
+  right: 5px;
+}
+
 .container-fluid.decks-header {
   background-color: #e5e5e5;
   width: 100%;
