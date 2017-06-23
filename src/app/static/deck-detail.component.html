@@ -15,13 +15,13 @@
     </div>
   </div>
 
-  <div *ngIf="!editTitle" class="panel panel-default title-edit-panel" style="height: 50px; cursor: pointer;" (click)="toggleEditTitle()">
+  <div *ngIf="!editTitle" class="panel panel-default title-edit-panel" (click)="toggleEditTitle()">
     <div class="panel-body" style="font-size: 18px;">
       {{deck.name}}
     </div>
   </div>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" [style.background]="hexToRGB(deck.color, 0.2)">
     <div class="panel-body">
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
       <button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)" click-outside="clickOutsideDeleteButton()">{{deleteText}}</button>
@@ -42,7 +42,7 @@
     <div class="panel panel-default parent-slide-container">
       <div class="panel-body">
 
-        <button type="button" class="btn btn-lg btn-block btn-primary">Study!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.5)">Study!</button>
         <div class="btn-group btn-group-justified" role="group">
         <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
         <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>
