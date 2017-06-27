@@ -17,6 +17,7 @@ import {CardService} from "./card.service";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgLoadingBarModule} from 'ng-loading-bar';
 import {TooltipModule} from 'ngx-bootstrap';
+import {LocalStorageService} from "./local-storage.service";
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import {TooltipModule} from 'ngx-bootstrap';
   providers: [
     DeckService,
     CardService,
+    LocalStorageService,
   ],
 
   bootstrap: [

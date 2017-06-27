@@ -10,7 +10,6 @@ import {Card} from "./card";
 
 @Injectable()
 export class DeckService {
-  private decks: Deck[];
 
   // TODO - plug into pyramid
   private decksUrl = 'api/decks';

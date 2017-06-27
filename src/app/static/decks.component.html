@@ -5,7 +5,7 @@
 </div>
 
 
-<div *ngIf="decks" class="row">
+<div class="row">
 
   <div *ngFor="let deck of decks" class="col-md-4 deck-container">
     <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">

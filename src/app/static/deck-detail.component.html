@@ -24,7 +24,7 @@
   <div class="panel panel-default" [style.background]="hexToRGB(deck.color, 0.2)">
     <div class="panel-body">
       <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-      <button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)" click-outside="clickOutsideDeleteButton()">{{deleteText}}</button>
+      <button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
 
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">
@@ -81,14 +81,9 @@
         <p class="list-group-item-text">{{card.definition}}</p>
       </a>
     </div>
-
-
   </div>
 </div>
 
 <div *ngIf="!deck">
   <span class="glyphicon glyphicon-refresh spinning"></span>
 </div>
-
-
-

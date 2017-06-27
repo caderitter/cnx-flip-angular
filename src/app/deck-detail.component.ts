@@ -34,6 +34,8 @@ export class DeckDetailComponent implements OnInit {
     private location: Location,
   ) {}
 
+  // TODO - add authentication if/else and include local storage queries
+
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.deckService.getDeck(+params['id']))
@@ -67,12 +69,6 @@ export class DeckDetailComponent implements OnInit {
     }
   }
 
-  clickOutsideDeleteButton(): void {
-    if (this.deleteButtonClicked) {
-      this.deleteButtonClicked = !this.deleteButtonClicked;
-    }
-  }
-
   toggleAddCardButton(): void {
     this.addCardButtonClicked = !this.addCardButtonClicked;
     if (this.top == "0") {
@@ -102,8 +98,7 @@ export class DeckDetailComponent implements OnInit {
         g = parseInt(hex.slice(3, 5), 16),
         b = parseInt(hex.slice(5, 7), 16);
 
-    if (alpha) {
-      return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-    }
+    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+
   }
 }
