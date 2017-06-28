@@ -45,4 +45,6 @@ export class FlipComponent implements OnInit {
     $('.flashcard').toggleClass('flipped');
   }
 
+
+
 }
