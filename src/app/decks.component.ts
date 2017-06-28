@@ -24,7 +24,7 @@ export class DecksComponent implements OnInit {
     this.deckService.getDecks().then(decks => this.decks = decks);
   }
 
-  // TODO - if not authenticated, get
+  // TODO - if not authenticated, get decks from localstorage
   ngOnInit(): void {
     this.getDecks();
   }

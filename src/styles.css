@@ -117,77 +117,45 @@ body {
   right: 5px;
 }
 
-.container-fluid.decks-header {
-  background-color: #e5e5e5;
-  width: 100%;
-}
-
-
 #page-wrap {
   width: 1200px;
   margin: 0 auto;
 }
 
-.flip-container {
-  perspective: 1000px;
+.stage {
   -webkit-perspective: 1000px;
 }
-.flip-container.hover .flipper {
-  transform: rotateY(-180deg);
-  -webkit-transform: rotateY(-180deg);
-  transform-origin: center center;
-  -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
-}
 
-.flip-container,
-.front,
-.back {
-  height: 200px;
-  width: 350px;
-}
-.flipper {
-  background-color: #15837D;
-  height: 200px;
-  width: 350px;
-  position: relative;
-  margin: 15px;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 10px 0 15px -5px rgba(0,0,0,0);
-
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transform-style: preserve-3d;
+.flashcard {
+  height: 300px;
+  width: 500px;
+  background-color:white;
+  margin: 10% auto;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 2px #444;
   -webkit-transform-style: preserve-3d;
-  transform-origin: left center;
-  -webkit-transform-origin: left center;
-
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
 }
-.front,
-.back {
-  position: absolute;
-  top: 0;
-  left: 0;
 
-  backface-visibility: hidden;
+.flipped, .back {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+.front, .back {
+  height: 300px;
+  width: 500px;
+  position: absolute;
+  text-align: center;
   -webkit-backface-visibility: hidden;
 }
-.front {
-  z-index: 2;
-  transform: rotateY(0deg);
-  -webkit-transform: rotateY(0deg);
-}
-.back {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
+
+.front p, .back p {
+  margin-top: 25%;
+  font-size: 3rem;
 }
 
-.flipper:hover {
-  box-shadow: 10px 0 15px -5px rgba(0,0,0,0.3);
-
-  transform: rotateY(-3deg);
-  -webkit-transform: rotateY(-3deg);
-}
 
 .glyphicon.spinning {
   animation: spin 1s infinite linear;

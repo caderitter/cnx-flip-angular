@@ -25,16 +25,20 @@ const routes: Routes = [
 
   {
     path: 'deck-detail/:id',
-    component: DeckDetailComponent,
     children: [
+
+      {
+        path: '',
+        pathMatch: 'full',
+        component: DeckDetailComponent
+      },
+
       {
         path: 'flip',
         component: FlipComponent
       }
     ]
   },
-
-
 ];
 
 @NgModule({
