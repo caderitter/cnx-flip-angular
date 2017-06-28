@@ -18,6 +18,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgLoadingBarModule} from 'ng-loading-bar';
 import {TooltipModule} from 'ngx-bootstrap';
 import {LocalStorageService} from "./local-storage.service";
+import {FlipComponent} from "./flip.component";
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import {LocalStorageService} from "./local-storage.service";
     DecksComponent,
     DeckDetailComponent,
     CardFormComponent,
+    FlipComponent,
   ],
 
   providers: [

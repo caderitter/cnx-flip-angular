@@ -42,7 +42,7 @@
     <div class="panel panel-default parent-slide-container">
       <div class="panel-body">
 
-        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.5)">Study!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.5)" [routerLink]="['flip', deck.id]">Study!</button>
         <div class="btn-group btn-group-justified" role="group">
         <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
         <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>

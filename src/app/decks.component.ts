@@ -20,11 +20,11 @@ export class DecksComponent implements OnInit {
     private localService: LocalStorageService,
   ) {}
 
-  // gets decks from the deck service
   getDecks(): void {
     this.deckService.getDecks().then(decks => this.decks = decks);
   }
 
+  // TODO - if not authenticated, get
   ngOnInit(): void {
     this.getDecks();
   }

@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent}   from './dashboard.component';
 import {DeckDetailComponent} from "./deck-detail.component";
 import {DecksComponent} from "./decks.component";
+import {FlipComponent} from "./flip.component";
 
 const routes: Routes = [
 
@@ -25,6 +26,12 @@ const routes: Routes = [
   {
     path: 'deck-detail/:id',
     component: DeckDetailComponent,
+    children: [
+      {
+        path: 'flip',
+        component: FlipComponent
+      }
+    ]
   },
 
 
