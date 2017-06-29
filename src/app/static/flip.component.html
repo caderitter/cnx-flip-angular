@@ -47,7 +47,7 @@
             <a href="#" class="list-group-item"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
             <a href="#" class="list-group-item"><i class="glyphicon glyphicon-random"></i> Shuffle</a>
             <a href="#" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> New Card</a>
-            <li class="list-group-item">Progress 1/10
+            <li class="list-group-item">Progress {{this.currentCardIndex+1}}/{{this.deck.cards.length}}
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="70"  aria-valuemin="0" aria-valuemax="100" style="width:10%">
                         <span class="sr-only">10% complete</span>
@@ -61,9 +61,6 @@
 <div class="col-md-10" >
     <div class="flashcard" (click)="flipCard()">
         <div class="front">
-            <div id="bookmark">
-                <i class="glyphicon glyphicon-star-empty pull-right"></i>
-            </div>
             <p>{{this.currentCard.term}}</p>
         </div>
         <div class="back">
