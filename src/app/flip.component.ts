@@ -23,6 +23,7 @@ export class FlipComponent implements OnInit {
   //current term, string definition
   private currentCard: Card;
   private currentCardIndex: number = 0;
+  private percentage: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,7 +60,7 @@ export class FlipComponent implements OnInit {
     $('.flashcard').toggleClass('flipped');
   }
 
-//methods: previous card, next card 
+  //methods: previous card, next card 
   nextCard(): void {
     this.currentCardIndex += 1;
 

@@ -141,6 +141,7 @@ body {
 .flipped, .back {
   transform: rotateX(180deg);
   -webkit-transform: rotateX(180deg);
+
 }
 
 .front, .back {
@@ -149,7 +150,10 @@ body {
   position: absolute;
   text-align: center;
   -webkit-backface-visibility: hidden;
+  overflow: scroll;
+  
 }
+
 
 .front p, .back p {
   margin-top: 25%;
@@ -161,7 +165,7 @@ body {
   animation: spin 1s infinite linear;
   -webkit-animation: spin2 1s infinite linear;
   display:block;
-  text-align:center
+  text-align:center;
 }
 
 @keyframes spin {
