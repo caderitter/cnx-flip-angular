@@ -37,15 +37,22 @@
     </div>
   </div>
 
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.7)" [routerLink]="['flip']">Flip!</button>
+      <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.3)">Test!</button>
+
+    </div>
+  </div>
+
   <div class="add-card-slide-container">
 
     <div class="panel panel-default parent-slide-container">
       <div class="panel-body">
 
-        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.5)" [routerLink]="['flip']">Study!</button>
         <div class="btn-group btn-group-justified" role="group">
-        <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
-        <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>
+          <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add flashcards</a>
+          <a type="button" class="btn btn-lg btn-default">Connect to book</a>
         </div>
       </div>
     </div>
@@ -59,31 +66,24 @@
   </div>
 
   <div class="panel panel-default below-slide-container" [style.top]="topBelow">
-
-    <!--<table class="table table-striped">-->
-      <!--<thead>-->
-        <!--<th>Term</th>-->
-        <!--<th>Definition</th>-->
-        <!--<th>Delete</th>-->
-      <!--</thead>-->
-      <!--<tbody>-->
-        <!--<tr *ngFor="let card of deck.cards">-->
-          <!--<td class="">{{card.term}}</td>-->
-          <!--<td class="">{{card.definition}}</td>-->
-          <!--<td class="glyphicon glyphicon-remove"></td>-->
-        <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
-
-    <div class="list-group" >
-      <a *ngFor="let card of deck.cards" class="list-group-item">
+    <div class="list-group">
+      <a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
         <h4 class="list-group-item-heading">{{card.term}}</h4>
         <p class="list-group-item-text">{{card.definition}}</p>
+        <span class="card-remove-button-span">
+          <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 20px; top: 40%;" (click)="deleteCard(card)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </span>
       </a>
     </div>
   </div>
 </div>
 
-<div *ngIf="!deck">
+<div *ngIf="!deck && !deckNotFound">
   <span class="glyphicon glyphicon-refresh spinning"></span>
+</div>
+
+<div *ngIf="deckNotFound">
+  <h1 style="text-align: center">Deck not found :(</h1>
 </div>
