@@ -62,7 +62,7 @@ body {
   bottom: -15px;
   left: -15px;
   box-shadow: none;
-  border-radius: 0px;
+  border-radius: 0 0 5px 5px;
 }
 
 
@@ -120,6 +120,12 @@ body {
 #page-wrap {
   width: 1200px;
   margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
 }
 
 .stage {

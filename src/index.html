@@ -4,7 +4,7 @@
     <title>OpenStax Flip</title>
     <base href="/">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="styles.css">
 
     <!-- Polyfill(s) for older browsers -->
@@ -43,9 +43,8 @@
       Openstax Flip requires JavaScript.
     </noscript>
 
-    <div id="page-wrap">
-      <my-app><span class="glyphicon glyphicon-refresh spinning"></span></my-app>
-    </div>
+    <!--TODO: add 'container-fluid' to make mobile responsive-->
+    <my-app><span class="glyphicon glyphicon-refresh spinning"></span></my-app>
 
     <!-- jQuery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
