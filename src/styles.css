@@ -17,6 +17,27 @@ body {
   background-color: #f9f9f9;
 }
 
+.deck-title-form {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 10px;
+  border: none;
+  border-bottom: solid 6px rgba(0,0,0,0);
+  background-color: inherit;
+  transition: all 0.3s;
+}
+
+.deck-title-form:focus {
+  color: #888788;
+  border-bottom: solid 6px #969696;
+}
+
 .deck-container {
   -webkit-perspective: 1000px;
   perspective: 1000px;
