@@ -20,7 +20,7 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
 
   addCardButtonClicked: boolean = false;
   editTitle: boolean = false;
-  deleteButtonClicked: boolean = false;
+  public deleteButtonClicked: boolean = false;
   deleteText: string = "Delete deck";
   deckNotFound: boolean = false;
 
@@ -84,6 +84,10 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
       this.top = "0";
       this.topBelow = "0";
     }
+  }
+
+  clickOutsideDeleteButton(): void {
+    this.deleteButtonClicked = false;
   }
 
   toggleEditTitle(): void {

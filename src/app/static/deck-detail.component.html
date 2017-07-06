@@ -1,7 +1,7 @@
 <div *ngIf="deck">
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 1)">
   <div class="container">
-    <h3>{{deck.name}}</h3>
+    <h3 style="color: white;">{{deck.name}}</h3>
   </div>
 </div>
 
@@ -9,7 +9,7 @@
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 0.5)">
   <div class="container" style="padding-top: 10px; padding-bottom: 10px;">
     <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-    <button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+    <button type="button" class="btn pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
     <button type="button" class="btn btn-default">Edit</button>
 
     <div class="btn-group">
@@ -94,7 +94,7 @@
 
     </div>
 
-    <div class="panel panel-default below-slide-container" [style.top]="topBelow">
+    <div class="panel panel-default below-slide-container" [style.top]="topBelow" style="max-height: 500px; overflow-y: scroll;">
       <div class="list-group">
         <a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
           <h4 class="list-group-item-heading">{{card.term}}</h4>
