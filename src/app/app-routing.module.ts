@@ -4,12 +4,13 @@ import {DashboardComponent}   from './dashboard.component';
 import {DeckDetailComponent} from "./deck-detail.component";
 import {DecksComponent} from "./decks.component";
 import {FlipComponent} from "./flip.component";
+import {NotFoundComponent} from "./not-found.component";
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/decks',
     pathMatch: 'full'
   },
 
@@ -39,6 +40,17 @@ const routes: Routes = [
       }
     ]
   },
+
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
+
+  {
+    path: '**',
+    redirectTo: '/404'
+  },
+
 ];
 
 @NgModule({

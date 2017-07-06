@@ -19,6 +19,7 @@ import {NgLoadingBarModule} from 'ng-loading-bar';
 import {TooltipModule} from 'ngx-bootstrap';
 import {LocalStorageService} from "./local-storage.service";
 import {FlipComponent} from "./flip.component";
+import {NotFoundComponent} from "./not-found.component";
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import {FlipComponent} from "./flip.component";
     DeckDetailComponent,
     CardFormComponent,
     FlipComponent,
+    NotFoundComponent,
   ],
 
   providers: [
