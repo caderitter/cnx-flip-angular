@@ -1,33 +1,33 @@
-<!--<div class="container-fluid" style="background-color: lightgray;">-->
-  <!--<div class="container clearfix">-->
-      <!--<input class="deck-title-form" [(ngModel)]="deck.name">-->
-  <!--</div>-->
-<!--</div>-->
+<div class="container-fluid" style="background-color: lightgray;">
+  <div class="container">
+    <h3>{{deck.name}}</h3>
+  </div>
+</div>
 
-<div class="container-fluid"  style="background-color: #f9f9f9">
+<div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
 <div class="container">
   <div *ngIf="deck">
 
-      <div *ngIf="editTitle" class="form-group">
+      <!--<div *ngIf="editTitle" class="form-group">-->
 
-        <div class="input-group">
-          <input [(ngModel)]="deck.name" class="form-control input-lg title-edit-input" id="inputlg"  type="text" placeholder="name" style="height: 50px; background-color: #f9f9f9"/>
+        <!--<div class="input-group">-->
+          <!--<input [(ngModel)]="deck.name" class="form-control input-lg title-edit-input" id="inputlg"  type="text" placeholder="name" style="height: 50px; background-color: #f9f9f9"/>-->
 
-          <div class="input-group-btn">
-                <button (click)="save()" class="btn btn-default input-lg" type="button" style="height: 50px;">Save</button>
-                <button (click)="hideEditTitle()" class="btn btn-default input-lg" type="button" style="height: 50px;">
-                  <div class="glyphicon glyphicon-remove"></div>
-                </button>
-          </div>
+          <!--<div class="input-group-btn">-->
+                <!--<button (click)="save()" class="btn btn-default input-lg" type="button" style="height: 50px;">Save</button>-->
+                <!--<button (click)="hideEditTitle()" class="btn btn-default input-lg" type="button" style="height: 50px;">-->
+                  <!--<div class="glyphicon glyphicon-remove"></div>-->
+                <!--</button>-->
+          <!--</div>-->
 
-        </div>
-      </div>
+        <!--</div>-->
+      <!--</div>-->
 
-      <div *ngIf="!editTitle" class="panel panel-default title-edit-panel" (click)="toggleEditTitle()">
-        <div class="panel-body" style="font-size: 18px;">
-          {{deck.name}}
-        </div>
-      </div>
+      <!--<div *ngIf="!editTitle" class="panel panel-default title-edit-panel" (click)="toggleEditTitle()">-->
+        <!--<div class="panel-body" style="font-size: 18px;">-->
+          <!--{{deck.name}}-->
+        <!--</div>-->
+      <!--</div>-->
 
     <div class="panel panel-default" [style.background]="hexToRGB(deck.color, 0.2)">
       <div class="panel-body">
@@ -87,14 +87,13 @@
       </div>
     </div>
   </div>
-
-  <div *ngIf="!deck && !deckNotFound">
-    <span class="glyphicon glyphicon-refresh spinning"></span>
-  </div>
-
-  <div *ngIf="deckNotFound">
-    <h1 style="text-align: center">Deck not found :(</h1>
-  </div>
-
 </div>
 </div>
+
+<!--<div *ngIf="!deck && !deckNotFound">-->
+  <!--<span class="glyphicon glyphicon-refresh spinning"></span>-->
+<!--</div>-->
+
+<!--<div *ngIf="deckNotFound">-->
+  <!--<h1 style="text-align: center">Deck not found :(</h1>-->
+<!--</div>-->
