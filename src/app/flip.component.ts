@@ -35,8 +35,8 @@ export class FlipComponent implements OnInit {
     this.sub = this.route.parent.params.subscribe(params => {
       this.parentRouteId = +params["id"];
     });
-    this.deckService.getDeck(this.parentRouteId).then(deck => this.deck = deck);
-    this.currentCard = this.deck.cards[this.currentCardIndex];
+    this.deckService.getDeck(this.parentRouteId).then(deck => this.deck = deck)
+    .then(cards => this.currentCard = this.deck.cards[0]);
   }
 
   // listen for spacebar keyup
@@ -58,6 +58,7 @@ export class FlipComponent implements OnInit {
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
+    
   }
 
   //methods: previous card, next card 
@@ -68,7 +69,6 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    
   }
 
   previousCard(): void {
@@ -77,5 +77,9 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
+  }
+
+  shuffleCard(): void {
+  
   }
 }
