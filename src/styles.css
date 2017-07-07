@@ -154,10 +154,10 @@ body {
 }
 
 .flashcard {
-  height: 300px;
-  width: 500px;
+  height: 400px;
+  width: 600px;
   background-color:white;
-  margin: 10% auto;
+  margin: 3% auto;
   border: 1px solid gray;
   box-shadow: 2px 2px 2px #444;
   -webkit-transform-style: preserve-3d;
@@ -171,16 +171,23 @@ body {
 }
 
 .front, .back {
-  height: 300px;
-  width: 500px;
+  height: 400px;
+  width: 600px;
   position: absolute;
   text-align: center;
   -webkit-backface-visibility: hidden;
+  overflow: scroll;
+  
 }
 
-.front p, .back p {
+.front p{
   margin-top: 25%;
   font-size: 3rem;
+}
+
+.back p {
+  margin-top: 20%;
+  font-size: 2rem; 
 }
 
 
@@ -188,13 +195,14 @@ body {
   animation: spin 1s infinite linear;
   -webkit-animation: spin2 1s infinite linear;
   display:block;
-  text-align:center
+  text-align:center;
 }
+
 
 @keyframes spin {
   from { transform: scale(1) rotate(0deg); }
   to { transform: scale(1) rotate(360deg); }
-}
+  }
 
 @-webkit-keyframes spin2 {
   from { -webkit-transform: rotate(0deg); }

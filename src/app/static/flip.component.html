@@ -1,15 +1,78 @@
-<div class="stage">
-  <div class="flashcard" (click)="flipCard()">
+<!-- Navigation -->
+<nav class="navbar navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://openstax.org/">
+        <img class="logo" src="/app/static/img/openstax_logo.png" alt="openstax logo" >
+      </a>
 
-    <div class="front">
-      <p>Term</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a href="/decks">Decks</a>
+        </li>
+        <li>
+          <a href="">About</a>
+        </li>
+        <li>
+          <a href="https://openstax.org/contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#">My Profile</a>
+        </li>
+
+      </ul>
+
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!--Left side menu bar-->
+<div *ngIf="deck.cards">
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group ">
+            <a href="/decks" class="list-group-item"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+            <a href="#" class="list-group-item"><i class="glyphicon glyphicon-random"></i> Shuffle</a>
+            <!--<a href="#" class="list-group-item"><i class="glyphicon glyphicon-pencil"></i> New Card</a>-->
+            <li class="list-group-item">Progress {{this.currentCardIndex+1}}/{{this.deck.cards.length}}
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20"  aria-valuemin="0" aria-valuemax="100" style="width:56%">
+                        <span class="sr-only">{{this.currentCardIndex}}% complete</span>
+                    </div>
+                </div>
+            </li>
+        </div>   
     </div>
 
-    <div class="back">
-      <p>Definition</p>
+<!--Flashcard-->
+<div class="col-md-10" >
+    <div class="flashcard" (click)="flipCard()">
+        <div class="front">
+            <p>{{this.currentCard.term}}</p>
+        </div>
+        <div class="back">
+            <p>{{this.currentCard.definition}}</p>
+        </div>
     </div>
-
+  <div class="text-center">
+    <button type="button" class='btn btn-primary' (click)="previousCard()">Previous</button>
+    <button type="button" class="btn btn-primary" (click)="nextCard()">Next</button>
   </div>
+</div>
 </div>
 
 
