@@ -55,7 +55,7 @@ body {
   -webkit-transform: rotateY(0deg);
   -webkit-transform-origin: left center; /* Chrome, Safari, Opera */
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .deck:hover {
@@ -83,7 +83,7 @@ body {
   bottom: -15px;
   left: -15px;
   box-shadow: none;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 3px 3px;
 }
 
 

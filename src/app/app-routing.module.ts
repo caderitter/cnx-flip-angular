@@ -5,13 +5,19 @@ import {DeckDetailComponent} from "./deck-detail.component";
 import {DecksComponent} from "./decks.component";
 import {FlipComponent} from "./flip.component";
 import {NotFoundComponent} from "./not-found.component";
+import {LandingComponent} from "./landing.component";
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/decks',
+    redirectTo: '/landing',
     pathMatch: 'full'
+  },
+
+  {
+    path: 'landing',
+    component: LandingComponent
   },
 
   {
