@@ -5,7 +5,7 @@
  */
 
 body {
-  padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .portfolio-item {
@@ -25,10 +25,6 @@ footer {
 
 }
 
-.navbar {
-  background-color: #f8f8f8;
-
-}
 
 
 

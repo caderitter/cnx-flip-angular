@@ -1,89 +1,120 @@
 <div *ngIf="deck">
-
-  <div *ngIf="editTitle" class="form-group">
-
-    <div class="input-group">
-      <input [(ngModel)]="deck.name" class="form-control input-lg title-edit-input" id="inputlg"  type="text" placeholder="name" style="height: 50px; background-color: #f9f9f9"/>
-
-      <div class="input-group-btn">
-            <button (click)="save()" class="btn btn-default input-lg" type="button" style="height: 50px;">Save</button>
-            <button (click)="hideEditTitle()" class="btn btn-default input-lg" type="button" style="height: 50px;">
-              <div class="glyphicon glyphicon-remove"></div>
-            </button>
-      </div>
-
-    </div>
+<div class="container-fluid" [style.background]="hexToRGB(deck.color, 1)">
+  <div class="container">
+    <h3 style="color: white;">{{deck.name}}</h3>
   </div>
+</div>
 
-  <div *ngIf="!editTitle" class="panel panel-default title-edit-panel" (click)="toggleEditTitle()">
-    <div class="panel-body" style="font-size: 18px;">
-      {{deck.name}}
-    </div>
-  </div>
 
-  <div class="panel panel-default" [style.background]="hexToRGB(deck.color, 0.2)">
-    <div class="panel-body">
-      <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-      <button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+<div class="container-fluid" [style.background]="hexToRGB(deck.color, 0.5)">
+  <div class="container" style="padding-top: 10px; padding-bottom: 10px;">
+    <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
+    <button type="button" class="btn pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+    <button type="button" class="btn btn-default">Edit</button>
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">
-          Color <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="add-card-slide-container">
-
-    <div class="panel panel-default parent-slide-container">
-      <div class="panel-body">
-
-        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.5)" [routerLink]="['flip']">Study!</button>
-        <div class="btn-group btn-group-justified" role="group">
-        <a type="button" class="btn btn-lg btn-default">Add cards from book</a>
-        <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add custom cards</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default child-slide-container" [style.top]="top" id="slider">
-      <div class="panel-body">
-        <card-form [deck]="deck"></card-form>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="panel panel-default below-slide-container" [style.top]="topBelow">
-
-    <!--<table class="table table-striped">-->
-      <!--<thead>-->
-        <!--<th>Term</th>-->
-        <!--<th>Definition</th>-->
-        <!--<th>Delete</th>-->
-      <!--</thead>-->
-      <!--<tbody>-->
-        <!--<tr *ngFor="let card of deck.cards">-->
-          <!--<td class="">{{card.term}}</td>-->
-          <!--<td class="">{{card.definition}}</td>-->
-          <!--<td class="glyphicon glyphicon-remove"></td>-->
-        <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
-
-    <div class="list-group" >
-      <a *ngFor="let card of deck.cards" class="list-group-item">
-        <h4 class="list-group-item-heading">{{card.term}}</h4>
-        <p class="list-group-item-text">{{card.definition}}</p>
-      </a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color" style="color: white;">
+        Color <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>
+      </ul>
     </div>
   </div>
 </div>
 
-<div *ngIf="!deck">
+<div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
+<div class="container">
+
+      <!--<div *ngIf="editTitle" class="form-group">-->
+
+        <!--<div class="input-group">-->
+          <!--<input [(ngModel)]="deck.name" class="form-control input-lg title-edit-input" id="inputlg"  type="text" placeholder="name" style="height: 50px; background-color: #f9f9f9"/>-->
+
+          <!--<div class="input-group-btn">-->
+                <!--<button (click)="save()" class="btn btn-default input-lg" type="button" style="height: 50px;">Save</button>-->
+                <!--<button (click)="hideEditTitle()" class="btn btn-default input-lg" type="button" style="height: 50px;">-->
+                  <!--<div class="glyphicon glyphicon-remove"></div>-->
+                <!--</button>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div *ngIf="!editTitle" class="panel panel-default title-edit-panel" (click)="toggleEditTitle()">-->
+        <!--<div class="panel-body" style="font-size: 18px;">-->
+          <!--{{deck.name}}-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--<div class="panel panel-default" [style.background]="hexToRGB(deck.color, 0.2)">-->
+      <!--<div class="panel-body">-->
+        <!--<button type="button" class="btn btn-default" (click)="goBack()">Back</button>-->
+        <!--<button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>-->
+        <!--<button type="button" class="btn btn-default">Edit</button>-->
+
+        <!--<div class="btn-group">-->
+          <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">-->
+            <!--Color <span class="caret"></span>-->
+          <!--</button>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.7)" [routerLink]="['flip']">Flip!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.3)">Test!</button>
+
+      </div>
+    </div>
+
+    <div class="add-card-slide-container">
+
+      <div class="panel panel-default parent-slide-container">
+        <div class="panel-body">
+
+          <div class="btn-group btn-group-justified" role="group">
+            <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add flashcards</a>
+            <a type="button" class="btn btn-lg btn-default">Connect to book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default child-slide-container" [style.top]="top" id="slider">
+        <div class="panel-body">
+          <card-form [deck]="deck"></card-form>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default below-slide-container" [style.top]="topBelow" style="max-height: 500px; overflow-y: scroll;">
+      <div class="list-group">
+        <a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
+          <h4 class="list-group-item-heading">{{card.term}}</h4>
+          <p class="list-group-item-text">{{card.definition}}</p>
+          <span class="card-remove-button-span">
+            <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 2%; top: 38%;" (click)="deleteCard(card)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </span>
+        </a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div *ngIf="!deck && !deckNotFound">
   <span class="glyphicon glyphicon-refresh spinning"></span>
+</div>
+
+<div *ngIf="deckNotFound">
+  <h1 style="text-align: center">Deck not found :(</h1>
 </div>

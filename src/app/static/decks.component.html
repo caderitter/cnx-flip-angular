@@ -1,30 +1,36 @@
-<div class="page-header">
-  <h3>My Decks</h3>
-</div>
-
-<div class="row">
-
-  <div *ngFor="let deck of decks" class="col-md-4 deck-container">
-    <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
-      <div class="deck-text">
-        {{deck.name}}
-      </div>
-      <div class="deck deck-footer"></div>
-    </div>
+<div class="container-fluid" style="background-color: lightgray;">
+  <div class="container">
+    <h3>My Decks</h3>
   </div>
+</div>
 
-  <div class="col-md-4 deck-container">
-    <div id="deck-add" class="deck deck-add" (click)="addDeck()">
-      <div class="deck-text">
-        <span class="glyphicon glyphicon-plus-sign"></span>
+<div class="container-fluid" style="background-color: white; min-height: 800px;">
+  <div class="container">
+  <div class="row">
+
+    <div *ngFor="let deck of decks" class="col-md-4 deck-container">
+      <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
+        <div class="deck-text">
+          {{deck.name}}
+        </div>
+        <div class="deck deck-footer"></div>
       </div>
-      <div class="deck deck-footer"></div>
     </div>
+
+    <div class="col-md-4 deck-container">
+      <div id="deck-add" class="deck deck-add" (click)="addDeck()">
+        <div class="deck-text">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+        </div>
+        <div class="deck deck-footer"></div>
+      </div>
+    </div>
+
   </div>
-
+  </div>
 </div>
 
-<div *ngIf="!decks">
-  <span class="glyphicon glyphicon-refresh spinning"></span>
-</div>
+<!--<div *ngIf="!decks">-->
+  <!--<span class="glyphicon glyphicon-refresh spinning"></span>-->
+<!--</div>-->
 

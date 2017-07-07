@@ -13,11 +13,11 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const decks = [
-      { id: 1, name: "Test Deck 1", cards: cards, color: '#8f8f8f'},
-      { id: 2, name: "Test Deck 2", cards: cards, color: '#8f8f8f'},
-      { id: 3, name: "Test Deck 3", cards: cards, color: '#8f8f8f'},
-      { id: 4, name: "Test Deck 4", cards: cards, color: '#8f8f8f'},
-      { id: 5, name: "Test Deck 5", cards: cards, color: '#8f8f8f'},
+      { id: 1, name: "Test Deck 1", cards: cards, color: '#15837D'},
+      { id: 2, name: "Test Deck 2", cards: cards, color: '#15837D'},
+      { id: 3, name: "Test Deck 3", cards: cards, color: '#15837D'},
+      { id: 4, name: "Test Deck 4", cards: cards, color: '#15837D'},
+      { id: 5, name: "Test Deck 5", cards: cards, color: '#15837D'},
     ];
 
     return {decks, cards};
