@@ -82,4 +82,6 @@ export class FlipComponent implements OnInit {
   shuffleCard(): void {
   
   }
+
+
 }

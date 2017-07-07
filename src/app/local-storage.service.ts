@@ -1,3 +1,5 @@
+// This implements a local storage service. Not sure if we're going to use this or not.
+
 import {Injectable} from "@angular/core";
 import {Deck} from "./deck";
 import {Card} from "./card";

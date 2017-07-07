@@ -20,7 +20,10 @@ export class DeckService {
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl)
       .toPromise()
-      .then(response => response.json().data as Deck[])
+      .then(response => {
+        console.log(response.json());
+        return response.json().data as Deck[];
+      })
       .catch(DeckService.handleError);
   }
 
