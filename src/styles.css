@@ -229,3 +229,16 @@ body {
   border: none;
   color: white;
 }
+
+.input-deck-title {
+  height: 50px;
+  background-color: transparent;
+  font-size: 24px;
+  border: none;
+  color: white;
+  opacity: 0.7;
+  font-weight: 500;
+  line-height: 1.1;
+  padding-top: 17px;
+  padding-left: 10px;
+}
