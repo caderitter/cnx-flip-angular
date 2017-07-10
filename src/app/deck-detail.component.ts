@@ -1,6 +1,6 @@
 // component to display deck detail
 
-import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 
@@ -17,6 +17,8 @@ import {Card} from "./card";
 
 export class DeckDetailComponent implements OnInit, OnDestroy {
   deck: Deck;
+  @ViewChild('titlefocusable') vc: any;
+
 
   addCardButtonClicked: boolean = false;
   editTitle: boolean = false;
@@ -92,6 +94,7 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
 
   toggleEditTitle(): void {
     this.editTitle = !this.editTitle;
+    this.vc.nativeElement.focus();
   }
 
   hideEditTitle(): void {

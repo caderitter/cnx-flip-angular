@@ -1,10 +1,10 @@
 <div *ngIf="deck">
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 1)">
-  <div class="container" style="min-height: 56px;">
+  <div class="container" style="max-height: 56px;">
     <h3 *ngIf="!editTitle" style="color: white;">{{deck.name}}</h3>
 
     <div *ngIf="editTitle">
-      <input [(ngModel)]="deck.name" type="text" placeholder="name" style="height: 50px; background-color: transparent; font-size: 24px; border: none; color: white; opacity: 0.7; font-weight: 500; line-height: 1.1; padding: 0;"/>
+      <input [(ngModel)]="deck.name" type="text" placeholder="Deck name" #titlefocusable class="input-deck-title"/>
       <button (click)="save()" class="btn-deck-title-edit" type="button">
         <div class="glyphicon glyphicon-ok"></div>
       </button>
