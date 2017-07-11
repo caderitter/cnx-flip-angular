@@ -5,19 +5,17 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
 
     const cards: Card[] = [
-      { term: 'Test term 1', definition: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci nisl, sagittis ac tincidunt lacinia, sodales ac nibh. Fusce venenatis eleifend tortor, nec placerat eros laoreet sit amet. Quisque rhoncus non diam eu elementum. Praesent pulvinar nisi a urna lobortis auctor sit amet sed est. Aliquam eget orci sapien. Vestibulum.' },
-      { term: 'Test term 2', definition: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci nisl, sagittis ac tincidunt lacinia, sodales ac nibh. Fusce venenatis eleifend tortor, nec placerat eros laoreet sit amet. Quisque rhoncus non diam eu elementum. Praesent pulvinar nisi a urna lobortis auctor sit amet sed est. Aliquam eget orci sapien. Vestibulum.' },
-      { term: 'Test term 3', definition: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci nisl, sagittis ac tincidunt lacinia, sodales ac nibh. Fusce venenatis eleifend tortor, nec placerat eros laoreet sit amet. Quisque rhoncus non diam eu elementum. Praesent pulvinar nisi a urna lobortis auctor sit amet sed est. Aliquam eget orci sapien. Vestibulum.' },
-      { term: 'Test term 4', definition: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci nisl, sagittis ac tincidunt lacinia, sodales ac nibh. Fusce venenatis eleifend tortor, nec placerat eros laoreet sit amet. Quisque rhoncus non diam eu elementum. Praesent pulvinar nisi a urna lobortis auctor sit amet sed est. Aliquam eget orci sapien. Vestibulum.' },
-      { term: 'Test term 5', definition: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci nisl, sagittis ac tincidunt lacinia, sodales ac nibh. Fusce venenatis eleifend tortor, nec placerat eros laoreet sit amet. Quisque rhoncus non diam eu elementum. Praesent pulvinar nisi a urna lobortis auctor sit amet sed est. Aliquam eget orci sapien. Vestibulum.' },
+      { term: 'philosophical empiricism', definition: 'all concepts come from experience, all rational beliefs are justifiable through experience' },
+      { term: 'functionalism', definition: 'approach to psych that considers mental life in terms of adaptation to the person\'s environment' },
+      { term: 'hysteria', definition: 'loss of cog/motor functions as result of upsetting experience' },
+      { term: 'predictive validity', definition: 'predicts other measures of trait in question (related traits); high school GPA predicts college GPA' },
+      { term: 'APA code of ethics', definition: 'informed consent, freedom from coercion, protection from harm, risk-benefit analysis, debriefing' },
     ];
 
     const decks = [
-      { id: 1, name: "Test Deck 1", cards: cards, color: '#15837D'},
-      { id: 2, name: "Test Deck 2", cards: cards, color: '#15837D'},
-      { id: 3, name: "Test Deck 3", cards: cards, color: '#15837D'},
-      { id: 4, name: "Test Deck 4", cards: cards, color: '#15837D'},
-      { id: 5, name: "Test Deck 5", cards: cards, color: '#15837D'},
+      { id: 1, name: "Psychology Ch. 1", cards: cards, color: '#1B2152'},
+      { id: 2, name: "Biology Ch. 4", cards: cards, color: '#65A234'},
+      { id: 3, name: "Econ Ch. 3", cards: cards, color: '#F0C916'},
     ];
 
     return {decks, cards};
