@@ -4,11 +4,11 @@
   </div>
 </div>
 
-<div class="container-fluid" style="background-color: white; min-height: 800px;">
+<div class="container-fluid" style="background-color: #f9f9f9; min-height: 800px;">
   <div class="container">
   <div class="row">
 
-    <div *ngFor="let deck of decks" class="col-md-4 deck-container">
+    <div *ngFor="let deck of decks" class="col-md-4 deck-container" style="padding-left: 0">
       <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
         <div class="deck-text">
           {{deck.name}}
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="col-md-4 deck-container">
+    <div class="col-md-4 deck-container" style="padding-left: 0">
       <div id="deck-add" class="deck deck-add" (click)="addDeck()">
         <div class="deck-text">
           <span class="glyphicon glyphicon-plus-sign"></span>
