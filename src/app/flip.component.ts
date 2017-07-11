@@ -24,13 +24,13 @@ export class FlipComponent implements OnInit {
   //current term, string definition
   private currentCard: Card;
   private currentCardIndex: number = 0;
-  private percentage: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private deckService: DeckService,
     private location: Location,
   ) {}
+
 
   ngOnInit(): void {
     // get deck id from parent component
@@ -63,6 +63,10 @@ export class FlipComponent implements OnInit {
         b = parseInt(hex.slice(5, 7), 16);
 
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+  }
+
+  progress(): number {
+    return (this.currentCardIndex+1)/this.deck.cards.length*100
   }
 
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
