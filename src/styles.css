@@ -46,8 +46,8 @@ body {
 
 .deck {
   background-color: #5f5f5f;
-  height: 200px;
-  width: 350px;
+  height: 150px;
+  width: 300px;
   position: relative;
   margin: 15px;
   transition: all .3s ease;
@@ -143,9 +143,15 @@ body {
   margin: 0 auto;
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1000px;
+/*@media (min-width: 1200px) {*/
+  /*.container {*/
+    /*width: 1000px;*/
+  /*}*/
+/*}*/
+
+@media screen and (max-width: 1024px) {
+  .deck {
+    height: 100px;
   }
 }
 
@@ -177,7 +183,7 @@ body {
   text-align: center;
   -webkit-backface-visibility: hidden;
   overflow: scroll;
-  
+
 }
 
 .front p{
@@ -187,7 +193,7 @@ body {
 
 .back p {
   margin-top: 20%;
-  font-size: 2rem; 
+  font-size: 2rem;
 }
 
 
@@ -215,4 +221,24 @@ body {
 
 .card-list-item:hover .card-remove-button-span {
   display: inline;
+}
+
+.btn-deck-title-edit {
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.input-deck-title {
+  height: 50px;
+  background-color: transparent;
+  font-size: 24px;
+  border: none;
+  color: white;
+  opacity: 0.7;
+  font-weight: 500;
+  line-height: 1.1;
+  padding-top: 17px;
+  padding-left: 10px;
 }

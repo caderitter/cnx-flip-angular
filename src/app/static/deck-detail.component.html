@@ -1,7 +1,18 @@
 <div *ngIf="deck">
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 1)">
-  <div class="container">
-    <h3 style="color: white;">{{deck.name}}</h3>
+  <div class="container" style="max-height: 56px;">
+    <h3 *ngIf="!editTitle" style="color: white;">{{deck.name}}</h3>
+
+    <div *ngIf="editTitle">
+      <input [(ngModel)]="deck.name" type="text" placeholder="Deck name" #titlefocusable class="input-deck-title"/>
+      <button (click)="save()" class="btn-deck-title-edit" type="button">
+        <div class="glyphicon glyphicon-ok"></div>
+      </button>
+      <button (click)="hideEditTitle()" class="btn-deck-title-edit" type="button" style="height: 50px;">
+        <div class="glyphicon glyphicon-remove"></div>
+      </button>
+    </div>
+
   </div>
 </div>
 
@@ -9,8 +20,8 @@
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 0.5)">
   <div class="container" style="padding-top: 10px; padding-bottom: 10px;">
     <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-    <button type="button" class="btn pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
-    <button type="button" class="btn btn-default">Edit</button>
+    <button type="button" class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+    <button type="button" class="btn btn-default" (click)="toggleEditTitle()">Edit</button>
 
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color" style="color: white;">
@@ -68,8 +79,8 @@
 
     <div class="panel panel-default">
       <div class="panel-body">
-        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.7)" [routerLink]="['flip']">Flip!</button>
-        <button type="button" class="btn btn-lg btn-block btn-default" [style.background]="hexToRGB(deck.color, 0.3)">Test!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default" [routerLink]="['flip']">Flip!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default">Test!</button>
 
       </div>
     </div>
