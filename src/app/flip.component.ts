@@ -13,6 +13,7 @@ declare var $ :any;
 @Component({
   selector: 'flip',
   templateUrl: './static/flip.component.html',
+  styles: ['.list-group {padding-top:25px};']
 })
 
 export class FlipComponent implements OnInit {
@@ -23,12 +24,13 @@ export class FlipComponent implements OnInit {
   //current term, string definition
   private currentCard: Card;
   private currentCardIndex: number = 0;
-  private percentage: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private deckService: DeckService,
+    private location: Location,
   ) {}
+
 
   ngOnInit(): void {
     // get deck id from parent component
@@ -55,6 +57,19 @@ export class FlipComponent implements OnInit {
     }
   }
 
+  hexToRGB(hex: string, alpha: number): string {
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+
+    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+  }
+
+  // progress bar 
+  progress(): number {
+    return (this.currentCardIndex+1)/this.deck.cards.length*100
+  }
+
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
@@ -79,8 +94,19 @@ export class FlipComponent implements OnInit {
     this.currentCard = this.deck.cards[this.currentCardIndex];
   }
 
-  shuffleCard(): void {
-  
+  goBack(): void {
+    this.location.back();
+  }
+
+  shuffleCards(): void {
+    var i = 0, j = 0, temp = null
+    
+    for (i = this.deck.cards.length - 1; i > 0; i -=1) {
+      j = Math.floor(Math.random()*(i+1))
+      temp = this.deck.cards[i]
+      this.deck.cards[i] = this.deck.cards[j]
+      this.deck.cards[j] = temp
+    }
   }
 
 
