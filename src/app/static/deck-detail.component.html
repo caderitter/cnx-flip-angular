@@ -37,50 +37,10 @@
 <div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
 <div class="container">
 
-      <!--<div *ngIf="editTitle" class="form-group">-->
-
-        <!--<div class="input-group">-->
-          <!--<input [(ngModel)]="deck.name" class="form-control input-lg title-edit-input" id="inputlg"  type="text" placeholder="name" style="height: 50px; background-color: #f9f9f9"/>-->
-
-          <!--<div class="input-group-btn">-->
-                <!--<button (click)="save()" class="btn btn-default input-lg" type="button" style="height: 50px;">Save</button>-->
-                <!--<button (click)="hideEditTitle()" class="btn btn-default input-lg" type="button" style="height: 50px;">-->
-                  <!--<div class="glyphicon glyphicon-remove"></div>-->
-                <!--</button>-->
-          <!--</div>-->
-
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div *ngIf="!editTitle" class="panel panel-default title-edit-panel" (click)="toggleEditTitle()">-->
-        <!--<div class="panel-body" style="font-size: 18px;">-->
-          <!--{{deck.name}}-->
-        <!--</div>-->
-      <!--</div>-->
-
-    <!--<div class="panel panel-default" [style.background]="hexToRGB(deck.color, 0.2)">-->
-      <!--<div class="panel-body">-->
-        <!--<button type="button" class="btn btn-default" (click)="goBack()">Back</button>-->
-        <!--<button type="button" class="btn pull-right" [ngClass]="deleteButtonStyle" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>-->
-        <!--<button type="button" class="btn btn-default">Edit</button>-->
-
-        <!--<div class="btn-group">-->
-          <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color">-->
-            <!--Color <span class="caret"></span>-->
-          <!--</button>-->
-          <!--<ul class="dropdown-menu">-->
-            <!--<li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
-
-
     <div class="panel panel-default">
       <div class="panel-body">
-        <button type="button" class="btn btn-lg btn-block btn-default" [routerLink]="['flip']">Flip!</button>
-        <button type="button" class="btn btn-lg btn-block btn-default">Test!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default btn-large-main" [routerLink]="['flip']">Flip!</button>
+        <button type="button" class="btn btn-lg btn-block btn-default btn-large-main">Test!</button>
 
       </div>
     </div>
@@ -91,8 +51,8 @@
         <div class="panel-body">
 
           <div class="btn-group btn-group-justified" role="group">
-            <a type="button" class="btn btn-lg btn-default" (click)="toggleAddCardButton()">Add flashcards</a>
-            <a type="button" class="btn btn-lg btn-default">Connect to book</a>
+            <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">Add flashcards</a>
+            <a type="button" class="btn btn-lg btn-default btn-large-main">Connect to book</a>
           </div>
         </div>
       </div>
