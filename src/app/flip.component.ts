@@ -107,6 +107,7 @@ export class FlipComponent implements OnInit {
       this.deck.cards[i] = this.deck.cards[j];
       this.deck.cards[j] = temp
     }
+    this.currentCard = this.deck.cards[0]
   }
 
 
