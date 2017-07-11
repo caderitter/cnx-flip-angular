@@ -5,8 +5,14 @@ Angular frontend for OpenStax Flip, a textbook-integrated flashcard application
 node v4.x.x or higher and npm 3.x.x
 
 # Setup
-> npm install
+> USER$ git clone https://github.com/caderitter/cnx-flip-angular/ cnx-flip-angular
 
-> npm start
+> USER$ cd cnx-flip-angular
 
-Navigate to localhost:3000.
+> USER$ npm install
+
+> USER$ npm start
+
+A browser window will open automatically.
+
+
