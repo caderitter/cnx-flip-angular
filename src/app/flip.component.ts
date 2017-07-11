@@ -65,6 +65,7 @@ export class FlipComponent implements OnInit {
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
   }
 
+  // progress bar 
   progress(): number {
     return (this.currentCardIndex+1)/this.deck.cards.length*100
   }
@@ -97,8 +98,15 @@ export class FlipComponent implements OnInit {
     this.location.back();
   }
 
-  shuffleCard(): void {
-  
+  shuffleCards(): void {
+    var i = 0, j = 0, temp = null
+    
+    for (i = this.deck.cards.length - 1; i > 0; i -=1) {
+      j = Math.floor(Math.random()*(i+1))
+      temp = this.deck.cards[i]
+      this.deck.cards[i] = this.deck.cards[j]
+      this.deck.cards[j] = temp
+    }
   }
 
 
