@@ -48,10 +48,10 @@ export class FlipComponent implements OnInit {
       this.flipCard();
     }
     // listen for right arrow keyup
-    else if (ev.keyCode == 39) { 
+    else if (ev.keyCode == 39) {
       this.nextCard();
     }
-    // listen for left arrow keyup 
+    // listen for left arrow keyup
     else if (ev.keyCode == 37) {
       this.previousCard();
     }
@@ -65,7 +65,7 @@ export class FlipComponent implements OnInit {
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
   }
 
-  // progress bar 
+  // progress bar
   progress(): number {
     return (this.currentCardIndex+1)/this.deck.cards.length*100
   }
@@ -73,10 +73,10 @@ export class FlipComponent implements OnInit {
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
-    
+
   }
 
-  //methods: previous card, next card 
+  //methods: previous card, next card
   nextCard(): void {
     this.currentCardIndex += 1;
 
@@ -99,12 +99,12 @@ export class FlipComponent implements OnInit {
   }
 
   shuffleCards(): void {
-    var i = 0, j = 0, temp = null
-    
+    var i = 0, j = 0, temp = null;
+
     for (i = this.deck.cards.length - 1; i > 0; i -=1) {
-      j = Math.floor(Math.random()*(i+1))
-      temp = this.deck.cards[i]
-      this.deck.cards[i] = this.deck.cards[j]
+      j = Math.floor(Math.random()*(i+1));
+      temp = this.deck.cards[i];
+      this.deck.cards[i] = this.deck.cards[j];
       this.deck.cards[j] = temp
     }
   }
