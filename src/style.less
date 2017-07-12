@@ -1,0 +1,230 @@
+/*@media (min-width: 1200px) {*/
+/*.container {*/
+/*width: 1000px;*/
+/*}*/
+/*}*/
+@keyframes "spin" {
+	from {
+		transform: scale(1) rotate(0deg);
+	}
+	to {
+		transform: scale(1) rotate(360deg);
+	}
+}
+@-webkit-keyframes "spin2" {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+.btn {
+	border-radius: 0;
+	border: none;
+}
+.panel {
+	border-radius: 0;
+}
+.btn-large-main {
+	background: #eeeeee;
+}
+.title-edit-panel {
+	height: 50px;
+	cursor: pointer;
+	&:hover {
+		background-color: #f9f9f9;
+	}
+}
+.deck-title-form {
+	display: block;
+	margin: 0;
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 10px;
+	border: none;
+	border-bottom: solid 6px rgba(0,0,0,0);
+	background-color: inherit;
+	transition: all 0.3s;
+	&:focus {
+		color: #888788;
+		border-bottom: solid 6px #969696;
+	}
+}
+.deck-container {
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+.deck {
+	background-color: #5f5f5f;
+	height: 150px;
+	width: 300px;
+	position: relative;
+	margin: 15px;
+	transition: all .3s ease;
+	box-shadow: 10px 0 15px -5px rgba(0,0,0,0);
+	-webkit-transform: rotateY(0deg);
+	-webkit-transform-origin: left center;
+	cursor: pointer;
+	border-radius: 0;
+	&:hover {
+		-webkit-transform: rotateY(-7deg);
+		box-shadow: 10px 0 15px -5px rgba(0,0,0,0.3);
+	}
+}
+.deck.deck-add {
+	box-shadow: 0 3px 6px rgba(0,0,0,0), 0 3px 6px rgba(0,0,0,0);
+	transition: all 0.3s;
+	&:hover {
+		box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+		transition: all 0.3s;
+		transform: translateZ(5px);
+	}
+}
+.deck.deck-footer {
+	width: 300px;
+	height: 30px;
+	background-color: white;
+	opacity: 0.3;
+	position: absolute;
+	bottom: -15px;
+	left: -15px;
+	box-shadow: none;
+	border-radius: 0 0 0 0;
+}
+.deck-text {
+	font-family: Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: lighter;
+	color: #ffffff;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+#add-card-form {
+	display: none;
+}
+.add-card-slide-container {
+	overflow: hidden;
+}
+.parent-slide-container {
+	position: relative;
+	top: 0;
+	z-index: 1;
+}
+.child-slide-container {
+	position: relative;
+	top: -200px;
+	z-index: 0;
+	-webkit-transition: top 0.5s;
+	-moz-transition: top 0.5s;
+	-o-transition: top 0.5s;
+	transition: top 0.5s;
+}
+.below-slide-container {
+	position: relative;
+	top: -180px;
+	z-index: 1;
+	-webkit-transition: top 0.5s;
+	-moz-transition: top 0.5s;
+	-o-transition: top 0.5s;
+	transition: top 0.5s;
+}
+.add-card-help {
+	font-size: 25px;
+	color: #5e5e5e;
+	bottom: 10px;
+	right: 5px;
+}
+#page-wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+.stage {
+	-webkit-perspective: 1000px;
+}
+.flashcard {
+	height: 400px;
+	width: 600px;
+	background-color: white;
+	margin: 3% auto;
+	border: 1px solid gray;
+	box-shadow: 2px 2px 2px #444;
+	-webkit-transform-style: preserve-3d;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+}
+.flipped {
+	transform: rotateX(180deg);
+	-webkit-transform: rotateX(180deg);
+}
+.back {
+	transform: rotateX(180deg);
+	-webkit-transform: rotateX(180deg);
+	height: 400px;
+	width: 600px;
+	position: absolute;
+	text-align: center;
+	-webkit-backface-visibility: hidden;
+	overflow: scroll;
+	p {
+		margin-top: 20%;
+		font-size: 2rem;
+	}
+}
+.front {
+	height: 400px;
+	width: 600px;
+	position: absolute;
+	text-align: center;
+	-webkit-backface-visibility: hidden;
+	overflow: scroll;
+	p {
+		margin-top: 25%;
+		font-size: 3rem;
+	}
+}
+.glyphicon.spinning {
+	animation: spin 1s infinite linear;
+	-webkit-animation: spin2 1s infinite linear;
+	display: block;
+	text-align: center;
+}
+.card-remove-button-span {
+	display: none;
+}
+.card-list-item {
+	&:hover {
+		.card-remove-button-span {
+			display: inline;
+		}
+	}
+}
+.btn-deck-title-edit {
+	height: 50px;
+	background-color: transparent;
+	border: none;
+	color: white;
+}
+.input-deck-title {
+	height: 50px;
+	background-color: transparent;
+	font-size: 24px;
+	border: none;
+	color: white;
+	opacity: 0.7;
+	font-weight: 500;
+	line-height: 1.1;
+	padding-top: 17px;
+	padding-left: 10px;
+}
+@media screen and (max-width: 1024px) {
+	.deck {
+		height: 100px;
+	}
+}
