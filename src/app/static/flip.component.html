@@ -6,7 +6,7 @@
 
 
 <!--<div *ngIf="deck.cards()">-->
-  
+
   <!--<div class="btn-group btn-group-justified" role="group">
     <a type="button" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i>Back to </a>
     <a type="button" class="btn btn-default"><i class="glyphicon glyphicon-random"></i> Shuffle</a>
@@ -27,7 +27,7 @@
                     </div>
                 </li>
             </div>
-        </div> 
+        </div>
     <!--Flashcard-->
         <div class="col-md-10" >
           <div class="flashcard" (click)="flipCard()">
@@ -40,10 +40,10 @@
           </div>
           <div class="text-center">
             <button type="button" class='btn' (click)="previousCard()" [style.background]="hexToRGB(deck.color, 0.8)">
-                <i class="glyphicon glyphicon-chevron-left"></i>
+                <i style="color: white" class="glyphicon glyphicon-chevron-left"></i>
             </button>
             <button type="button" class="btn" (click)="nextCard()" [style.background]="hexToRGB(deck.color, 0.8)">
-                <i class="glyphicon glyphicon-chevron-right"></i>
+                <i style="color: white" class="glyphicon glyphicon-chevron-right"></i>
             </button>
           </div>
         </div>

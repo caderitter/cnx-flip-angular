@@ -20,7 +20,6 @@
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 0.5)">
   <div class="container" style="padding-top: 10px; padding-bottom: 10px;">
     <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
-    <button type="button" class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
     <button type="button" class="btn btn-default" (click)="toggleEditTitle()">Edit</button>
 
     <div class="btn-group">
@@ -31,19 +30,31 @@
         <li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>
       </ul>
     </div>
+
+    <button type="button" class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+
+
   </div>
 </div>
+
+  <div class="container-fluid" [style.background]="hexToRGB(deck.color, 0.3)">
+    <div class="container" style="padding-top: 10px; padding-bottom: 10px">
+      <button type="button" style="width: 182px;" class="btn btn-default" [routerLink]="['flip']">Flip</button>
+      <button type="button" style="width: 182px;" class="btn btn-default">Test</button>
+
+    </div>
+  </div>
 
 <div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
 <div class="container">
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <button type="button" class="btn btn-lg btn-block btn-default btn-large-main" [routerLink]="['flip']">Flip!</button>
-        <button type="button" class="btn btn-lg btn-block btn-default btn-large-main">Test!</button>
+    <!--<div class="panel panel-default">-->
+      <!--<div class="panel-body">-->
+        <!--<button type="button" class="btn btn-lg btn-block btn-default btn-large-main" [routerLink]="['flip']">Flip!</button>-->
+        <!--<button type="button" class="btn btn-lg btn-block btn-default btn-large-main">Test!</button>-->
 
-      </div>
-    </div>
+      <!--</div>-->
+    <!--</div>-->
 
     <div class="add-card-slide-container">
 
