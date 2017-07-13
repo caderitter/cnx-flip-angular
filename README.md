@@ -37,7 +37,7 @@ A browser window will open automatically.
 
 To end the server, type `CTRL + C` in terminal/Git Bash.
 
-After setup you can run the server after using
+After setup you can run the server by using
 
 `npm start`
 
