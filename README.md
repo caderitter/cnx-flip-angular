@@ -35,4 +35,12 @@ This runs the start routine (compiles the code and runs the local server)
 
 A browser window will open automatically.
 
+To end the server, type `CTRL + C` in terminal/Git Bash.
+
+After setup you can run the server after using
+
+`npm start`
+
+when in the directory `cnx-flip-angular`.
+
 
