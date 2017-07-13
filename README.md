@@ -4,7 +4,7 @@ Angular frontend for OpenStax Flip, a textbook-integrated flashcard application
 # Requirements
 The installation instructions for the following are easily found online.
 
-[git](https://git-scm.com/)
+[git](https://git-scm.com/) (PC users: make sure to install Git Bash)
 
 [node >= v4.x.x](https://nodejs.org/en/) (PC users: make sure to install using Git Bash)
 
