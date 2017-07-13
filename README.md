@@ -2,16 +2,28 @@
 Angular frontend for OpenStax Flip, a textbook-integrated flashcard application
 
 # Requirements
-node v4.x.x or higher and npm 3.x.x
+The installation instructions for the following are easily found online.
+
+[git](https://git-scm.com/)
+
+[node >= v4.x.x](https://nodejs.org/en/)
+
+npm >= v3.x.x (installs with node)
 
 # Setup
-> USER$ git clone https://github.com/caderitter/cnx-flip-angular/ cnx-flip-angular
+Mac: open Terminal
 
-> USER$ cd cnx-flip-angular
+PC: open Git Bash (should have installed with your git installation)
 
-> USER$ npm install
+Enter the following commands:
 
-> USER$ npm start
+`git clone https://github.com/caderitter/cnx-flip-angular/ cnx-flip-angular`
+
+`cd cnx-flip-angular`
+
+`npm install`
+
+`npm start`
 
 A browser window will open automatically.
 
