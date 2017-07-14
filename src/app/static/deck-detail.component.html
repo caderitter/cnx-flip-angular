@@ -26,8 +26,8 @@
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [style.background]="deck.color" style="color: white;">
         Color <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu">
-        <li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;&nbsp;&nbsp;</a></li>
+      <ul class="dropdown-menu" style="padding-top: 0; padding-bottom: 0; border-radius: 0;">
+        <li *ngFor="let color of colors"><a (click)="changeDeckColor(color)" [style.background]="color" style="cursor: pointer;">&nbsp;</a></li>
       </ul>
     </div>
 
@@ -48,23 +48,15 @@
 <div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
 <div class="container">
 
-    <!--<div class="panel panel-default">-->
-      <!--<div class="panel-body">-->
-        <!--<button type="button" class="btn btn-lg btn-block btn-default btn-large-main" [routerLink]="['flip']">Flip!</button>-->
-        <!--<button type="button" class="btn btn-lg btn-block btn-default btn-large-main">Test!</button>-->
-
-      <!--</div>-->
-    <!--</div>-->
 
     <div class="add-card-slide-container">
 
       <div class="panel panel-default parent-slide-container">
         <div class="panel-body">
 
-          <div class="btn-group btn-group-justified" role="group">
             <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">Add flashcards</a>
-            <a type="button" class="btn btn-lg btn-default btn-large-main">Connect to book</a>
-          </div>
+            <a type="button" class="btn btn-lg btn-default btn-large-main pull-right">Connect to book</a>
+
         </div>
       </div>
 
