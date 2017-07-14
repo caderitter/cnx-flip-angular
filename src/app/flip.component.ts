@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, HostListener} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
@@ -13,7 +14,7 @@ declare var $ :any;
 @Component({
   selector: 'flip',
   templateUrl: './static/flip.component.html',
-  styles: ['.list-group {padding-top:25px};']
+  styles: [".list-group {padding-top:25px};"],
 })
 
 export class FlipComponent implements OnInit {
@@ -23,6 +24,9 @@ export class FlipComponent implements OnInit {
   //term: string = this.deck.card[0].term;
   //current term, string definition
   private currentCard: Card;
+  private cardPrev: Card;
+  private cardNext: Card;
+
   private currentCardIndex: number = 0;
 
   constructor(
@@ -73,17 +77,19 @@ export class FlipComponent implements OnInit {
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
-
   }
 
   //methods: previous card, next card
   nextCard(): void {
     this.currentCardIndex += 1;
-
+    
     if (this.currentCardIndex == this.deck.cards.length) {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
+    this.cardPrev = this.deck.cards[this.currentCardIndex-1];
+    this.cardNext = this.deck.cards[this.currentCardIndex+1];
+    $('.prev-card').toggleClass('.prev-transition');
   }
 
   previousCard(): void {
@@ -92,6 +98,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
+    this.cardPrev = this.deck.cards[this.currentCardIndex-1];
+    this.cardNext = this.deck.cards[this.currentCardIndex+1];
   }
 
   goBack(): void {
@@ -100,7 +108,6 @@ export class FlipComponent implements OnInit {
 
   shuffleCards(): void {
     var i = 0, j = 0, temp = null;
-
     for (i = this.deck.cards.length - 1; i > 0; i -=1) {
       j = Math.floor(Math.random()*(i+1));
       temp = this.deck.cards[i];
@@ -109,6 +116,4 @@ export class FlipComponent implements OnInit {
     }
     this.currentCard = this.deck.cards[0]
   }
-
-
 }
