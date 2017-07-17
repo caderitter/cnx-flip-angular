@@ -31,7 +31,7 @@
       </ul>
     </div>
 
-    <button type="button" class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+    <button type="button" #deleteButton class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
 
 
   </div>
