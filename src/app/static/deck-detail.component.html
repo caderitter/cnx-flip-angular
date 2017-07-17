@@ -68,7 +68,9 @@
 
     </div>
 
-    <card-container [deck]="deck"></card-container>
+    <div class="panel panel-default below-slide-container" [style.top]="topBelow" style="max-height: 500px; overflow-y: scroll;">
+      <card-container [deck]="deck"></card-container>
+    </div>
 
 
 </div>
