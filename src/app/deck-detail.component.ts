@@ -18,6 +18,7 @@ import {Card} from "./card";
 export class DeckDetailComponent implements OnInit, OnDestroy {
   deck: Deck;
   @ViewChild('titlefocusable') vc: any;
+  @ViewChild('deleteButton') vcDeleteButton: any;
 
 
   addCardButtonClicked: boolean = false;
@@ -36,7 +37,9 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     private deckService: DeckService,
     private route: ActivatedRoute,
     private location: Location,
-  ) {}
+  ) {
+    document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
+  }
 
   // TODO - add authentication if/else and include local storage queries
 
@@ -69,11 +72,9 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
       this.deleteDeck(deck);
       this.deleteText = "Delete deck";
       this.deleteButtonClicked = false;
-      this.deleteButtonStyle = "btn-default";
     } else {
       this.deleteText = "Are you sure?";
       this.deleteButtonClicked = true;
-      this.deleteButtonStyle = "btn-danger";
     }
   }
 
@@ -88,8 +89,11 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  clickOutsideDeleteButton(): void {
-    this.deleteButtonClicked = false;
+  clickOutsideDeleteButton(event:any) {
+    if (!this.vcDeleteButton.nativeElement.contains(event.target)) {
+      this.deleteButtonClicked = false;
+      this.deleteText = "Delete deck";
+    }
   }
 
   toggleEditTitle(): void {
