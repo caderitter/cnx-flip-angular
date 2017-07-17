@@ -1,13 +1,39 @@
 <a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
-  <h5 class="list-group-item-heading">{{card.term}}</h5>
-  <p class="list-group-item-text">{{card.definition}}</p>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h5 class="list-group-item-text">{{card.term}}</h5>
+    </div>
+    <div class="col-lg-6">
+      <p class="list-group-item-text">{{card.definition}}</p>
+    </div>
+  </div>
+
   <span class="card-remove-button-span">
-    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 2%; top: 38%;" (click)="deleteCard(card)">
+    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; top: 10%;" (click)="deleteCard(card)">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
-    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 5%; top: 38%;">
+    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; bottom: 10%;">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 50%;bottom: 10%;">
       <span class="glyphicon glyphicon-pencil"></span>
     </button>
   </span>
+
 </a>
 
+<!--<a class="list-group-item clearfix card-list-item">-->
+  <!--<div class="row">-->
+    <!--<div class="col-lg-6">-->
+      <!--<div class="input-group" style="width: 100%">-->
+        <!--<input type="text" class="form-control">-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-lg-6">-->
+      <!--<div class="input-group" style="width: 100%;">-->
+        <!--<textarea class="form-control" style="height: 100px;"></textarea>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</a>-->
