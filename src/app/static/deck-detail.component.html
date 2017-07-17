@@ -46,9 +46,7 @@
   </div>
 
 <div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
-<div class="container">
-
-
+  <div class="container">
     <div class="add-card-slide-container">
 
       <div class="panel panel-default parent-slide-container">
@@ -69,11 +67,12 @@
     </div>
 
     <div class="panel panel-default below-slide-container" [style.top]="topBelow" style="max-height: 500px; overflow-y: scroll;">
-      <card-container [deck]="deck"></card-container>
+      <div class="list-group">
+        <card-container [deck]="deck"></card-container>
+      </div>
     </div>
 
-
-</div>
+  </div>
 </div>
 </div>
 
