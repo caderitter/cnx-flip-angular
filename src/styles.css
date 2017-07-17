@@ -174,19 +174,63 @@
   -webkit-transition: all 0.3s;
 }
 
-.prev-card {
+.prev {
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  margin: 3% auto;
+  border: 1px solid gray;
+  -webkit-transform-style: preserve-3d;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
   position: absolute;
   left: 100px;
-  /*display: none;*/
-  /*-webkit-animation-name: prev-current; 
-  animation-name: prev-current;
-  animation-duration: 1s;*/
-  -webkit-transform-style: preserve-3d;
+  animation-name: current-prev;
+  -webkit-animation-name: current-prev; 
+  /*animation-name: prev-current;
+  animation-duration: 1s;
+  -webkit-transform-style: preserve-3d;*/
   transform: rotateZ(7deg);
   -webkit-transform: rotateZ(7deg);
 }
 
-.prev-transition {
+@keyframes current-prev {
+  from {opacity: 1;} 
+  to {opacity: 0; transform: rotateZ(-7deg);}
+}
+
+.current {
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  margin: 3% auto;
+  border: 1px solid gray;
+  -webkit-transform-style: preserve-3d;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  visibility: 1;
+}
+
+.next {
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  margin: 3% auto;
+  border: 1px solid gray;
+  -webkit-transform-style: preserve-3d;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  position: absolute;
+  left: 300px;
+  animation-name: current-next;
+  -webkit-animation-name: current-next;
+}
+
+@keyframes curren-next {
+  from {opacity: 1;} 
+  to {opacity: 0; transform: rotateZ(7deg);}
+}
+/*.prev-transition {
   position: absolute;
   -webkit-transform-style: preserve-3d;
   display:none;
@@ -205,8 +249,8 @@
   -webkit-transform-style: preserve-3d;
   transform: rotateZ(-7deg);
   -webkit-transform: rotateZ(-7deg);
-  /*display: none;*/
-}
+  display: none;*/
+/*}*/
 
 /*@keyframes prev-current{
   from {
