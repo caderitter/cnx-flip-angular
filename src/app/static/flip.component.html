@@ -29,7 +29,7 @@
             </div>
         </div>
     <!--Flashcard-->
-        <div class="col-md-10" >
+        <!--<div class="col-md-10" >
           <div class="flashcard prev-card" (click)="flipCard()">
             <div class="front">
                 <p>{{this.cardPrev.term}}</p>
@@ -37,9 +37,11 @@
             <div class="back">
                 <p>{{this.cardPrev.definition}}</p>
             </div>
-          </div>
+          </div>-->
 
-          <div class="flashcard cur-card" (click)="flipCard()">
+          <div class="flashcard" (click)="flipCard()" *ngFor="let eachcard of currentCards" 
+                [ngClass]="{prev:eachcard===this.currentCards[0]}" [ngClass]="{current:eachcard===this.currenCards[1]}"
+                           [ngClass]="{next: eachcard===this.currentCards[2]}">
             <div class="front">
                 <p>{{this.currentCard.term}}</p>
             </div>
@@ -48,14 +50,14 @@
             </div>
           </div>
 
-          <div class="flashcard next-card" (click)="flipCard()">
+          <!--<div class="flashcard next-card" (click)="flipCard()">
             <div class="front">
                 <p>{{this.cardNext.term}}</p>
             </div>
             <div class="back">
                 <p>{{this.cardNext.definition}}</p>
             </div>
-          </div>
+          </div>-->
 
           <div class="text-center">
             <button type="button" class='btn' (click)="previousCard()" [style.background]="hexToRGB(deck.color, 0.8)">

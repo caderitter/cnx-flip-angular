@@ -26,8 +26,11 @@ export class FlipComponent implements OnInit {
   private currentCard: Card;
   private cardPrev: Card;
   private cardNext: Card;
-
   private currentCardIndex: number = 0;
+  private currentCards = [
+    this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length], 
+    this.deck.cards[this.currentCardIndex], 
+    this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length]];
 
   constructor(
     private route: ActivatedRoute,
@@ -73,7 +76,7 @@ export class FlipComponent implements OnInit {
   progress(): number {
     return (this.currentCardIndex+1)/this.deck.cards.length*100
   }
-
+  
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
@@ -87,9 +90,6 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
-    $('.prev-card').toggleClass('.prev-transition');
   }
 
   previousCard(): void {
@@ -98,8 +98,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
+    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
+    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   goBack(): void {
