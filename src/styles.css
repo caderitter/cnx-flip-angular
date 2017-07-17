@@ -142,11 +142,6 @@
   right: 5px;
 }
 
-#page-wrap {
-  width: 1200px;
-  margin: 0 auto;
-}
-
 /*@media (min-width: 1200px) {*/
   /*.container {*/
     /*width: 1000px;*/
@@ -222,6 +217,9 @@
   display: none;
 }
 
+.card-list-item {
+  min-height: 60px;
+}
 .card-list-item:hover .card-remove-button-span {
   display: inline;
 }
