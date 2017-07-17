@@ -118,9 +118,4 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
 
   }
-
-  deleteCard(card: Card): void {
-    this.deck.cards = this.deck.cards.filter(c => c !== card);
-    this.deckService.updateDeck(this.deck);
-  }
 }

@@ -21,6 +21,7 @@ import {LocalStorageService} from "./local-storage.service";
 import {FlipComponent} from "./flip.component";
 import {NotFoundComponent} from "./not-found.component";
 import {LandingComponent} from "./landing.component";
+import {CardContainerComponent} from "./card-container.component";
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import {LandingComponent} from "./landing.component";
     FlipComponent,
     NotFoundComponent,
     LandingComponent,
+    CardContainerComponent,
   ],
 
   providers: [
