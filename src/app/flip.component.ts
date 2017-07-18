@@ -24,9 +24,13 @@ export class FlipComponent implements OnInit {
   //term: string = this.deck.card[0].term;
   //current term, string definition
   private currentCard: Card;
-  private cardPrev: Card;
-  private cardNext: Card;
+  // private cardPrev: Card;
+  // private cardNext: Card;
   private currentCardIndex: number = 0;
+  private isNext: boolean = false;
+  private isPrevious: boolean = false;
+  private tempNext: boolean = true;
+  private tempPrevious: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -78,6 +82,16 @@ export class FlipComponent implements OnInit {
     $('.flashcard').toggleClass('flipped');
   }
 
+  // nextTransition(): void {
+  //   $('#next_button').click(function(){
+  //     $('#prev_div').addClass('next-left');
+  //     $('#next_div').addClass('next-left');
+  //     $('#prev_div').on('webkitAnimationEnd', function(){
+  //       $('#prev_div').removeClass('next-left');
+  //     })
+  //   })
+  // }
+
   //methods: previous card, next card
   nextCard(): void {
     this.currentCardIndex += 1;
@@ -86,6 +100,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
+    this.isNext = !this.isNext;
+    this.isPrevious = false;
     // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
     // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
@@ -96,6 +112,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
+    this.isPrevious = !this.isPrevious;
+    this.isNext = false;
     // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
     // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }

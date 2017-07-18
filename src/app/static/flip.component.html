@@ -28,10 +28,12 @@
                 </li>
             </div>
         </div>
+        
     <!--Flashcard-->
         <div class="col-md-10" >
           <div id="flashcardcontainer">
-            <div class="flashcard prev-exit">
+            <div id="prev_div" class="cardcover" [ngClass]="{'prev-left':isNext, 'prev-right': isPrevious}">
+                 
                 <!-- <div class="front">
                     <p>{{this.cardPrev.term}}</p>
                 </div>
@@ -62,7 +64,7 @@
           </div> -->
 
           <div id="flashcardcontainer">
-            <div class="flashcard next-enter">
+            <div id="next_div" class="cardcover" [ngClass]="{'next-left':isNext,'next-right':isPrevious}">
                 <!-- <div class="front">
                     <p>{{this.cardNext.term}}</p>
                 </div>
@@ -72,7 +74,8 @@
             </div>
           </div>
 
-          <div class="flashcard cur-card" (click)="flipCard()">
+          <div class="flashcard" (click)="flipCard()" [ngClass]="{'cur-reappear':isNext||isPrevious}"
+           [ngClass]="{'cur-reappear':isPrevious===true}">
             <div class="front">
                 <p>{{this.currentCard.term}}</p>
             </div>
@@ -82,10 +85,10 @@
           </div>
 
           <div class="text-center">
-            <button type="button" class='btn' (click)="previousCard()" [style.background]="hexToRGB(deck.color, 0.8)">
+            <button type="button" id="prev_button"class='btn' (click)="previousCard()" [style.background]="hexToRGB(deck.color, 0.8)">
                 <i style="color: white" class="glyphicon glyphicon-chevron-left"></i>
             </button>
-            <button type="button" class="btn" (click)="nextCard()" [style.background]="hexToRGB(deck.color, 0.8)">
+            <button type="button" id="next_button" class="btn" (click)="nextCard()" [style.background]="hexToRGB(deck.color, 0.8)">
                 <i style="color: white" class="glyphicon glyphicon-chevron-right"></i>
             </button>
           </div>
