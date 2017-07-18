@@ -1,4 +1,4 @@
-<a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
+<a *ngFor="let card of cards" class="list-group-item clearfix card-list-item">
 
   <div class="row">
     <div class="col-lg-6">
@@ -24,7 +24,7 @@
   </div>
 
   <span class="card-remove-button-span">
-    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; top: 10%;" (click)="deleteCard(card)">
+    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; top: 10%;" (click)="deleteCard(card.id)">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
     <button *ngIf="!getInputVisible(card, 'def')" type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; bottom: 10%;" (click)="toggleInput(card, 'def')">

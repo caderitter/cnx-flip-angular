@@ -7,7 +7,7 @@ export class Deck {
   constructor(
     public id: number,
     public name: string,
-    public cards: Card[],
+    public cards: number[],
     public color: string,
   ) {}
 

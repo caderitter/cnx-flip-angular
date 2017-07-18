@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {Card} from "./card";
 import {DeckService} from "./deck.service";
+import {CardService} from "./card.service";
 
 @Component({
   selector: 'card-container',
@@ -11,24 +12,33 @@ import {DeckService} from "./deck.service";
 export class CardContainerComponent implements OnInit {
   @Input() deck: Deck;
 
+  private cards: Card[] = [];
+
   // objects to track which term and defs have visible input fields
   public cardTermInput = {};
   public cardDefInput = {};
 
   constructor(
     private deckService: DeckService,
+    private cardService: CardService,
   ) {}
 
+  // Retrieve cards from backend
   ngOnInit(): void {
-    var c: Card;
-    for (c in this.deck.cards) {
-      this.cardTermInput[c.id] = false;
-      this.cardDefInput[c.id] = false;
-    }
+    this.deck.cards.map(id => {
+      this.cardService.getCard(id)
+        .then(card => this.cards.push(card))
+      this.cardTermInput[id] = false;
+      this.cardDefInput[id] = false;
+    });
   }
 
-  deleteCard(card: Card): void {
-    this.deck.cards = this.deck.cards.filter(c => c !== card);
+  deleteCard(id: number): void {
+    this.cardService.deleteCard(id);
+    var i = this.deck.cards.indexOf(id);
+    if(i != -1) {
+      this.deck.cards.splice(i, 1);
+    }
     this.deckService.updateDeck(this.deck);
   }
 

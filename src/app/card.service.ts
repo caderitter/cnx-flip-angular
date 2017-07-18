@@ -46,9 +46,9 @@ export class CardService {
       .catch(CardService.handleError);
   }
 
-  createCard(card: Card): Promise<Card> {
+  createCard(term: string, def: string): Promise<Card> {
     return this.http
-      .post(this.cardsUrl, JSON.stringify({card: Card}), {headers: this.headers})
+      .post(this.cardsUrl, JSON.stringify({term: term, definition: def}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Card)
       .catch(CardService.handleError);

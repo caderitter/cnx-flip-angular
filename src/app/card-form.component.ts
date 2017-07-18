@@ -21,13 +21,17 @@ export class CardFormComponent {
   def: string;
 
   constructor(
-    private deckService: DeckService
+    private deckService: DeckService,
+    private cardService: CardService,
   ) {}
 
   addCard(event: any): void {
     if (this.term && this.def) {
-      var card = new Card(this.term, this.def);
-      this.deck.cards.push(card);
+      this.cardService.createCard(this.term, this.def)
+        .then(card => {
+          this.deck.cards.push(card.id);
+        });
+
       this.deckService.updateDeck(this.deck);
       this.term = "";
       this.def = "";
@@ -39,6 +43,8 @@ export class CardFormComponent {
       } else {
         this.vc.nativeElement.focus();
       }
+    } else {
+      // trigger error display
     }
   }
 }
