@@ -36,15 +36,4 @@ export class DecksComponent implements OnInit {
         this.router.navigate(['/deck-detail/' + deck.id]);
       });
   }
-
-  getDecksLocally(): void {
-    this.decks = this.localService.getDecks()
-  }
-
-  addDeckLocally(): void {
-    let deck = this.localService.createDeck("New deck");
-    this.decks.push(deck);
-    this.router.navigate(['/deck-detail/', deck.id])
-  }
-
 }

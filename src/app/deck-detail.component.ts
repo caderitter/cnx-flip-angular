@@ -41,7 +41,7 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
   }
 
-  // TODO - add authentication if/else and include local storage queries
+  // TODO - add authentication if/else
 
   ngOnInit(): void {
     this.route.params

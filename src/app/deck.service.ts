@@ -64,5 +64,4 @@ export class DeckService {
       .then(() => null)
       .catch(DeckService.handleError);
   }
-
 }
