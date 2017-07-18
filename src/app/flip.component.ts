@@ -21,8 +21,6 @@ export class FlipComponent implements OnInit {
   deck: Deck;
   parentRouteId: number;
   private sub: any;
-  //term: string = this.deck.card[0].term;
-  //current term, string definition
   private currentCard: Card;
   // private cardPrev: Card;
   // private cardNext: Card;
@@ -53,14 +51,18 @@ export class FlipComponent implements OnInit {
   onKeyUp(ev: KeyboardEvent): void {
     if (ev.keyCode == 32) {
       this.flipCard();
+      ev.preventDefault();
+      
     }
     // listen for right arrow keyup
     else if (ev.keyCode == 39) {
       this.nextCard();
+      this.nextTransition();
     }
     // listen for left arrow keyup
     else if (ev.keyCode == 37) {
       this.previousCard();
+      this.prevTransition();
     }
   }
 
@@ -82,15 +84,39 @@ export class FlipComponent implements OnInit {
     $('.flashcard').toggleClass('flipped');
   }
 
-  // nextTransition(): void {
-  //   $('#next_button').click(function(){
-  //     $('#prev_div').addClass('next-left');
-  //     $('#next_div').addClass('next-left');
-  //     $('#prev_div').on('webkitAnimationEnd', function(){
-  //       $('#prev_div').removeClass('next-left');
-  //     })
-  //   })
-  // }
+  nextTransition(): void {
+    // $('#next_button').click(function(){
+      $('#prev_div').addClass('prev-left');
+      $('#next_div').addClass('next-left');
+      $('#cur_div').addClass('cur-reappear');
+      $('#prev_div').on('webkitAnimationEnd', function(){
+        $('#prev_div').removeClass('prev-left');
+      });
+      $('#next_div').on('webkitAnimationEnd', function(){
+        $('#next_div').removeClass('next-left');
+      });
+      $('#cur_div').on('webkitAnimationEnd', function(){
+        $('#cur_div').removeClass('cur-reappear');
+      });
+    // })
+  }
+
+  prevTransition(): void {
+    // $('#prev_button').click(function(){
+      $('#prev_div').addClass('prev-right');
+      $('#next_div').addClass('next-right');
+      $('#cur_div').addClass('cur-reappear');
+      $('#prev_div').on('webkitAnimationEnd', function(){
+        $('#prev_div').removeClass('prev-right');
+      });
+      $('#next_div').on('webkitAnimationEnd', function(){
+        $('#next_div').removeClass('next-right');
+      });
+      $('#cur_div').on('webkitAnimationEnd', function(){
+        $('#cur_div').removeClass('cur-reappear');
+      });
+    // })
+  }
 
   //methods: previous card, next card
   nextCard(): void {
