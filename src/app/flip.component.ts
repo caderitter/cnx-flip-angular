@@ -70,10 +70,9 @@ export class FlipComponent implements OnInit {
     return (this.currentCardIndex+1)/this.deck.cards.length*100
   }
 
-  // use jquery because it takes 1 line vs angular's stupid and convoluted methods
+  // use jquery because it takes 1 line vs angular
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
-
   }
 
   //methods: previous card, next card
