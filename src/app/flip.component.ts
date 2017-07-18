@@ -86,8 +86,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
+    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
+    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   previousCard(): void {
@@ -96,8 +96,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
+    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
+    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   goBack(): void {

@@ -30,16 +30,18 @@
         </div>
     <!--Flashcard-->
         <div class="col-md-10" >
-           <div class="flashcard prev-card" (click)="flipCard()">
-            <div class="front">
-                <p>{{this.cardPrev.term}}</p>
-            </div>
-            <div class="back">
-                <p>{{this.cardPrev.definition}}</p>
-            </div>
-          </div> 
+          <div id="flashcardcontainer">
+            <div class="flashcard prev-exit">
+                <!-- <div class="front">
+                    <p>{{this.cardPrev.term}}</p>
+                </div>
+                <div class="back">
+                    <p>{{this.cardPrev.definition}}</p>
+                </div> -->
+            </div> 
+          </div>
 
-          <!-- <div class="flashcard cur-card" (click)="flipCard()" *ngFor="let eachcard of currentCards" 
+           <!-- <div class="flashcard cur-card" (click)="flipCard()" *ngFor="let eachcard of currentCards" 
                 [ngClass]="{prev:eachcard===this.currentCards[0]}" [ngClass]="{current:eachcard===this.currenCards[1]}"
                            [ngClass]="{next: eachcard===this.currentCards[2]}">
             <div class="front">
@@ -48,8 +50,8 @@
             <div class="back">
                 <p>{{this.currentCard.definition}}</p>
             </div>
-          </div> -->
-
+          </div>  -->
+<!-- 
           <div class="flashcard cur-card" (click)="flipCard()">
             <div class="front">
                 <p>{{this.currentCard.term}}</p>
@@ -57,14 +59,25 @@
             <div class="back">
                 <p>{{this.currentCard.definition}}</p>
             </div>
+          </div> -->
+
+          <div id="flashcardcontainer">
+            <div class="flashcard next-enter">
+                <!-- <div class="front">
+                    <p>{{this.cardNext.term}}</p>
+                </div>
+                <div class="back">
+                    <p>{{this.cardNext.definition}}</p>
+                </div> -->
+            </div>
           </div>
 
-          <div class="flashcard next-card" (click)="flipCard()">
+          <div class="flashcard cur-card" (click)="flipCard()">
             <div class="front">
-                <p>{{this.cardNext.term}}</p>
+                <p>{{this.currentCard.term}}</p>
             </div>
             <div class="back">
-                <p>{{this.cardNext.definition}}</p>
+                <p>{{this.currentCard.definition}}</p>
             </div>
           </div>
 
