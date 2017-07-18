@@ -25,10 +25,10 @@ export class FlipComponent implements OnInit {
   // private cardPrev: Card;
   // private cardNext: Card;
   private currentCardIndex: number = 0;
-  private isNext: boolean = false;
-  private isPrevious: boolean = false;
-  private tempNext: boolean = true;
-  private tempPrevious: boolean = true;
+  // private isNext: boolean = false;
+  // private isPrevious: boolean = false;
+  // private tempNext: boolean = true;
+  // private tempPrevious: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
