@@ -25,9 +25,9 @@ export class CardContainerComponent implements OnInit {
 
   // Retrieve cards from backend
   ngOnInit(): void {
-    this.deck.cards.map(id => {
+    this.deck.cards.forEach(id => {
       this.cardService.getCard(id)
-        .then(card => this.cards.push(card))
+        .then(card => this.cards.push(card));
       this.cardTermInput[id] = false;
       this.cardDefInput[id] = false;
     });
