@@ -6,10 +6,10 @@
     <div *ngIf="editTitle">
       <input [(ngModel)]="deck.name" type="text" placeholder="Deck name" #titlefocusable class="input-deck-title"/>
       <button (click)="save()" class="btn-deck-title-edit" type="button">
-        <div class="glyphicon glyphicon-ok"></div>
+        <div style="font-size: 20px;" class="glyphicon glyphicon-ok-sign"></div>
       </button>
       <button (click)="hideEditTitle()" class="btn-deck-title-edit" type="button" style="height: 50px;">
-        <div class="glyphicon glyphicon-remove"></div>
+        <div style="font-size: 20px;" class="glyphicon glyphicon-remove-sign"></div>
       </button>
     </div>
 
@@ -52,7 +52,9 @@
       <div class="panel panel-default parent-slide-container">
         <div class="panel-body">
 
-            <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">Add flashcards</a>
+            <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">
+              Add flashcards
+            </a>
             <a type="button" class="btn btn-lg btn-default btn-large-main pull-right">Connect to book</a>
 
         </div>
