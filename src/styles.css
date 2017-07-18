@@ -167,6 +167,7 @@
   height: 400px;
   width: 600px;
   background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
   margin: 3% auto;
   border: 1px solid gray;
   -webkit-transform-style: preserve-3d;
@@ -174,99 +175,7 @@
   -webkit-transition: all 0.3s;
 }
 
-.prev {
-  height: 400px;
-  width: 600px;
-  background-color:white;
-  margin: 3% auto;
-  border: 1px solid gray;
-  -webkit-transform-style: preserve-3d;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  position: absolute;
-  left: 100px;
-  animation-name: current-prev;
-  -webkit-animation-name: current-prev; 
-  /*animation-name: prev-current;
-  animation-duration: 1s;
-  -webkit-transform-style: preserve-3d;*/
-  transform: rotateZ(7deg);
-  -webkit-transform: rotateZ(7deg);
-}
-
-@keyframes current-prev {
-  from {opacity: 1;} 
-  to {opacity: 0; transform: rotateZ(-7deg);}
-}
-
-.current {
-  height: 400px;
-  width: 600px;
-  background-color:white;
-  margin: 3% auto;
-  border: 1px solid gray;
-  -webkit-transform-style: preserve-3d;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  visibility: 1;
-}
-
-.next {
-  height: 400px;
-  width: 600px;
-  background-color:white;
-  margin: 3% auto;
-  border: 1px solid gray;
-  -webkit-transform-style: preserve-3d;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  position: absolute;
-  left: 300px;
-  animation-name: current-next;
-  -webkit-animation-name: current-next;
-}
-
-@keyframes curren-next {
-  from {opacity: 1;} 
-  to {opacity: 0; transform: rotateZ(7deg);}
-}
-/*.prev-transition {
-  position: absolute;
-  -webkit-transform-style: preserve-3d;
-  display:none;
-  transform: rotateZ(7deg);
-  -webkit-transform: rotateZ(7deg);
-}
-
-.cur-card {
-  position: relative;
-}
-
-.next-card {
-  position: absolute; 
-  top: 0px;
-  left: 300px;
-  -webkit-transform-style: preserve-3d;
-  transform: rotateZ(-7deg);
-  -webkit-transform: rotateZ(-7deg);
-  display: none;*/
-/*}*/
-
-/*@keyframes prev-current{
-  from {
-    position: absolute;
-    left: 100px;
-    transform: rotateZ(7deg);
-    opacity: 1;
-  }
-  to {
-    position: absolute;
-    left: 100px;
-    opacity: 0;
-  }
-}*/
-
-
+/*Flip animation CSS  */
 .flipped, .back {
   transform: rotateX(180deg);
   -webkit-transform: rotateX(180deg);
@@ -291,6 +200,20 @@
   font-size: 2rem;
 }
 
+/*Slide transition CSS  */
+.cur-card {
+  position: relative;
+}
+
+.prev-card {
+  position: absolute;
+  border-left:500px;
+}
+
+.next-card {
+  position: absolute;
+  border-left: 300px;
+}
 
 .glyphicon.spinning {
   animation: spin 1s infinite linear;
