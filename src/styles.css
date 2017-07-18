@@ -201,19 +201,91 @@
 }
 
 /*Slide transition CSS  */
+#flashcardcontainer{
+  perspective: 250px;
+  position: absolute;
+  top: 3px;
+  left: 100px;
+}
+
 .cur-card {
   position: relative;
+  /* display: none; */
+  animation: fade-out 1s 1s;
 }
 
 .prev-card {
   position: absolute;
-  border-left:500px;
+  top: 0px;
+  display: none;
 }
 
 .next-card {
   position: absolute;
-  border-left: 300px;
+  top: 0px;
+  left: 200px;
+  display: none;
 }
+
+.prev-exit {
+  top: 0px;
+  left: 30px;
+  -webkit-transform-style: preserve-3d;
+  animation: left-exit 1s 1s,
+             fade-out 1s 1s;
+}
+
+.next-enter{
+  top: 0px;
+  left: 30px;
+  -webkit-transform-style: preserve-3d;
+  animation: right-enter 1s 1s,
+             fade-in 1s 1s;
+}
+
+@keyframes left-exit {
+  to {
+    transform: rotateY(10deg);
+  }
+}
+
+@keyframes right-enter {
+  from {
+    transform: rotateY(-10deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity:1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+@keyframes reappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
 
 .glyphicon.spinning {
   animation: spin 1s infinite linear;
