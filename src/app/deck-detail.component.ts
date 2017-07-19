@@ -18,6 +18,7 @@ import {Card} from "./card";
 export class DeckDetailComponent implements OnInit, OnDestroy {
   deck: Deck;
   @ViewChild('titlefocusable') vc: any;
+  @ViewChild('deleteButton') vcDeleteButton: any;
 
 
   addCardButtonClicked: boolean = false;
@@ -36,9 +37,11 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     private deckService: DeckService,
     private route: ActivatedRoute,
     private location: Location,
-  ) {}
+  ) {
+    document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
+  }
 
-  // TODO - add authentication if/else and include local storage queries
+  // TODO - add authentication if/else
 
   ngOnInit(): void {
     this.route.params
@@ -55,12 +58,14 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    this.deckService.updateDeck(this.deck);
+    this.deckService.updateDeck(this.deck)
+      .then(deck => this.deck = deck);
     this.hideEditTitle();
   }
 
   deleteDeck(deck: Deck): void {
-    this.deckService.deleteDeck(deck.id);
+    this.deckService.deleteDeck(deck.id)
+      .then(deck => this.deck = deck);
     this.goBack();
   }
 
@@ -69,11 +74,9 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
       this.deleteDeck(deck);
       this.deleteText = "Delete deck";
       this.deleteButtonClicked = false;
-      this.deleteButtonStyle = "btn-default";
     } else {
       this.deleteText = "Are you sure?";
       this.deleteButtonClicked = true;
-      this.deleteButtonStyle = "btn-danger";
     }
   }
 
@@ -88,8 +91,11 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  clickOutsideDeleteButton(): void {
-    this.deleteButtonClicked = false;
+  clickOutsideDeleteButton(event:any) {
+    if (!this.vcDeleteButton.nativeElement.contains(event.target)) {
+      this.deleteButtonClicked = false;
+      this.deleteText = "Delete deck";
+    }
   }
 
   toggleEditTitle(): void {
@@ -113,10 +119,5 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
 
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
 
-  }
-
-  deleteCard(card: Card): void {
-    this.deck.cards = this.deck.cards.filter(c => c !== card);
-    this.deckService.updateDeck(this.deck);
   }
 }

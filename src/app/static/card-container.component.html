@@ -1,0 +1,39 @@
+<a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h5 *ngIf="!getInputVisible(card, 'term')" class="list-group-item-text">{{card.term}}</h5>
+      <div *ngIf="getInputVisible(card, 'term')" class="input-group" style="width: 100%">
+        <input [(ngModel)]="card.term" type="text" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" (click)="saveCard(card, 'term')">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+          <button class="btn btn-default" type="button" (click)="toggleInput(card, 'term')">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <p *ngIf="!getInputVisible(card, 'def')" class="list-group-item-text">{{card.definition}}</p>
+      <div *ngIf="getInputVisible(card, 'def')" class="input-group" style="width: 100%;">
+        <textarea [(ngModel)]="card.def" class="form-control" style="height: 100px;"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <span class="card-remove-button-span">
+    <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; top: 10%;" (click)="deleteCard(card.id)">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <button *ngIf="!getInputVisible(card, 'def')" type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 0.5%; bottom: 10%;" (click)="toggleInput(card, 'def')">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <button *ngIf="!getInputVisible(card, 'term')" type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 50%;bottom: 10%;" (click)="toggleInput(card, 'term')">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+  </span>
+
+</a>
+

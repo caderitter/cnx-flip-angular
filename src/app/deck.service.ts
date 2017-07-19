@@ -13,6 +13,7 @@ export class DeckService {
 
   // TODO - plug into pyramid
   private decksUrl = 'api/decks';
+  private cardsUrl = 'api/cards';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {}
@@ -65,4 +66,28 @@ export class DeckService {
       .catch(DeckService.handleError);
   }
 
+  createCard(deck: Deck, term: string, def: string): Promise<Card> {
+    return this.http
+      .post(this.cardsUrl, JSON.stringify({deckid: deck.id, term: term, def: def}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data as Deck)
+      .catch(DeckService.handleError);
+  }
+
+  updateCard(deck: Deck, card: Card): Promise<Deck> {
+    const url = `${this.cardsUrl}/${card.id}`;
+    return this.http
+      .put(url, JSON.stringify(card), {headers: this.headers})
+      .toPromise()
+      .then(() => deck)
+      .catch(DeckService.handleError);
+  }
+
+  deleteCard(card: Card): Promise<void> {
+    const url = `${this.cardsUrl}/${card.id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(DeckService.handleError);
+  }
 }

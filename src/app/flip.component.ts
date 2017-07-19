@@ -7,6 +7,7 @@ import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import {Card} from "./card";
 import 'rxjs/add/operator/switchMap';
+import {CardService} from "./card.service";
 
 declare var jquery:any;
 declare var $ :any;
@@ -14,8 +15,8 @@ declare var $ :any;
 @Component({
   selector: 'flip',
   templateUrl: './static/flip.component.html',
-  styles: [".list-group {padding-top:25px};"],
-})
+  styles: ['.list-group {padding-top:25px}']
+
 
 export class FlipComponent implements OnInit {
   deck: Deck;
@@ -33,6 +34,7 @@ export class FlipComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private deckService: DeckService,
+    private cardService: CardService,
     private location: Location,
   ) {}
 
@@ -42,8 +44,9 @@ export class FlipComponent implements OnInit {
     this.sub = this.route.parent.params.subscribe(params => {
       this.parentRouteId = +params["id"];
     });
-    this.deckService.getDeck(this.parentRouteId).then(deck => this.deck = deck)
-    .then(cards => this.currentCard = this.deck.cards[0]);
+
+    this.deckService.getDeck(this.parentRouteId)
+      .then(deck => this.deck = deck);
   }
 
   // listen for spacebar keyup

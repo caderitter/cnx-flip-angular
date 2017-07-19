@@ -6,10 +6,10 @@
     <div *ngIf="editTitle">
       <input [(ngModel)]="deck.name" type="text" placeholder="Deck name" #titlefocusable class="input-deck-title"/>
       <button (click)="save()" class="btn-deck-title-edit" type="button">
-        <div class="glyphicon glyphicon-ok"></div>
+        <div style="font-size: 20px;" class="glyphicon glyphicon-ok-sign"></div>
       </button>
       <button (click)="hideEditTitle()" class="btn-deck-title-edit" type="button" style="height: 50px;">
-        <div class="glyphicon glyphicon-remove"></div>
+        <div style="font-size: 20px;" class="glyphicon glyphicon-remove-sign"></div>
       </button>
     </div>
 
@@ -31,7 +31,7 @@
       </ul>
     </div>
 
-    <button type="button" class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
+    <button type="button" #deleteButton class="btn btn-default pull-right" [ngClass]="{'btn-danger': deleteButtonClicked}" (click)="deleteDeckClicked(deck)">{{deleteText}}</button>
 
 
   </div>
@@ -46,15 +46,15 @@
   </div>
 
 <div class="container-fluid"  style="background-color: #f9f9f9; padding-top: 20px;">
-<div class="container">
-
-
+  <div class="container">
     <div class="add-card-slide-container">
 
       <div class="panel panel-default parent-slide-container">
         <div class="panel-body">
 
-            <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">Add flashcards</a>
+            <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">
+              Add flashcards
+            </a>
             <a type="button" class="btn btn-lg btn-default btn-large-main pull-right">Connect to book</a>
 
         </div>
@@ -70,18 +70,11 @@
 
     <div class="panel panel-default below-slide-container" [style.top]="topBelow" style="max-height: 500px; overflow-y: scroll;">
       <div class="list-group">
-        <a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
-          <h4 class="list-group-item-heading">{{card.term}}</h4>
-          <p class="list-group-item-text">{{card.definition}}</p>
-          <span class="card-remove-button-span">
-            <button type="button" class="btn btn-default btn-xs pull-right" style="position: absolute;right: 2%; top: 38%;" (click)="deleteCard(card)">
-              <span class="glyphicon glyphicon-remove"></span>
-            </button>
-          </span>
-        </a>
+        <card-container [deck]="deck"></card-container>
       </div>
     </div>
-</div>
+
+  </div>
 </div>
 </div>
 
