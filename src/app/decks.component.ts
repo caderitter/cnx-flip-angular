@@ -17,11 +17,11 @@ export class DecksComponent implements OnInit {
   constructor(
     private deckService: DeckService,
     private router: Router,
-    private localService: LocalStorageService,
   ) {}
 
   getDecks(): void {
-    this.deckService.getDecks().then(decks => this.decks = decks);
+    this.deckService.getDecks()
+      .then(decks => this.decks = decks);
   }
 
   // TODO - if not authenticated, get decks from localstorage
