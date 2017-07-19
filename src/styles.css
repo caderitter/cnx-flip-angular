@@ -162,6 +162,7 @@
   height: 400px;
   width: 600px;
   background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
   margin: 3% auto;
   border: 1px solid gray;
   -webkit-transform-style: preserve-3d;
@@ -169,6 +170,18 @@
   -webkit-transition: all 0.3s;
 }
 
+.cardcover {
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  margin: 3% auto;
+  border: 1px solid gray;
+  visibility: 0;
+  -webkit-transform-style: preserve-3d;
+}
+
+/*Flip animation CSS  */
 .flipped, .back {
   transform: rotateX(180deg);
   -webkit-transform: rotateX(180deg);
@@ -181,7 +194,6 @@
   text-align: center;
   -webkit-backface-visibility: hidden;
   overflow: scroll;
-
 }
 
 .front p{
@@ -194,6 +206,108 @@
   font-size: 2rem;
 }
 
+/*Slide transition CSS  */
+#flashcardcontainer{
+  perspective: 250px;
+  position: absolute;
+  top: 3px;
+  left: 100px;
+}
+
+.cur-reappear {
+  position: relative;
+  /* display: none; */
+   animation: fade-out 0.3s; 
+}
+
+.prev-left {
+  top: 0px;
+  left: 30px;
+  -webkit-transform-style: preserve-3d;
+  animation: left-exit 0.5s,
+             fade-out 0.5s;
+}
+
+.prev-right {
+  top: 0px;
+  left: 30px;
+  -webkit-transform-style: preserve-3d;
+  animation: left-enter 0.5s,
+             fade-in 0.5s;
+}
+
+.next-left{
+  top: 0px;
+  left: 30px;
+  -webkit-transform-style: preserve-3d;
+  animation: right-enter 0.5s,
+             fade-in 0.5s;
+}
+
+.next-right{
+  top: 0px;
+  left: 30px;
+  -webkit-transform-style: preserve-3d;
+  animation: right-exit 0.5s,
+             fade-out 0.5s;
+}
+
+@keyframes left-exit {
+  to {
+    transform: rotateY(7deg);
+  }
+}
+
+@keyframes left-enter {
+  from {
+    transform: rotateY(7deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes right-enter {
+  from {
+    transform: rotateY(-7deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes right-exit {
+  to {
+    transform: rotateY(-7deg);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity:1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+@keyframes reappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .glyphicon.spinning {
   animation: spin 1s infinite linear;
