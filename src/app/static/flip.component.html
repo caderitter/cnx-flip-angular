@@ -4,14 +4,6 @@
   </div>
 </div>
 
-
-<!--<div *ngIf="deck.cards()">-->
-
-  <!--<div class="btn-group btn-group-justified" role="group">
-    <a type="button" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i>Back to </a>
-    <a type="button" class="btn btn-default"><i class="glyphicon glyphicon-random"></i> Shuffle</a>
-  </div>-->
-
   <!--Left side menu bar-->
   <div class="container">
     <div class="row">
@@ -28,9 +20,23 @@
                 </li>
             </div>
         </div>
+        
     <!--Flashcard-->
         <div class="col-md-10" >
-          <div class="flashcard" (click)="flipCard()">
+          <div id="flashcardcontainer">
+            <div id="prev_div" class="cardcover">
+                <!-- [ngClass]="{'prev-left':isNext, 'prev-right': isPrevious}" -->
+            </div> 
+          </div>
+
+          <div id="flashcardcontainer">
+            <div id="next_div" class="cardcover">
+                <!-- [ngClass]="{'next-left':isNext,'next-right':isPrevious}" -->
+            </div>
+          </div>
+
+          <div class="flashcard" id="cur_div" (click)="flipCard()">
+              <!-- [ngClass]="{'cur-reappear':isNext||isPrevious}" -->
             <div class="front">
                 <p>{{this.currentCard.term}}</p>
             </div>
@@ -38,11 +44,12 @@
                 <p>{{this.currentCard.definition}}</p>
             </div>
           </div>
+
           <div class="text-center">
-            <button type="button" class='btn' (click)="previousCard()" [style.background]="hexToRGB(deck.color, 0.8)">
+            <button type="button" id="prev_button" class='btn' (click)="previousCard()" (click)="prevTransition()" [style.background]="hexToRGB(deck.color, 0.8)">
                 <i style="color: white" class="glyphicon glyphicon-chevron-left"></i>
             </button>
-            <button type="button" class="btn" (click)="nextCard()" [style.background]="hexToRGB(deck.color, 0.8)">
+            <button type="button" id="next_button" class="btn" (click)="nextCard()" (click)="nextTransition()" [style.background]="hexToRGB(deck.color, 0.8)">
                 <i style="color: white" class="glyphicon glyphicon-chevron-right"></i>
             </button>
           </div>
