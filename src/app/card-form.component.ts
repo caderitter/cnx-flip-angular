@@ -27,12 +27,9 @@ export class CardFormComponent {
 
   addCard(event: any): void {
     if (this.term && this.def) {
-      this.cardService.createCard(this.term, this.def)
-        .then(card => {
-          this.deck.cards.push(card.id);
-        });
+      this.deckService.createCard(this.deck, this.term, this.def)
+        .then(deck => this.deck = deck);
 
-      this.deckService.updateDeck(this.deck);
       this.term = "";
       this.def = "";
 

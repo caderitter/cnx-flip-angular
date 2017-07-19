@@ -23,23 +23,28 @@ export class CardContainerComponent implements OnInit {
     private cardService: CardService,
   ) {}
 
-  // Retrieve cards from backend
   ngOnInit(): void {
-    this.deck.cards.forEach(id => {
-      this.cardService.getCard(id)
-        .then(card => this.cards.push(card));
-      this.cardTermInput[id] = false;
-      this.cardDefInput[id] = false;
+    // this.deck.cards.forEach(id => {
+    //   this.cardService.getCard(id)
+    //     .then(card => this.cards.push(card));
+    //   this.cardTermInput[id] = false;
+    //   this.cardDefInput[id] = false;
+    // });
+    this.deck.cards.forEach(card => {
+      this.cardTermInput[card.id] = false;
+      this.cardDefInput[card.id] = false;
     });
   }
 
-  deleteCard(id: number): void {
-    this.cardService.deleteCard(id);
-    var i = this.deck.cards.indexOf(id);
-    if(i != -1) {
-      this.deck.cards.splice(i, 1);
-    }
-    this.deckService.updateDeck(this.deck);
+  deleteCard(card: Card): void {
+    // this.cardService.deleteCard(id);
+    // var i = this.deck.cards.indexOf(id);
+    // if(i != -1) {
+    //   this.deck.cards.splice(i, 1);
+    // }
+    // this.deckService.updateDeck(this.deck);
+    this.deckService.deleteCard(card)
+      .then(deck => this.deck = deck);
   }
 
   // toggles input field given corresponding card and type 'term' or 'def'

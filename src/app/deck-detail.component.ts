@@ -58,12 +58,14 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
   }
 
   save(): void {
-    this.deckService.updateDeck(this.deck);
+    this.deckService.updateDeck(this.deck)
+      .then(deck => this.deck = deck);
     this.hideEditTitle();
   }
 
   deleteDeck(deck: Deck): void {
-    this.deckService.deleteDeck(deck.id);
+    this.deckService.deleteDeck(deck.id)
+      .then(deck => this.deck = deck);
     this.goBack();
   }
 
