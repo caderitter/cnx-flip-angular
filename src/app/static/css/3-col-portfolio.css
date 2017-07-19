@@ -4,9 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-body {
-  padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
+/*body {*/
+  /*padding-top: 50px; !* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. *!*/
+/*}*/
 
 .portfolio-item {
   margin-bottom: 25px;
@@ -14,7 +14,7 @@ body {
 
 .logo{
   margin-top: 1rem;
-  height: 2.8rem;
+  height: 5rem;
 }
 footer {
   margin: 50px 0;

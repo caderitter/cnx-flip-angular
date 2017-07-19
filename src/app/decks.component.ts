@@ -17,11 +17,11 @@ export class DecksComponent implements OnInit {
   constructor(
     private deckService: DeckService,
     private router: Router,
-    private localService: LocalStorageService,
   ) {}
 
   getDecks(): void {
-    this.deckService.getDecks().then(decks => this.decks = decks);
+    this.deckService.getDecks()
+      .then(decks => this.decks = decks);
   }
 
   // TODO - if not authenticated, get decks from localstorage
@@ -36,15 +36,4 @@ export class DecksComponent implements OnInit {
         this.router.navigate(['/deck-detail/' + deck.id]);
       });
   }
-
-  getDecksLocally(): void {
-    this.decks = this.localService.getDecks()
-  }
-
-  addDeckLocally(): void {
-    let deck = this.localService.createDeck("New deck");
-    this.decks.push(deck);
-    this.router.navigate(['/deck-detail/', deck.id])
-  }
-
 }
