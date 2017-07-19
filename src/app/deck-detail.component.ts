@@ -20,14 +20,12 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
   @ViewChild('titlefocusable') vc: any;
   @ViewChild('deleteButton') vcDeleteButton: any;
 
-
+  // html/style variables
   addCardButtonClicked: boolean = false;
   editTitle: boolean = false;
-  public deleteButtonClicked: boolean = false;
+  deleteButtonClicked: boolean = false;
   deleteText: string = "Delete deck";
   deckNotFound: boolean = false;
-
-  // style variables
   colors: string[] = ["#15837D", "#EF5F33", "#1B2152", "#1BB3D3", "#B30B26", "#FDB32F", "#F0C916", "#65A234", "#8f8f8f"];
   top: string = "-200px";
   topBelow: string = "-180px";

@@ -1,4 +1,4 @@
-// service to get decks - currently plugged to mock service
+// service to get decks
 
 import {Injectable} from '@angular/core';
 
@@ -18,6 +18,11 @@ export class DeckService {
 
   constructor(private http: Http) {}
 
+  private static handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl)
       .toPromise()
@@ -26,11 +31,6 @@ export class DeckService {
         return response.json().data as Deck[];
       })
       .catch(DeckService.handleError);
-  }
-
-  private static handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
   }
 
   getDeck(id: number): Promise<Deck> {
@@ -66,7 +66,11 @@ export class DeckService {
       .catch(DeckService.handleError);
   }
 
-  createCard(deck: Deck, term: string, def: string): Promise<Card> {
+  /*
+  The below methods are for creating, updating, and deleting cards. Each returns a new deck with the updated card state.
+   */
+
+  createCard(deck: Deck, term: string, def: string): Promise<Deck> {
     return this.http
       .post(this.cardsUrl, JSON.stringify({deckid: deck.id, term: term, def: def}), {headers: this.headers})
       .toPromise()
@@ -83,11 +87,11 @@ export class DeckService {
       .catch(DeckService.handleError);
   }
 
-  deleteCard(card: Card): Promise<void> {
+  deleteCard(deck: Deck, card: Card): Promise<Deck> {
     const url = `${this.cardsUrl}/${card.id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
-      .then(() => null)
+      .then(() => deck)
       .catch(DeckService.handleError);
   }
 }

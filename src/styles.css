@@ -217,7 +217,7 @@
 .cur-reappear {
   position: relative;
   /* display: none; */
-   animation: fade-out 0.3s; 
+  animation: fade-out 0.3s;
 }
 
 .prev-left {
