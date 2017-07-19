@@ -70,7 +70,8 @@ export class CardContainerComponent implements OnInit {
   }
 
   saveCard(card: Card, type: string): void {
-    this.deckService.updateDeck(this.deck);
+    this.deckService.updateCard(this.deck, card)
+      .then(deck => this.deck = deck);
     this.toggleInput(card, type);
   }
 }

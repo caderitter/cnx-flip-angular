@@ -15,7 +15,8 @@ declare var $ :any;
 @Component({
   selector: 'flip',
   templateUrl: './static/flip.component.html',
-  styles: ['.list-group {padding-top:25px}']
+  styles: ['.list-group {padding-top:25px}'],
+})
 
 
 export class FlipComponent implements OnInit {
@@ -34,28 +35,27 @@ export class FlipComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private deckService: DeckService,
-    private cardService: CardService,
     private location: Location,
   ) {}
 
 
   ngOnInit(): void {
     // get deck id from parent component
-    this.sub = this.route.parent.params.subscribe(params => {
-      this.parentRouteId = +params["id"];
-    });
+    this.route.params
+      .switchMap((params: Params) => this.deckService.getDeck(+params['id']))
+      .subscribe(deck => this.deck = deck);
 
-    this.deckService.getDeck(this.parentRouteId)
-      .then(deck => this.deck = deck);
+    this.currentCard = this.deck.cards[0];
+
   }
 
   // listen for spacebar keyup
   @HostListener('document:keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent): void {
     if (ev.keyCode == 32) {
-      this.flipCard();
       ev.preventDefault();
-      
+      this.flipCard();
+
     }
     // listen for right arrow keyup
     else if (ev.keyCode == 39) {
@@ -81,7 +81,7 @@ export class FlipComponent implements OnInit {
   progress(): number {
     return (this.currentCardIndex+1)/this.deck.cards.length*100
   }
-  
+
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
   flipCard(): void {
     $('.flashcard').toggleClass('flipped');
@@ -124,13 +124,13 @@ export class FlipComponent implements OnInit {
   //methods: previous card, next card
   nextCard(): void {
     this.currentCardIndex += 1;
-    
+
     if (this.currentCardIndex == this.deck.cards.length) {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    this.isNext = !this.isNext;
-    this.isPrevious = false;
+    // this.isNext = !this.isNext;
+    // this.isPrevious = false;
     // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
     // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
@@ -141,8 +141,8 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    this.isPrevious = !this.isPrevious;
-    this.isNext = false;
+    // this.isPrevious = !this.isPrevious;
+    // this.isNext = false;
     // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
     // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
