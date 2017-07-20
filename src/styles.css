@@ -158,32 +158,6 @@
   -webkit-perspective: 1000px;
 }
 
-.flashcard {
-  height: 400px;
-  width: 600px;
-  position: relative;
-  /* top: 0px;
-  left: 30px; */
-  background-color:white;
-  box-shadow: 3px 3px 0px 0px #888888;
-  margin: 3% auto;
-  border: 1px solid gray;
-  -webkit-transform-style: preserve-3d;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-}
-
-.cardcover {
-  height: 400px;
-  width: 600px;
-  background-color:white;
-  box-shadow: 3px 3px 0px 0px #888888;
-  margin: 3% auto;
-  border: 1px solid gray;
-  opacity: 1;
-  -webkit-transform-style: preserve-3d;
-}
-
 /*Flip animation CSS  */
 .flipped, .back {
   transform: rotateX(180deg);
@@ -194,6 +168,7 @@
   height: 400px;
   width: 600px;
   position: absolute;
+  margin: 0 auto;
   text-align: center;
   -webkit-backface-visibility: hidden;
   overflow: scroll;
@@ -210,49 +185,122 @@
 }
 
 /*Slide transition CSS  */
-#flashcardcontainer{
+.card_space{
+  position: relative;
+  height: 430px;
+  width: 950px;
+  text-align: center;
+}
+
+.nav_buttons {
+  position: relative;
+}
+
+.flashcard {
+  height: 400px;
+  width: 600px;
+  position: absolute;
+  left: 100px;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  margin: 3% auto;
+  border: 1px solid gray;
+  -webkit-transform-style: preserve-3d;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+
+.flashcardcontainer{
   perspective: 250px;
   position: absolute;
-   top: 3px;
-  left: 100px; 
+  margin: 0 auto;
+  height: 430px;
+  width: 950px;
+}
+
+/* .pseudocard need to overlap with .flashcard */
+.pseudocard {
+  height: 400px;
+  width: 600px;
+  position: absolute;
+  left: 100px;
+  margin: 3% auto;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  border: 1px solid gray;
+  opacity: 0.1;
+  -webkit-transform-style: preserve-3d;
 }
 
 .cur-reappear {
-  position: relative;
-  /* display: none; */
-  animation: fade-in 0.5s;
+  position: absolute;
+  left: 100px;
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  margin: 3% auto;
+  border: 1px solid gray;
+  animation: fade-in 0.6s; 
 }
 
+/* current card becomes previous card */
 .prev-left {
-  top: 0px;
-  left: 30px;
+  position: absolute;
+  left: 100x;
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  margin: 3% auto;
+  border: 1px solid gray;
   -webkit-transform-style: preserve-3d;
   animation: left-exit 0.5s,
-             fade-out 0.5s;
+             fade-out 0.5s;  
 }
 
+/* previous card becomes current card */
 .prev-right {
-  top: 0px;
-  left: 30px;
+  position: absolute;
+  left: 100px;
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  margin: 3% auto;
+  border: 1px solid gray;
   -webkit-transform-style: preserve-3d;
   animation: left-enter 0.5s,
-             fade-in 0.5s;
+            fade-in 0.5s;  
 }
 
+/* next card becomes current card */
 .next-left{
-  top: 0px;
-  left: 30px;
+  position: absolute;
+  left: 100px;
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  margin: 3% auto;
+  border: 1px solid gray;
   -webkit-transform-style: preserve-3d;
   animation: right-enter 0.5s,
-             fade-in 0.5s;
+            fade-in 0.5s; 
 }
 
+/* current card becomes next card */
 .next-right{
-  top: 0px;
-  left: 30px;
+  position: absolute;
+  left: 100px;
+  height: 400px;
+  width: 600px;
+  background-color:white;
+  box-shadow: 3px 3px 0px 0px #888888;
+  margin: 3% auto;
+  border: 1px solid gray;
   -webkit-transform-style: preserve-3d;
-  animation: right-exit 0.5s,
-             fade-out 0.5s;
+   animation: right-exit 0.5s,
+             fade-out 0.5s; 
 }
 
 @keyframes left-exit {
@@ -272,7 +320,7 @@
 
 @keyframes right-enter {
   from {
-    transform: rotateY(-7deg);
+    transform: rotateY(-10deg);
   }
   to {
     transform: rotateY(0deg);
@@ -281,7 +329,7 @@
 
 @keyframes right-exit {
   to {
-    transform: rotateY(-7deg);
+    transform: rotateY(-10deg);
   }
 }
 
