@@ -88,7 +88,6 @@ export class FlipComponent implements OnInit {
   }
 
   nextTransition(): void {
-    // $('#next_button').click(function(){
       $('#prev_div').addClass('prev-left');
       $('#next_div').addClass('next-left');
       $('#cur_div').addClass('cur-reappear');
@@ -101,11 +100,9 @@ export class FlipComponent implements OnInit {
       $('#cur_div').on('webkitAnimationEnd', function(){
         $('#cur_div').removeClass('cur-reappear');
       });
-    // })
   }
 
   prevTransition(): void {
-    // $('#prev_button').click(function(){
       $('#prev_div').addClass('prev-right');
       $('#next_div').addClass('next-right');
       $('#cur_div').addClass('cur-reappear');
@@ -118,7 +115,6 @@ export class FlipComponent implements OnInit {
       $('#cur_div').on('webkitAnimationEnd', function(){
         $('#cur_div').removeClass('cur-reappear');
       });
-    // })
   }
 
   //methods: previous card, next card
