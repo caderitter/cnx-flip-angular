@@ -24,12 +24,6 @@ export class CardContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.deck.cards.forEach(id => {
-    //   this.cardService.getCard(id)
-    //     .then(card => this.cards.push(card));
-    //   this.cardTermInput[id] = false;
-    //   this.cardDefInput[id] = false;
-    // });
     this.deck.cards.forEach(card => {
       this.cardTermInput[card.id] = false;
       this.cardDefInput[card.id] = false;
@@ -37,12 +31,6 @@ export class CardContainerComponent implements OnInit {
   }
 
   deleteCard(card: Card): void {
-    // this.cardService.deleteCard(id);
-    // var i = this.deck.cards.indexOf(id);
-    // if(i != -1) {
-    //   this.deck.cards.splice(i, 1);
-    // }
-    // this.deckService.updateDeck(this.deck);
     this.deckService.deleteCard(this.deck, card)
       .then(deck => this.deck = deck);
   }

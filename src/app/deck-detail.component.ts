@@ -17,6 +17,7 @@ import {Card} from "./card";
 
 export class DeckDetailComponent implements OnInit, OnDestroy {
   deck: Deck;
+
   @ViewChild('titlefocusable') vc: any;
   @ViewChild('deleteButton') vcDeleteButton: any;
 

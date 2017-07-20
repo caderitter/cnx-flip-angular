@@ -68,6 +68,9 @@ export class DeckService {
 
   /*
   The below methods are for creating, updating, and deleting cards. Each returns a new deck with the updated card state.
+  In the backend, cards are unique to each deck. When we create a card, we need to pass the deck ID so the backend can
+  know which deck the new card belongs to. For updating and deleting, however, we only need to pass the card, because
+  the backend knows which card IDs belong to which decks.
    */
 
   createCard(deck: Deck, term: string, def: string): Promise<Deck> {
