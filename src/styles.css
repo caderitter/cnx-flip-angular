@@ -189,7 +189,6 @@
   position: relative;
   height: 430px;
   width: 950px;
-  text-align: center;
 }
 
 .nav_buttons {
@@ -200,7 +199,7 @@
   height: 400px;
   width: 600px;
   position: absolute;
-  left: 100px;
+	left: 100px;
   background-color:white;
   box-shadow: 3px 3px 0px 0px #888888;
   margin: 3% auto;
@@ -307,7 +306,7 @@
   to {
     transform: rotateY(7deg);
   }
-}
+} 
 
 @keyframes left-enter {
   from {
