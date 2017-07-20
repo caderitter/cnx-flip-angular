@@ -43,7 +43,7 @@ export class CardContainerComponent implements OnInit {
     //   this.deck.cards.splice(i, 1);
     // }
     // this.deckService.updateDeck(this.deck);
-    this.deckService.deleteCard(card)
+    this.deckService.deleteCard(this.deck, card)
       .then(deck => this.deck = deck);
   }
 
