@@ -15,7 +15,7 @@ declare var $ :any;
 @Component({
   selector: 'flip',
   templateUrl: './static/flip.component.html',
-  styles: ['.list-group {padding-top:25px}'],
+  styleUrls: ['./static/flip.component.css'],
 })
 
 
@@ -24,13 +24,9 @@ export class FlipComponent implements OnInit {
   parentRouteId: number;
   private sub: any;
   private currentCard: Card;
-  // private cardPrev: Card;
-  // private cardNext: Card;
   private currentCardIndex: number = 0;
   // private isNext: boolean = false;
   // private isPrevious: boolean = false;
-  // private tempNext: boolean = true;
-  // private tempPrevious: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -125,10 +121,6 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    // this.isNext = !this.isNext;
-    // this.isPrevious = false;
-    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   previousCard(): void {
@@ -139,8 +131,6 @@ export class FlipComponent implements OnInit {
     this.currentCard = this.deck.cards[this.currentCardIndex];
     // this.isPrevious = !this.isPrevious;
     // this.isNext = false;
-    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   goBack(): void {
