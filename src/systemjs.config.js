@@ -28,7 +28,6 @@
 
       // other libraries
       'rxjs':                         'npm:rxjs',
-      'angular-in-memory-web-api':    'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'ng-loading-bar':               'npm:ng-loading-bar/bundles/ng-loading-bar.umd.js',
       'moment':                       'npm:moment/moment.js',
       'ngx-bootstrap':                'npm:ngx-bootstrap/bundles/ngx-bootstrap.umd.js'

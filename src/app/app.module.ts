@@ -30,7 +30,6 @@ import {CardContainerComponent} from "./card-container.component";
     AppRoutingModule,
     HttpModule,
     JsonpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserAnimationsModule,
     NgLoadingBarModule.forRoot(),
     TooltipModule.forRoot(),
