@@ -12,7 +12,7 @@ import {Deck} from "./deck";
 
 export class CardFormComponent {
   @Input() deck: Deck;
-
+  
   // declare "term" input field (id="focusable") so we can refocus to it when the user enters a card with tab or enter
   // key
   @ViewChild('focusable') vc: any;
@@ -26,7 +26,7 @@ export class CardFormComponent {
 
   addCard(event: any): void {
     if (this.term && this.def) {
-      this.deckService.createCard(this.deck, this.term, this.def)
+      this.deckService.createCard(this.deck.id, this.term, this.def)
         .then(deck => this.deck = deck);
 
       this.term = "";
