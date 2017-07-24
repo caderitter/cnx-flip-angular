@@ -22,7 +22,6 @@ export class CardFormComponent {
 
   constructor(
     private deckService: DeckService,
-    private cardService: CardService,
   ) {}
 
   addCard(event: any): void {
@@ -41,7 +40,7 @@ export class CardFormComponent {
         this.vc.nativeElement.focus();
       }
     } else {
-      // trigger error display
+      // TODO - trigger error display
     }
   }
 }

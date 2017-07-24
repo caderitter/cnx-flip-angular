@@ -17,6 +17,7 @@ import {Card} from "./card";
 
 export class DeckDetailComponent implements OnInit, OnDestroy {
   deck: Deck;
+
   @ViewChild('titlefocusable') vc: any;
   @ViewChild('deleteButton') vcDeleteButton: any;
 
@@ -115,6 +116,5 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
         b = parseInt(hex.slice(5, 7), 16);
 
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-
   }
 }
