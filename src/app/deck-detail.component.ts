@@ -8,6 +8,7 @@ import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
 import {Card} from "./card";
+import {CardContainerComponent} from "./card-container.component";
 
 
 @Component({
@@ -20,6 +21,8 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
 
   @ViewChild('titlefocusable') vc: any;
   @ViewChild('deleteButton') vcDeleteButton: any;
+
+  @ViewChild(CardContainerComponent) cardContainer: CardContainerComponent;
 
   // html/style variables
   addCardButtonClicked: boolean = false;
@@ -121,5 +124,6 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
   addCard(card: any): void {
     this.deckService.createCard(this.deck.id, card.term, card.def)
       .then(deck => this.deck = deck);
+    this.cardContainer.reloadDeck();
   }
 }
