@@ -5,7 +5,7 @@
 
     <div *ngIf="editTitle">
       <input [(ngModel)]="deck.name" type="text" placeholder="Deck name" #titlefocusable class="input-deck-title"/>
-      <button (click)="save()" class="btn-deck-title-edit" type="button">
+      <button (click)="saveDeck()" class="btn-deck-title-edit" type="button">
         <div style="font-size: 20px;" class="glyphicon glyphicon-ok-sign"></div>
       </button>
       <button (click)="hideEditTitle()" class="btn-deck-title-edit" type="button" style="height: 50px;">

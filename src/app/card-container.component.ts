@@ -58,9 +58,4 @@ export class CardContainerComponent implements OnInit {
       .then(deck => this.deck = deck);
     this.toggleInput(card, type);
   }
-
-  reloadDeck(): void {
-    this.deckService.getDeck(this.deck.id)
-      .then(deck => this.deck = deck)
-  }
 }
