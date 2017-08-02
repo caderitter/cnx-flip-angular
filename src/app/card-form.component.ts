@@ -18,13 +18,15 @@ export class CardFormComponent {
   // key
   @ViewChild('focusable') vc: any;
 
+  constructor(private deckService: DeckService) {}
+
   term: string;
   def: string;
 
   addCard(event: any): void {
     if (this.term && this.def) {
 
-      this.onCreateCard.emit({term: this.term , def: this.def});
+      this.deckService.createCard()
 
       this.term = "";
       this.def = "";

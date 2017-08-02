@@ -17,8 +17,7 @@ export class DeckService {
 
   private decksUrl = 'https://5981fb85139db000114a2dea.mockapi.io/api/decks'; //'http://localhost:5000/api/getDecks';
   private deckUrl = 'https://5981fb85139db000114a2dea.mockapi.io/api/decks'; //'http://localhost:5000/api/getDeck';
-  private decksApiUrl = 'http://localhost:5000/api/decks';
-  private cardsUrl = 'http://localhost:5000/api/cards';
+  private cardsUrl = 'https://5981fb85139db000114a2dea.mockapi.io/api/cards'; //http://localhost:5000/api/cards
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -82,7 +81,7 @@ export class DeckService {
           }
         });
         this.decksBehaviorSubject.next(this.decks);
-      }, error => console.log("Error updating deck"));
+      }, error => console.log("Error updating deck with id = %d", deck.id));
   }
 
   deleteDeck(id: number): void {
@@ -94,38 +93,44 @@ export class DeckService {
           }
         });
         this.decksBehaviorSubject.next(this.decks);
-      }, error => "Error deleting deck");
+      }, error => console.log("Error deleting deck with id = %d", id));
   }
 
   /*
   The below methods are for creating, updating, and deleting cards. Each returns a new deck with the updated card state.
    */
 
-  createCard(id: number, term: string, def: string): Promise<Deck> {
-    return this.http
-      .post(this.cardsUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
-      .toPromise()
-      .then(res => {
-        console.log(res);
-        return res.json().data as Deck;
-      })
-      .catch(DeckService.handleError);
+  createCard(id: number, term: string, def: string): void {
+    this.http.post(this.decksUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
+      .map(response => response.json())
+      .subscribe(deck => {
+        this.decks.push(deck);
+        this.decksBehaviorSubject.next(this.decks);
+      }, error => console.log("Error creating card in deck %d", id));
   }
 
-  updateCard(deck: Deck, card: Card): Promise<Deck> {
-    const url = `${this.cardsUrl}/${card.id}`;
-    return this.http
-      .put(url, JSON.stringify(card), {headers: this.headers})
-      .toPromise()
-      .then(() => deck)
-      .catch(DeckService.handleError);
+  updateCard(card: Card): void {
+    this.http.put(`${this.cardsUrl}/${card.id}`, JSON.stringify(card), {headers: this.headers})
+      .map(response => response.json())
+      .subscribe(deck => {
+        this.decks.forEach((item ,idx) => {
+          if (item.id === deck.id) {
+            this.decks[idx] = deck;
+          }
+        });
+        this.decksBehaviorSubject.next(this.decks);
+      }, error => console.log("Error updating card with id = %d", card.id));
   }
 
-  deleteCard(deck: Deck, card: Card): Promise<Deck> {
-    const url = `${this.cardsUrl}/${card.id}`;
-    return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => deck)
-      .catch(DeckService.handleError);
+  deleteCard(card: Card): void {
+    this.http.delete(`${this.cardsUrl}/${card.id}`, {headers: this.headers})
+      .subscribe(response => {
+        this.decks.forEach((item, idx) => {
+          if (item.id === card.id) {
+            this.decks.splice(idx, 1);
+          }
+        });
+        this.decksBehaviorSubject.next(this.decks);
+      }, error => console.log("Error deleting card with id = %d", card.id));
   }
 }
