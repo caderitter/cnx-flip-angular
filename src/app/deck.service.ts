@@ -1,13 +1,13 @@
 // service to get decks
 
-import {Injectable} from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 
 import {Deck} from './deck';
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Card} from "./card";
-import {Subject, Observable, BehaviorSubject} from "rxjs";
-// import { HttpHeaders } from '@angular/common/http';
+import {Observable, BehaviorSubject} from "rxjs/Rx";
+
 @Injectable()
 export class DeckService {
 
@@ -38,7 +38,7 @@ export class DeckService {
       .map(response => response.json())
       .subscribe(decks => {
         this.decks = decks;
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error retrieving decks"));
   }
 
@@ -56,7 +56,7 @@ export class DeckService {
         if (notFound = true) {
           this.decks.push(deck);
         }
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign({}, this.decks));
       }, error => console.log("Error retrieving deck with id = %d", id))
   }
 

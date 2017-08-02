@@ -8,7 +8,7 @@ import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
 import {CardContainerComponent} from "./card-container.component";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Rx";
 
 
 @Component({
@@ -17,6 +17,7 @@ import {Observable} from "rxjs";
 })
 
 export class DeckDetailComponent implements OnInit, OnDestroy {
+
   decks: Observable<Deck[]>;
   deck: Deck;
 
@@ -44,15 +45,12 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
   }
 
-  // TODO - add authentication if/else
-
   ngOnInit(): void {
-    this.route.params
-      .switchMap((params: Params) => {
-        this.decks.map(decks => {
-          this.deck = decks.find(d => d.id === +params['id']).value
-        })
-      })
+    let deckID: number;
+    this.route.params.subscribe((params: Params) => deckID = params['id']);
+    this.decks = this.deckService.decksObservable;
+    this.decks.map(decks => decks.find(deck => deck.id === deckID))
+      .subscribe(deck => this.deck = deck);
   }
 
   ngOnDestroy(): void {

@@ -8,6 +8,7 @@ import {Deck} from "./deck";
 import {Card} from "./card";
 import 'rxjs/add/operator/switchMap';
 import {CardService} from "./card.service";
+import {Observable} from "rxjs/Rx";
 
 declare var jquery:any;
 declare var $ :any;
@@ -20,17 +21,12 @@ declare var $ :any;
 
 
 export class FlipComponent implements OnInit {
+  decks: Observable<Deck[]>;
   deck: Deck;
-  parentRouteId: number;
-  private sub: any;
+
   private currentCard: Card;
-  // private cardPrev: Card;
-  // private cardNext: Card;
   private currentCardIndex: number = 0;
-  // private isNext: boolean = false;
-  // private isPrevious: boolean = false;
-  // private tempNext: boolean = true;
-  // private tempPrevious: boolean = true;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -40,13 +36,12 @@ export class FlipComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // get deck id from parent component
-    this.route.params
-      .switchMap((params: Params) => this.deckService.getDeck(+params['id']))
+    let deckID: number;
+    this.route.params.subscribe((params: Params) => deckID = params['id']);
+    this.decks = this.deckService.decksObservable;
+    this.decks.map(decks => decks.find(deck => deck.id === deckID))
       .subscribe(deck => this.deck = deck);
-
-    this.currentCard = this.deck.cards[0];
-
+    this.currentCard = this.deck.cards[this.currentCardIndex];
   }
 
   // listen for spacebar keyup
