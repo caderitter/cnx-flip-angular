@@ -123,7 +123,6 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
   }
 
   addCard(card: any): void {
-    this.deckService.createCard(this.deck.id, card.term, card.def)
-      .then(deck => this.deck = deck);
+    this.deckService.createCard(this.deck.id, card.term, card.def);
   }
 }

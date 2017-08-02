@@ -7,7 +7,6 @@ import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import {Card} from "./card";
 import 'rxjs/add/operator/switchMap';
-import {CardService} from "./card.service";
 import {Observable} from "rxjs/Rx";
 
 declare var jquery:any;

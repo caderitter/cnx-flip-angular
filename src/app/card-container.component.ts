@@ -27,8 +27,7 @@ export class CardContainerComponent implements OnInit {
   }
 
   deleteCard(card: Card): void {
-    this.deckService.deleteCard(this.deck, card)
-      .then(deck => this.deck = deck);
+    this.deckService.deleteCard(card);
   }
 
   // toggles input field given corresponding card and type 'term' or 'def'
@@ -54,8 +53,7 @@ export class CardContainerComponent implements OnInit {
   }
 
   saveCard(card: Card, type: string): void {
-    this.deckService.updateCard(this.deck, card)
-      .then(deck => this.deck = deck);
+    this.deckService.updateCard(card);
     this.toggleInput(card, type);
   }
 }

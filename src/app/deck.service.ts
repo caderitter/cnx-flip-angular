@@ -27,11 +27,6 @@ export class DeckService {
     this.decksObservable = this.decksBehaviorSubject.asObservable();
   }
 
-  private static handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
-
   loadDecks(): void {
     this.http.get(this.decksUrl)
       .map(response => response.json())
