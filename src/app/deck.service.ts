@@ -15,9 +15,9 @@ export class DeckService {
   public decksObservable: Observable<Deck[]>;
   private decks: Deck[];
 
-  private decksUrl = 'https://5981fb85139db000114a2dea.mockapi.io/api/decks'; //'http://localhost:5000/api/getDecks';
-  private deckUrl = 'https://5981fb85139db000114a2dea.mockapi.io/api/decks'; //'http://localhost:5000/api/getDeck';
-  private cardsUrl = 'https://5981fb85139db000114a2dea.mockapi.io/api/cards'; //http://localhost:5000/api/cards
+  private decksUrl = 'http://localhost:5000/api/getDecks';
+  private deckUrl = 'http://localhost:5000/api/getDeck';
+  private cardsUrl = 'http://localhost:5000/api/cards';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
