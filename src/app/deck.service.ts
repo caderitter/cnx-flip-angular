@@ -1,6 +1,6 @@
 // service to get decks
 
-import {Injectable, Input} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {Deck} from './deck';
 import {Headers, Http} from "@angular/http";
@@ -29,7 +29,7 @@ export class DeckService {
 
   loadDecks(): void {
     this.http.get(this.decksUrl)
-      .map(response => response.json())
+      .map(response => response.json() as Deck[])
       .subscribe(decks => {
         this.decks = decks;
         this.decksBehaviorSubject.next(Object.assign([], this.decks));

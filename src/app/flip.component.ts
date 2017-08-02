@@ -26,13 +26,11 @@ export class FlipComponent implements OnInit {
   private currentCard: Card;
   private currentCardIndex: number = 0;
 
-
   constructor(
     private route: ActivatedRoute,
     private deckService: DeckService,
     private location: Location,
   ) {}
-
 
   ngOnInit(): void {
     let deckID: number;
@@ -119,10 +117,6 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = 0;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    // this.isNext = !this.isNext;
-    // this.isPrevious = false;
-    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   previousCard(): void {
@@ -131,10 +125,6 @@ export class FlipComponent implements OnInit {
       this.currentCardIndex = this.deck.cards.length-1;
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
-    // this.isPrevious = !this.isPrevious;
-    // this.isNext = false;
-    // this.cardPrev = this.deck.cards[(this.currentCardIndex-1)%this.deck.cards.length];
-    // this.cardNext = this.deck.cards[(this.currentCardIndex+1)%this.deck.cards.length];
   }
 
   goBack(): void {

@@ -4,7 +4,7 @@ import {Component, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {DeckService} from "./deck.service";
 import {Router} from "@angular/router";
-import {Subscription, Observable} from "rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'decks',

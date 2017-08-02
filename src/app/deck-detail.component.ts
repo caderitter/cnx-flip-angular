@@ -1,6 +1,6 @@
 // component to display deck detail
 
-import {Component, Input, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 
