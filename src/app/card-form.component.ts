@@ -1,7 +1,6 @@
 import {Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
 
 import {Card} from './card';
-import {CardService} from './card.service'
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 
@@ -18,13 +17,15 @@ export class CardFormComponent {
   // key
   @ViewChild('focusable') vc: any;
 
+  constructor(private deckService: DeckService) {}
+
   term: string;
   def: string;
 
   addCard(event: any): void {
     if (this.term && this.def) {
 
-      this.onCreateCard.emit({term: this.term , def: this.def});
+      this.deckService.createCard(this.deck.id, this.term, this.def);
 
       this.term = "";
       this.def = "";
