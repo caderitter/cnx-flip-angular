@@ -16,7 +16,7 @@ export class DeckService {
   private decks: Deck[];
 
   private decksUrl = 'http://localhost:5000/api/getDecks';
-  private deckUrl = 'http://localhost:5000/api/getDeck';
+  private deckUrl = 'http://localhost:5000/api/getDecks';
   private cardsUrl = 'http://localhost:5000/api/cards';
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -50,20 +50,18 @@ export class DeckService {
         if (notFound = true) {
           this.decks.push(deck);
         }
-        this.decksBehaviorSubject.next(Object.assign({}, this.decks));
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error retrieving deck with id = %d", id))
   }
 
-  createDeck(): number {
-    let newDeckID = -1;
+  // TODO - make redirect to new deck
+  createDeck(): void {
     this.http.post(this.decksUrl, {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.push(deck);
-        this.decksBehaviorSubject.next(this.decks);
-        newDeckID = deck.id;
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error creating deck"));
-    return newDeckID;
   }
 
   updateDeck(deck: Deck): void {
@@ -75,7 +73,7 @@ export class DeckService {
             this.decks[idx] = deck;
           }
         });
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error updating deck with id = %d", deck.id));
   }
 
@@ -87,7 +85,7 @@ export class DeckService {
             this.decks.splice(idx, 1);
           }
         });
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error deleting deck with id = %d", id));
   }
 
@@ -100,7 +98,7 @@ export class DeckService {
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.push(deck);
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error creating card in deck %d", id));
   }
 
@@ -113,7 +111,7 @@ export class DeckService {
             this.decks[idx] = deck;
           }
         });
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error updating card with id = %d", card.id));
   }
 
@@ -125,7 +123,7 @@ export class DeckService {
             this.decks.splice(idx, 1);
           }
         });
-        this.decksBehaviorSubject.next(this.decks);
+        this.decksBehaviorSubject.next(Object.assign([], this.decks));
       }, error => console.log("Error deleting card with id = %d", card.id));
   }
 }
