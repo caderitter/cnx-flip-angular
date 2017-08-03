@@ -78,15 +78,15 @@ export class DeckService {
   }
 
   deleteDeck(id: number): void {
-    this.http.delete(`${this.decksUrl}/${id}`, {headers: this.headers})
+    this.http.delete(`${this.deckUrl}/${id}`, {headers: this.headers})
       .subscribe(response => {
         this.decks.forEach((item, idx) => {
-          if (item.id === id) {
+          if (item.id === +id) {
             this.decks.splice(idx, 1);
           }
         });
         this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error deleting deck with id = %d", id));
+      }, error => console.log("Error deleting deck with id = %s", id));
   }
 
   /*
