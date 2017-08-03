@@ -16,7 +16,7 @@ export class DeckService {
   private decks: Deck[];
 
   private decksUrl = 'http://localhost:5000/api/getDecks';
-  private deckUrl = 'http://localhost:5000/api/getDecks';
+  private deckUrl = 'http://localhost:5000/api/getDeck';
   private cardsUrl = 'http://localhost:5000/api/cards';
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -37,7 +37,7 @@ export class DeckService {
   }
 
   loadDeck(id: number): void {
-    this.http.get(`${this.decksUrl}/${id}`)
+    this.http.get(`${this.deckUrl}/${id}`)
       .map(response => response.json())
       .subscribe(deck => {
         let notFound = true;
