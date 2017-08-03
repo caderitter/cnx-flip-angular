@@ -78,7 +78,7 @@ export class DeckService {
   }
 
   deleteDeck(id: number): void {
-    this.http.delete(`${this.deckUrl}/${id}`, {headers: this.headers})
+    this.http.delete(`${this.decksUrl}/${id}`, {headers: this.headers})
       .subscribe(response => {
         this.decks.forEach((item, idx) => {
           if (item.id === id) {
