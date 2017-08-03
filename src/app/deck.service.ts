@@ -17,6 +17,7 @@ export class DeckService {
 
   private decksUrl = 'http://localhost:5000/api/getDecks';
   private deckUrl = 'http://localhost:5000/api/getDeck';
+  private decksAPI = 'http://localhost:5000/api/decks';
   private cardsUrl = 'http://localhost:5000/api/cards';
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -56,7 +57,7 @@ export class DeckService {
 
   // TODO - make redirect to new deck
   createDeck(): void {
-    this.http.post(this.decksUrl, {headers: this.headers})
+    this.http.post(this.decksAPI, {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.push(deck);
@@ -65,7 +66,7 @@ export class DeckService {
   }
 
   updateDeck(deck: Deck): void {
-    this.http.put(`${this.deckUrl}/${deck.id}`, JSON.stringify(deck), {headers: this.headers})
+    this.http.put(`${this.decksAPI}/${deck.id}`, JSON.stringify(deck), {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.forEach((item ,idx) => {
@@ -78,7 +79,7 @@ export class DeckService {
   }
 
   deleteDeck(id: number): void {
-    this.http.delete(`${this.deckUrl}/${id}`, {headers: this.headers})
+    this.http.delete(`${this.decksAPI}/${id}`, {headers: this.headers})
       .subscribe(response => {
         this.decks.forEach((item, idx) => {
           if (item.id === +id) {
@@ -94,7 +95,7 @@ export class DeckService {
    */
 
   createCard(id: number, term: string, def: string): void {
-    this.http.post(this.decksUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
+    this.http.post(this.cardsUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.push(deck);
