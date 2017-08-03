@@ -122,8 +122,4 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
 
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
   }
-
-  addCard(card: any): void {
-    this.deckService.createCard(this.deck.id, card.term, card.def);
-  }
 }
