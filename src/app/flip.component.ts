@@ -38,6 +38,7 @@ export class FlipComponent implements OnInit {
     this.decks = this.deckService.decksObservable;
     this.decks.map(decks => decks.find(deck => deck.id === deckID))
       .subscribe(deck => this.deck = deck);
+    this.deckService.loadDeck(deckID);
     this.currentCard = this.deck.cards[this.currentCardIndex];
   }
 

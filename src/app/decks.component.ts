@@ -22,9 +22,6 @@ export class DecksComponent implements OnInit {
   }
 
   addDeck(): void {
-    let id = this.deckService.createDeck();
-    if (id != -1) {
-      this.router.navigate(['/deck-detail', id])
-    }
+    this.deckService.createDeck();
   }
 }

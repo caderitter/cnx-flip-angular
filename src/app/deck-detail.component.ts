@@ -1,6 +1,6 @@
 // component to display deck detail
 
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 
@@ -51,6 +51,7 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     this.decks = this.deckService.decksObservable;
     this.decks.map(decks => decks.find(deck => deck.id === deckID))
       .subscribe(deck => this.deck = deck);
+    this.deckService.loadDeck(deckID);
   }
 
   ngOnDestroy(): void {

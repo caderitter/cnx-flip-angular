@@ -11,7 +11,7 @@
     <div *ngFor="let deck of decks | async" class="col-md-4 deck-container" style="padding-left: 0">
       <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
         <div class="deck-text">
-          {{deck.name}}
+          {{deck.title}}
         </div>
         <div class="deck deck-footer"></div>
       </div>
