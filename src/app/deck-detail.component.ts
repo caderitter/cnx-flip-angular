@@ -7,7 +7,8 @@ import {Location} from "@angular/common";
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
-import {Card} from "./card";
+import {CardContainerComponent} from "./card-container.component";
+import {Observable} from "rxjs/Rx";
 
 
 @Component({
@@ -16,9 +17,14 @@ import {Card} from "./card";
 })
 
 export class DeckDetailComponent implements OnInit, OnDestroy {
+
+  decks: Observable<Deck[]>;
   deck: Deck;
+
   @ViewChild('titlefocusable') vc: any;
   @ViewChild('deleteButton') vcDeleteButton: any;
+
+  @ViewChild(CardContainerComponent) cardContainer: CardContainerComponent;
 
   // html/style variables
   addCardButtonClicked: boolean = false;
@@ -39,12 +45,13 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
   }
 
-  // TODO - add authentication if/else
-
   ngOnInit(): void {
-    this.route.params
-      .switchMap((params: Params) => this.deckService.getDeck(+params['id']))
-      .subscribe(deck => this.deck = deck, error => this.deckNotFound = true);
+    let deckID: number;
+    this.route.params.subscribe((params: Params) => deckID = params['id']);
+    this.decks = this.deckService.decksObservable;
+    this.decks.map(decks => decks.find(deck => deck.id === deckID))
+      .subscribe(deck => this.deck = deck);
+    this.deckService.loadDeck(deckID);
   }
 
   ngOnDestroy(): void {
@@ -55,9 +62,8 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  save(): void {
-    this.deckService.updateDeck(this.deck)
-      .then(deck => this.deck = deck);
+  saveDeck(): void {
+    this.deckService.updateDeck(this.deck);
     this.hideEditTitle();
   }
 
@@ -88,7 +94,7 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  clickOutsideDeleteButton(event:any) {
+  clickOutsideDeleteButton(event: any) {
     if (!this.vcDeleteButton.nativeElement.contains(event.target)) {
       this.deleteButtonClicked = false;
       this.deleteText = "Delete deck";
@@ -115,6 +121,5 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
         b = parseInt(hex.slice(5, 7), 16);
 
     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-
   }
 }

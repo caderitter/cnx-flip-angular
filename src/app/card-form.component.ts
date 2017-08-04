@@ -1,7 +1,6 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
 
 import {Card} from './card';
-import {CardService} from './card.service'
 import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 
@@ -12,23 +11,21 @@ import {Deck} from "./deck";
 
 export class CardFormComponent {
   @Input() deck: Deck;
+  @Output() onCreateCard = new EventEmitter<any>();
 
   // declare "term" input field (id="focusable") so we can refocus to it when the user enters a card with tab or enter
   // key
   @ViewChild('focusable') vc: any;
 
+  constructor(private deckService: DeckService) {}
+
   term: string;
   def: string;
 
-  constructor(
-    private deckService: DeckService,
-    private cardService: CardService,
-  ) {}
-
   addCard(event: any): void {
     if (this.term && this.def) {
-      this.deckService.createCard(this.deck, this.term, this.def)
-        .then(deck => this.deck = deck);
+
+      this.deckService.createCard(this.deck.id, this.term, this.def);
 
       this.term = "";
       this.def = "";
@@ -41,7 +38,7 @@ export class CardFormComponent {
         this.vc.nativeElement.focus();
       }
     } else {
-      // trigger error display
+      // TODO - trigger error display
     }
   }
 }
