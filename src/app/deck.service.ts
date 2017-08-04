@@ -15,7 +15,6 @@ export class DeckService {
   public decksObservable: Observable<Deck[]>;
   private decks: Deck[];
 
-  private decksUrl = 'http://localhost:5000/api/getDecks';
   private deckUrl = 'http://localhost:5000/api/decks';  
   private cardsUrl = 'http://localhost:5000/api/cards/';
 
@@ -28,7 +27,7 @@ export class DeckService {
   }
 
   loadDecks(): void {
-    this.http.get(this.decksUrl)
+    this.http.get(`${this.deckUrl}/`)
       .map(response => response.json() as Deck[])
       .subscribe(decks => {
         this.decks = decks;
@@ -56,7 +55,7 @@ export class DeckService {
 
   // TODO - make redirect to new deck
   createDeck(): void {
-    this.http.post(this.decksUrl, {headers: this.headers})
+    this.http.post(`${this.deckUrl}/`, {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.push(deck);
@@ -94,7 +93,6 @@ export class DeckService {
    */
 
   createCard(id: number, term: string, def: string): void {
-    //changed decksUrl to deckUrl
     this.http.post(this.cardsUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
