@@ -16,8 +16,8 @@ export class DeckService {
   private decks: Deck[];
 
   private decksUrl = 'http://localhost:5000/api/getDecks';
-  private deckUrl = 'http://localhost:5000/api/getDeck';
-  private cardsUrl = 'http://localhost:5000/api/cards';
+  private deckUrl = 'http://localhost:5000/api/decks';  
+  private cardsUrl = 'http://localhost:5000/api/cards/';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -94,7 +94,8 @@ export class DeckService {
    */
 
   createCard(id: number, term: string, def: string): void {
-    this.http.post(this.decksUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
+    //changed decksUrl to deckUrl
+    this.http.post(this.cardsUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.push(deck);
@@ -103,7 +104,8 @@ export class DeckService {
   }
 
   updateCard(card: Card): void {
-    this.http.put(`${this.cardsUrl}/${card.id}`, JSON.stringify(card), {headers: this.headers})
+    //changed 
+    this.http.put(`${this.cardsUrl}${card.id}`, JSON.stringify(card), {headers: this.headers})
       .map(response => response.json())
       .subscribe(deck => {
         this.decks.forEach((item ,idx) => {
@@ -116,7 +118,7 @@ export class DeckService {
   }
 
   deleteCard(card: Card): void {
-    this.http.delete(`${this.cardsUrl}/${card.id}`, {headers: this.headers})
+    this.http.delete(`${this.cardsUrl}${card.id}`, {headers: this.headers})
       .subscribe(response => {
         this.decks.forEach((item, idx) => {
           if (item.id === card.id) {
