@@ -6,14 +6,12 @@ import {Deck} from './deck';
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Card} from "./card";
-import {Observable, BehaviorSubject} from "rxjs/Rx";
+import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 
 @Injectable()
 export class DeckService {
 
-  private decksBehaviorSubject: BehaviorSubject<Deck[]>;
-  public decksObservable: Observable<Deck[]>;
-  private decks: Deck[];
+  deck: BehaviorSubject<Deck>;
 
   private decksUrl = 'http://localhost:5000/api/getDecks';
   private deckUrl = 'http://localhost:5000/api/getDeck';
@@ -23,71 +21,40 @@ export class DeckService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
-    this.decks = [];
-    this.decksBehaviorSubject = new BehaviorSubject<Deck[]>([]);
-    this.decksObservable = this.decksBehaviorSubject.asObservable();
+    this.deck = new BehaviorSubject<Deck>(null);
   }
 
-  loadDecks(): void {
-    this.http.get(this.decksUrl)
-      .map(response => response.json() as Deck[])
-      .subscribe(decks => {
-        this.decks = decks;
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error retrieving decks"));
+  getDecks(): Promise<Deck[]> {
+    return this.http.get(this.decksUrl)
+      .toPromise()
+      .then(res => res.json() as Deck[])
+      .catch(err => Promise.reject(console.log("Error retrieving decks") || err));
   }
 
-  loadDeck(id: number): void {
+  getDeck(id: number): void {
     this.http.get(`${this.deckUrl}/${id}`)
-      .map(response => response.json())
-      .subscribe(deck => {
-        let notFound = true;
-        this.decks.forEach((item, idx) => {
-          if (item.id === deck.id) {
-            this.decks[idx] = deck;
-            notFound = false;
-          }
-        });
-        if (notFound = true) {
-          this.decks.push(deck);
-        }
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error retrieving deck with id = %d", id))
+      .map(res => res.json() as Deck)
+      .subscribe(deck => this.deck.next(deck), error => console.log("Error retrieving deck"))
   }
 
-  // TODO - make redirect to new deck
-  createDeck(): void {
-    this.http.post(this.decksAPI, {headers: this.headers})
-      .map(response => response.json())
-      .subscribe(deck => {
-        this.decks.push(deck);
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error creating deck"));
+  createDeck(): Promise<Deck> {
+    return this.http.post(this.decksAPI, {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as Deck)
+      .catch(err => Promise.reject(console.log("Error creating deck")) || err);
   }
 
   updateDeck(deck: Deck): void {
     this.http.put(`${this.decksAPI}/${deck.id}`, JSON.stringify(deck), {headers: this.headers})
-      .map(response => response.json())
+      .map(res => res.json() as Deck)
       .subscribe(deck => {
-        this.decks.forEach((item ,idx) => {
-          if (item.id === deck.id) {
-            this.decks[idx] = deck;
-          }
-        });
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error updating deck with id = %d", deck.id));
+        this.deck.next(deck)
+      }, error => console.log("Error updating deck"));
   }
 
   deleteDeck(id: number): void {
     this.http.delete(`${this.decksAPI}/${id}`, {headers: this.headers})
-      .subscribe(response => {
-        this.decks.forEach((item, idx) => {
-          if (item.id === +id) {
-            this.decks.splice(idx, 1);
-          }
-        });
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error deleting deck with id = %s", id));
+      .subscribe(() => this.deck.next(null), error => console.log("Error deleting deck"));
   }
 
   /*
@@ -96,35 +63,24 @@ export class DeckService {
 
   createCard(id: number, term: string, def: string): void {
     this.http.post(this.cardsUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
-      .map(response => response.json())
+      .map(res => res.json() as Deck)
       .subscribe(deck => {
-        this.decks.push(deck);
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error creating card in deck %d", id));
+        this.deck.next(deck);
+      }, error => console.log("Error creating card"));
   }
 
   updateCard(card: Card): void {
     this.http.put(`${this.cardsUrl}/${card.id}`, JSON.stringify(card), {headers: this.headers})
-      .map(response => response.json())
+      .map(res => res.json())
       .subscribe(deck => {
-        this.decks.forEach((item ,idx) => {
-          if (item.id === deck.id) {
-            this.decks[idx] = deck;
-          }
-        });
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error updating card with id = %d", card.id));
+        this.deck.next(deck)
+      }, error => console.log("Error updating card"));
   }
 
   deleteCard(card: Card): void {
     this.http.delete(`${this.cardsUrl}/${card.id}`, {headers: this.headers})
-      .subscribe(response => {
-        this.decks.forEach((item, idx) => {
-          if (item.id === card.id) {
-            this.decks.splice(idx, 1);
-          }
-        });
-        this.decksBehaviorSubject.next(Object.assign([], this.decks));
-      }, error => console.log("Error deleting card with id = %d", card.id));
+      .subscribe(() => {
+        this.deck.next(null);
+      }, error => console.log("Error deleting card"));
   }
 }

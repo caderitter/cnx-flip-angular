@@ -11,7 +11,6 @@ import {Deck} from "./deck";
 
 export class CardFormComponent {
   @Input() deck: Deck;
-  @Output() onCreateCard = new EventEmitter<any>();
 
   // declare "term" input field (id="focusable") so we can refocus to it when the user enters a card with tab or enter
   // key

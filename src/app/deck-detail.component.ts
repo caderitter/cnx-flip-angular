@@ -8,7 +8,7 @@ import {DeckService} from "./deck.service";
 import {Deck} from "./deck";
 import 'rxjs/add/operator/switchMap';
 import {CardContainerComponent} from "./card-container.component";
-import {Observable} from "rxjs/Rx";
+import {Observable, Subscription} from "rxjs/Rx";
 
 
 @Component({
@@ -16,9 +16,8 @@ import {Observable} from "rxjs/Rx";
   templateUrl: './static/deck-detail.component.html',
 })
 
-export class DeckDetailComponent implements OnInit, OnDestroy {
+export class DeckDetailComponent implements OnInit {
 
-  decks: Observable<Deck[]>;
   deck: Deck;
 
   @ViewChild('titlefocusable') vc: any;
@@ -46,17 +45,13 @@ export class DeckDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    let deckID: number;
-    this.route.params.subscribe((params: Params) => deckID = params['id']);
-    this.decks = this.deckService.decksObservable;
-    this.decks.map(decks => decks.find(deck => deck.id === deckID))
-      .subscribe(deck => this.deck = deck);
-    this.deckService.loadDeck(deckID);
+    this.deckService.deck.subscribe(deck => this.deck = deck);
+    this.route.params.subscribe((params: Params) => this.deckService.getDeck(params['id']));
   }
 
-  ngOnDestroy(): void {
-    this.deckNotFound = false;
-  }
+  // ngOnDestroy(): void {
+  //   this.deckService.deck.unsubscribe();
+  // }
 
   goBack(): void {
     this.location.back();

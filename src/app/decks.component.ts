@@ -12,16 +12,16 @@ import {Observable} from "rxjs";
 })
 
 export class DecksComponent implements OnInit {
-  decks: Observable<Deck[]>;
+  decks: Deck[];
 
   constructor(private deckService: DeckService, private router: Router) {}
 
   ngOnInit(): void {
-    this.decks = this.deckService.decksObservable;
-    this.deckService.loadDecks();
+    this.deckService.getDecks().then(decks => this.decks = decks);
   }
 
   addDeck(): void {
-    this.deckService.createDeck();
+    this.deckService.createDeck()
+      .then(deck => this.router.navigate(['deck-detail', deck.id]));
   }
 }

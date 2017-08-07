@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {Deck} from "./deck";
 import {Card} from "./card";
 import {DeckService} from "./deck.service";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'card-container',

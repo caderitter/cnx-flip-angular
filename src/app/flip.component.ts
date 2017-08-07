@@ -20,7 +20,6 @@ declare var $ :any;
 
 
 export class FlipComponent implements OnInit {
-  decks: Observable<Deck[]>;
   deck: Deck;
 
   private currentCard: Card;
@@ -33,13 +32,8 @@ export class FlipComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let deckID: number;
-    this.route.params.subscribe((params: Params) => deckID = params['id']);
-    this.decks = this.deckService.decksObservable;
-    this.decks.map(decks => decks.find(deck => deck.id === deckID))
-      .subscribe(deck => this.deck = deck);
-    this.deckService.loadDeck(deckID);
-    this.currentCard = this.deck.cards[this.currentCardIndex];
+    this.deckService.deck.subscribe(deck => this.deck = deck);
+    this.route.params.subscribe((params: Params) => this.deckService.getDeck(params['id']));
   }
 
   // listen for spacebar keyup
