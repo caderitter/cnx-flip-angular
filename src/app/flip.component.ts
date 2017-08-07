@@ -15,7 +15,7 @@ declare var $ :any;
 @Component({
   selector: 'flip',
   templateUrl: './static/flip.component.html',
-  styles: ['.list-group {padding-top:25px}'],
+  styleUrls: ['./static/flip.component.css'],
 })
 
 
