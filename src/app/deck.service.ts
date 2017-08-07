@@ -15,8 +15,8 @@ export class DeckService {
   public decksObservable: Observable<Deck[]>;
   private decks: Deck[];
 
-  private deckUrl = 'http://localhost:5000/api/decks';  
-  private cardsUrl = 'http://localhost:5000/api/cards/';
+  private deckUrl = 'http://localhost:5000/api/decks/1';  
+  private cardsUrl = 'http://localhost:5000/api/cards/1/';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
