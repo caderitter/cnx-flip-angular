@@ -49,10 +49,6 @@ export class DeckDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.deckService.getDeck(params['id']));
   }
 
-  // ngOnDestroy(): void {
-  //   this.deckService.deck.unsubscribe();
-  // }
-
   goBack(): void {
     this.location.back();
   }

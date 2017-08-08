@@ -6,6 +6,8 @@ import {DecksComponent} from "./decks.component";
 import {FlipComponent} from "./flip.component";
 import {NotFoundComponent} from "./not-found.component";
 import {LandingComponent} from "./landing.component";
+import {ChooseBookComponent} from "./choose-book.book-sync.component";
+import {ChooseModuleComponent} from "./choose-module.book-sync.component";
 
 const routes: Routes = [
 
@@ -43,6 +45,23 @@ const routes: Routes = [
       {
         path: 'flip',
         component: FlipComponent
+      },
+
+      {
+        path: 'book-sync',
+        children: [
+
+          {
+            path: ':uuid',
+            component: ChooseModuleComponent
+          },
+
+          {
+            path: '',
+            pathMatch: 'full',
+            component: ChooseBookComponent
+          }
+        ]
       }
     ]
   },

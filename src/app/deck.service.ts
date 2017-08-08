@@ -13,10 +13,8 @@ export class DeckService {
 
   deck: BehaviorSubject<Deck>;
 
-  private decksUrl = 'http://localhost:5000/api/getDecks';
-  private deckUrl = 'http://localhost:5000/api/getDeck';
-  private decksAPI = 'http://localhost:5000/api/decks';
-  private cardsUrl = 'http://localhost:5000/api/cards';
+  private decksUrl = 'http://localhost:5000/api/decks/1';
+  private cardsUrl = 'http://localhost:5000/api/cards/1';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -25,27 +23,27 @@ export class DeckService {
   }
 
   getDecks(): Promise<Deck[]> {
-    return this.http.get(this.decksUrl)
+    return this.http.get(this.decksUrl + '/')
       .toPromise()
       .then(res => res.json() as Deck[])
       .catch(err => Promise.reject(console.log("Error retrieving decks") || err));
   }
 
   getDeck(id: number): void {
-    this.http.get(`${this.deckUrl}/${id}`)
+    this.http.get(`${this.decksUrl}/${id}`)
       .map(res => res.json() as Deck)
       .subscribe(deck => this.deck.next(deck), error => console.log("Error retrieving deck"))
   }
 
   createDeck(): Promise<Deck> {
-    return this.http.post(this.decksAPI, {headers: this.headers})
+    return this.http.post(this.decksUrl + '/', {headers: this.headers})
       .toPromise()
       .then(res => res.json() as Deck)
       .catch(err => Promise.reject(console.log("Error creating deck")) || err);
   }
 
   updateDeck(deck: Deck): void {
-    this.http.put(`${this.decksAPI}/${deck.id}`, JSON.stringify(deck), {headers: this.headers})
+    this.http.put(`${this.decksUrl}/${deck.id}`, JSON.stringify(deck), {headers: this.headers})
       .map(res => res.json() as Deck)
       .subscribe(deck => {
         this.deck.next(deck)
@@ -53,7 +51,7 @@ export class DeckService {
   }
 
   deleteDeck(id: number): void {
-    this.http.delete(`${this.decksAPI}/${id}`, {headers: this.headers})
+    this.http.delete(`${this.decksUrl}/${id}`, {headers: this.headers})
       .subscribe(() => this.deck.next(null), error => console.log("Error deleting deck"));
   }
 
@@ -62,7 +60,7 @@ export class DeckService {
    */
 
   createCard(id: number, term: string, def: string): void {
-    this.http.post(this.cardsUrl, JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
+    this.http.post(this.cardsUrl + '/', JSON.stringify({deckid: id, term: term, definition: def}), {headers: this.headers})
       .map(res => res.json() as Deck)
       .subscribe(deck => {
         this.deck.next(deck);
@@ -79,8 +77,9 @@ export class DeckService {
 
   deleteCard(card: Card): void {
     this.http.delete(`${this.cardsUrl}/${card.id}`, {headers: this.headers})
-      .subscribe(() => {
-        this.deck.next(null);
+      .map(res => res.json())
+      .subscribe(deck => {
+        this.deck.next(deck);
       }, error => console.log("Error deleting card"));
   }
 }

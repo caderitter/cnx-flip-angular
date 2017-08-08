@@ -30,11 +30,13 @@ export class CardFormComponent {
       this.def = "";
 
       // prevent tab from refocusing when using tab to submit new card
-      if (event.keyCode == 9) {
-        event.preventDefault();
-        this.vc.nativeElement.focus();
-      } else {
-        this.vc.nativeElement.focus();
+      if (event) {
+        if (event.keyCode == 9) {
+          event.preventDefault();
+          this.vc.nativeElement.focus();
+        } else {
+          this.vc.nativeElement.focus();
+        }
       }
     } else {
       // TODO - trigger error display

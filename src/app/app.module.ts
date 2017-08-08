@@ -18,6 +18,9 @@ import {FlipComponent} from "./flip.component";
 import {NotFoundComponent} from "./not-found.component";
 import {LandingComponent} from "./landing.component";
 import {CardContainerComponent} from "./card-container.component";
+import {BookService} from "./book.service";
+import {ChooseBookComponent} from "./choose-book.book-sync.component";
+import {ChooseModuleComponent} from "./choose-module.book-sync.component";
 
 @NgModule({
   imports: [
@@ -41,10 +44,13 @@ import {CardContainerComponent} from "./card-container.component";
     NotFoundComponent,
     LandingComponent,
     CardContainerComponent,
+    ChooseBookComponent,
+    ChooseModuleComponent,
   ],
 
   providers: [
     DeckService,
+    BookService,
   ],
 
   bootstrap: [
