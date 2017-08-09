@@ -124,6 +124,11 @@ div {
   -webkit-transition: all 0.3s;
 }
 
+.pseudocard {
+  opacity: 0.1;
+}
+
+
 .cur-reappear {
   position: absolute;
   left: 10%;
