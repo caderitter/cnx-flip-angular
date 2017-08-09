@@ -23,6 +23,6 @@ export class ChooseBookComponent implements OnInit {
   ngOnInit(): void {
     this.deckService.deck.subscribe(deck => this.deck = deck);
     this.route.params.subscribe((params: Params) => this.deckService.getDeck(params['id']));
-    this.bookService.getBookJSON().then(res => this.booksJSON = res);
+    this.bookService.getBooksJSON().then(res => this.booksJSON = res);
   }
 }

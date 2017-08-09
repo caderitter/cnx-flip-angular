@@ -53,7 +53,7 @@
             <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">
               Add flashcards
             </a>
-            <a type="button" class="btn btn-lg btn-default btn-large-main pull-right">Connect to book</a>
+            <a type="button" [routerLink]="['book-sync']" class="btn btn-lg btn-default btn-large-main pull-right">Connect to book</a>
 
         </div>
       </div>
