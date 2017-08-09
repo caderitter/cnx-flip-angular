@@ -34,7 +34,6 @@ div {
 }
 
 .front, .back {
-  /* left: 10%; */
   height: 100%;
   width: 100%;
   position: absolute;
@@ -79,7 +78,23 @@ div {
   width: 100%;
 }
 
- /* flashcardcontainer and .card_space should have the same wdith */
+#end-page{
+  position: relative;
+  display: none;
+  height: 70vh;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 10%;
+  text-align: center;
+  font-size: 3vw;
+  
+}
+
+#restart {
+  color: white;
+}
+
+ /* flashcardcontainer and .card_space should have the same width */
 .flashcardcontainer{
   perspective: 250px;
   position: absolute;
@@ -90,11 +105,11 @@ div {
 
 .nav_buttons {
   width: 100%;
-  position: absolute;
+  position: relative;
   margin: 0 auto;
 }
 
-.flashcard {
+.flashcard, .pseudocard{
   height: 90%; 
   width: 80%;
   left: 10%;
@@ -109,21 +124,6 @@ div {
   -webkit-transition: all 0.3s;
 }
 
-/* .pseudocard need to overlap with .flashcard */
-.pseudocard {
-  height: 90%;
-  width: 80%;
-  position: absolute;
-  left: 10%;
-  margin: 3% auto;
-  background-color:white;
-  box-shadow: 3px 3px 0px 0px #888888;
-  border: 1px solid gray;
-  opacity: 0.1;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-
 .cur-reappear {
   position: absolute;
   left: 10%;
@@ -132,7 +132,7 @@ div {
   background-color:white;
   margin: 3% auto;
   border: 1px solid gray;
-  animation: fade-in 0.6s;
+  animation: fade-in 0.7s;
 }
 
 /* current card becomes previous card */
