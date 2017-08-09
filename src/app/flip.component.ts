@@ -78,6 +78,7 @@ export class FlipComponent implements OnInit {
       $('#prev_div').addClass('prev-left');
       $('#next_div').addClass('next-left');
       $('#cur_div').addClass('cur-reappear');
+      $('.flashcard').removeClass('flipped');  // prevent definition from flashing
       $('#prev_div').on('webkitAnimationEnd', function(){
         $('#prev_div').removeClass('prev-left');
       });
@@ -93,6 +94,7 @@ export class FlipComponent implements OnInit {
       $('#prev_div').addClass('prev-right');
       $('#next_div').addClass('next-right');
       $('#cur_div').addClass('cur-reappear');
+      $('.flashcard').removeClass('flipped');
       $('#prev_div').on('webkitAnimationEnd', function(){
         $('#prev_div').removeClass('prev-right');
       });
@@ -103,6 +105,15 @@ export class FlipComponent implements OnInit {
         $('#cur_div').removeClass('cur-reappear');
       });
   }
+
+  // termOnTop(): void {
+  //   $('.flashcard').addClass('front');
+  //   $('.flashcard').removeClass('back');
+  // }
+
+  // definitionOnTop(): void {
+
+  // }
 
   //methods: previous card, next card
   nextCard(): void {
