@@ -17,27 +17,22 @@ export class BookService {
   private bookTreeUrl: string = 'http://localhost:6543/xpath';
   private xpath: string = "//*[local-name()='definition']";
 
-  private headers = new Headers({'ACCEPT': 'application/xhtml+xml'});
+  private acceptHeader = new Headers({'Accept': 'application/xhtml+xml'});
 
   constructor(private http: Http) {}
 
-  getBookTree(uuid: string): Promise<> {
-    // FIXME - remove the hard-coded uuid
-    uuid = 'e79ffde3-7fb4-4af3-9ec8-df648b391597';
-    return this.http.get(this.bookTreeUrl + '?id=' + uuid + '&q=' + this.xpath, {headers: {'Accept': 'application/xhtml+xml'}})
-      .toPromise()
-      .then(res => res.text())
-  }
-
-  getBookJSON(uuid: string): Promise<> {
+  getBookJSON(uuid: string): Promise<any> {
     return this.http.get(this.bookUrl + uuid)
       .toPromise()
       .then(res => res.json().items)
+      .catch(err => Promise.reject(console.log("Error retrieving book JSON") || err));
+
   }
 
-  getBooksJSON(): Promise<> {
+  getBooksJSON(): Promise<any> {
     return this.http.get(this.booksUrl)
       .toPromise()
       .then(res => res.json().items)
+      .catch(err => Promise.reject(console.log("Error retrieving books JSON") || err));
   }
 }

@@ -21,6 +21,7 @@ import {CardContainerComponent} from "./card-container.component";
 import {BookService} from "./book.service";
 import {ChooseBookComponent} from "./choose-book.book-sync.component";
 import {ChooseModuleComponent} from "./choose-module.book-sync.component";
+import {BookTreeComponent} from "./book-tree.component";
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {ChooseModuleComponent} from "./choose-module.book-sync.component";
     CardContainerComponent,
     ChooseBookComponent,
     ChooseModuleComponent,
+    BookTreeComponent,
   ],
 
   providers: [
