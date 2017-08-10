@@ -1,15 +1,23 @@
 <form>
-  <div class="form-group">
-    <input type="text" class="form-control" id="term" placeholder="Term" #focusable [(ngModel)]="term" name="term">
+  <div class="row">
+    <div class="col-lg-6">
+    <div class="form-group">
+      <input type="text" class="form-control card-form" id="term" placeholder="Term" #focusable [(ngModel)]="term" name="term">
+    </div>
+    </div>
+    <div class="col-lg-6">
+
+    <div class="form-group">
+      <input (keydown.enter)="addCard($event)"
+             (keydown.Tab)="addCard($event)"
+             type="text" class="form-control card-form" id="definition" placeholder="Definition"
+             [(ngModel)]="def" name="def">
+    </div>
+    </div>
   </div>
-  <div class="form-group">
-    <input (keydown.enter)="addCard($event)"
-           (keydown.Tab)="addCard($event)"
-           type="text" class="form-control" id="definition" placeholder="Definition"
-           [(ngModel)]="def" name="def">
-  </div>
-  <button class="btn btn-default" (click)="addCard()">Add term</button>
-  <span class="glyphicon glyphicon-question-sign pull-right add-card-help"
-        tooltip="Use the TAB or ENTER keys to submit cards quickly!"
-        placement="left"></span>
+    <button class="btn btn-default btn-add-card" (click)="addCard()">Add card</button>
+    <span class="glyphicon glyphicon-question-sign pull-right add-card-help"
+          tooltip="Use the TAB or ENTER keys to submit cards quickly!"
+          placement="left"></span>
+
 </form>

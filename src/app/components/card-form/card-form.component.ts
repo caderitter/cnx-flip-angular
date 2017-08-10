@@ -8,7 +8,8 @@ import {Deck} from "../../models/deck";
 
 @Component({
   selector: 'card-form',
-  templateUrl: './card-form.component.html'
+  templateUrl: './card-form.component.html',
+  styleUrls: ['./card-form.component.css',]
 })
 
 export class CardFormComponent {

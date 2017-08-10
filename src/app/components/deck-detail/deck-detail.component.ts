@@ -34,7 +34,7 @@ export class DeckDetailComponent implements OnInit {
   deckNotFound: boolean = false;
   colors: string[] = ["#15837D", "#EF5F33", "#1B2152", "#1BB3D3", "#B30B26", "#FDB32F", "#F0C916", "#65A234", "#8f8f8f"];
   top: string = "-200px";
-  topBelow: string = "-180px";
+  topBelow: string = "-100px";
   deleteButtonStyle = "btn-default";
 
   constructor(
@@ -81,7 +81,7 @@ export class DeckDetailComponent implements OnInit {
     this.addCardButtonClicked = !this.addCardButtonClicked;
     if (this.top == "0") {
       this.top = "-200px";
-      this.topBelow = "-180px";
+      this.topBelow = "-100px";
     } else {
       this.top = "0";
       this.topBelow = "0";
