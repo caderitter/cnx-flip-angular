@@ -7,7 +7,7 @@ import {AppComponent} from "./app.component";
 import {DeckService} from "./deck.service";
 import {DecksComponent} from "./decks.component";
 import {DeckDetailComponent} from "./deck-detail.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule, JsonpModule} from "@angular/http";
 import {CardFormComponent} from "./card-form.component";
@@ -27,6 +27,7 @@ import {BookTreeComponent} from "./book-tree.component";
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpModule,
     JsonpModule,

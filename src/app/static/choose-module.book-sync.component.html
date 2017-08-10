@@ -7,7 +7,12 @@
 <div class="container-fluid">
   <div class="container">
     <div class="row">
-      <book-tree [module]="module"></book-tree>
+      <div class="panel-group" id="book-root" role="tablist" aria-multiselectable="true">
+        <book-tree [module]="module" [selected]="false"></book-tree>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-large btn-primary" (click)="sync()">Sync!</button>
     </div>
   </div>
 </div>

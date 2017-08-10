@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {Deck} from "./deck";
 import {DeckService} from "./deck.service";
 import {Params, ActivatedRoute} from "@angular/router";
@@ -12,6 +12,8 @@ import {BookTreeComponent} from "./book-tree.component";
 })
 
 export class ChooseModuleComponent implements OnInit {
+
+  @ViewChild(BookTreeComponent) bookTree: BookTreeComponent;
 
   deck: Deck;
   module: Module;
@@ -32,7 +34,6 @@ export class ChooseModuleComponent implements OnInit {
 
   getBookTreeFromJSON(uuid: string): void {
     this.bookService.getBookJSON(uuid).then(data => {
-      console.log(data[0].table_of_contents);
       this.module = this.getBookTreeHelper(data[0].table_of_contents);
     })
   }
@@ -43,9 +44,15 @@ export class ChooseModuleComponent implements OnInit {
     if (obj.contents) {
       obj.contents.forEach(subobj => {
         var child = this.getBookTreeHelper(subobj);
+        child.appendParent(root);
         root.appendChild(child);
       })
     }
     return root
+  }
+
+  sync(): void {
+    let uuidArray = this.bookTree.getValue();
+    console.log(uuidArray);
   }
 }
