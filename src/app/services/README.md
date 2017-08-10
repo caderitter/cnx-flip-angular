@@ -7,7 +7,7 @@ Import `ngOnInit`, `DeckService`, `ActivatedRoute` and inject the latter two in 
 
     import {OnInit} from "@angular/core";
     import {DeckService} from "../../services/deck.service";
-    import {Params, ActivatedRoute} from "@angular/router";
+    import {ActivatedRoute} from "@angular/router";
     ...
     ...
     export class ExampleComponent implements OnInit {
@@ -33,6 +33,6 @@ object, and load the corresponding deck in to the deck BehaviorSubject.
     
     
         this.route.params
-          .subscribe((params: Params) => {
+          .subscribe((params) => {
             this.deckService.getDeck(params['id']);
           });
