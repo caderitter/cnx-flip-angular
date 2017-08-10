@@ -7,16 +7,15 @@
 <div class="container">
     <div class="row">
         <!--Left side menu bar-->
-        <div class="col-md-2">
+        <div class="col-md-2 col-sm-12 col-xs-12">
             <div class="list-group">
                 <a class="list-group-item" (click)="goBack()" style="cursor: pointer;"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
-                <a class="list-group-item" (click)="shuffleCards()" style="cursor: pointer;"><i class="glyphicon glyphicon-random"></i> Shuffle</a>
-                <a class="list-group-item">start with term/definition option </a>
-                <li class="list-group-item">Progress {{this.currentCardIndex+1}}/{{this.deck.cards.length}}
+                <a class="list-group-item" (click)="shuffleCards()" (click)="flashOnce()" style="cursor: pointer;"><i class="glyphicon glyphicon-random"></i> Shuffle</a>
+                <!-- <a class="list-group-item">start with term/definition option </a> -->
+                <li class="list-group-item">Progress {{progressFraction()}}
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.background]="deck.color"
-                            [ngStyle]="{width:progress()+'%'}">
-                            <span class="sr-only">{{this.currentCardIndex}}% complete</span>
+                            [ngStyle]="{width:progressPercentage()+'%'}">
                         </div>
                     </div>
                 </li>
@@ -24,27 +23,35 @@
         </div>
 
         <!--Flashcard-->
-        <div class="col-md-10">
+        <div class="col-md-9 col-sm-12 col-xs-12">
+            <div id="end-page">
+                <p> 
+                    Good Job! <br/>
+                    You just studied {{deck.cards.length}} terms. 
+                </p>
+                <button id="restart" type="button" class="btn btn-lg" [style.background]="hexToRGB(deck.color,1)"
+                (click)="startOver()">
+                    Start Over
+                </button>
+            </div>
+
             <div class="card_space">
                 <div class="flashcardcontainer">
                     <div id="prev_div" class="pseudocard">
-                        <!-- [ngClass]="{'prev-left':isNext, 'prev-right': isPrevious}" -->
                     </div>
                 </div>
 
                 <div class="flashcardcontainer">
                     <div id="next_div" class="pseudocard">
-                        <!-- [ngClass]="{'next-left':isNext,'next-right':isPrevious}" -->
                     </div>
                 </div>
 
                 <div class="flashcard" id="cur_div" (click)="flipCard()">
-                    <!-- [ngClass]="{'cur-reappear':isNext||isPrevious}" -->
                     <div class="front">
-                        <p>{{this.currentCard.term}}</p>
+                        <p>{{currentCard.term}}</p>
                     </div>
                     <div class="back">
-                        <p>{{this.currentCard.definition}}</p>
+                        <p>{{currentCard.definition}}</p>
                     </div>
                 </div>
             </div>
@@ -52,12 +59,14 @@
             <!-- Navigation buttons -->
             <div class="nav_buttons">
                 <div class="text-center">
-                    <button type="button" id="prev_button" class='btn' (click)="previousCard()" (click)="prevTransition()" [style.background]="hexToRGB(deck.color, 0.8)">
-                    <i style="color: white" class="glyphicon glyphicon-chevron-left"></i>
-                </button>
-                    <button type="button" id="next_button" class="btn" (click)="nextCard()" (click)="nextTransition()" [style.background]="hexToRGB(deck.color, 0.8)">
-                    <i style="color: white" class="glyphicon glyphicon-chevron-right"></i>
-                </button>
+                    <button type="button" id="prev_button" class='btn' (click)="previousCard()"
+                        [style.background]="hexToRGB(deck.color, 0.8)">
+                        <i style="color: white" class="glyphicon glyphicon-chevron-left"></i>
+                    </button>
+                    
+                    <button type="button" id="next_button" class="btn" (click)="nextCard()" [style.background]="hexToRGB(deck.color, 0.8)">
+                        <i style="color: white" class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>

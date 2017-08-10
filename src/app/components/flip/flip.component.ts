@@ -51,12 +51,10 @@ export class FlipComponent implements OnInit {
     // listen for right arrow keyup
     else if (ev.keyCode == 39) {
       this.nextCard();
-      this.nextTransition();
     }
     // listen for left arrow keyup
     else if (ev.keyCode == 37) {
       this.previousCard();
-      this.prevTransition();
     }
   }
 
@@ -69,8 +67,17 @@ export class FlipComponent implements OnInit {
   }
 
   // progress bar
-  progress(): number {
+  progressPercentage(): number {
     return (this.currentCardIndex+1)/this.deck.cards.length*100
+  }
+
+  progressFraction(): string {
+    if (this.currentCardIndex < this.deck.cards.length) {
+      return String(this.currentCardIndex+1)+ '/' + String(this.deck.cards.length);
+    }
+    else {
+      return String(this.deck.cards.length) + '/' + String(this.deck.cards.length);
+    }
   }
 
   // use jquery because it takes 1 line vs angular's stupid and convoluted methods
@@ -78,10 +85,12 @@ export class FlipComponent implements OnInit {
     $('.flashcard').toggleClass('flipped');
   }
 
+  // animation for transitioning to the next card 
   nextTransition(): void {
       $('#prev_div').addClass('prev-left');
       $('#next_div').addClass('next-left');
       $('#cur_div').addClass('cur-reappear');
+      $('.flashcard').removeClass('flipped');  // prevent definition from flashing
       $('#prev_div').on('webkitAnimationEnd', function(){
         $('#prev_div').removeClass('prev-left');
       });
@@ -93,10 +102,12 @@ export class FlipComponent implements OnInit {
       });
   }
 
+  // animation for transitioning to the previous card 
   prevTransition(): void {
       $('#prev_div').addClass('prev-right');
       $('#next_div').addClass('next-right');
       $('#cur_div').addClass('cur-reappear');
+      $('.flashcard').removeClass('flipped');
       $('#prev_div').on('webkitAnimationEnd', function(){
         $('#prev_div').removeClass('prev-right');
       });
@@ -108,24 +119,57 @@ export class FlipComponent implements OnInit {
       });
   }
 
-  //methods: previous card, next card
+  flashOnce(): void {
+    $('#cur_div').addClass('cur-reappear');
+  }
+
   nextCard(): void {
-    this.currentCardIndex += 1;
+    this.nextTransition();
+    if (this.currentCardIndex+1 >= this.deck.cards.length) {
+      $('.card_space').hide(); // hide card_space div
+      $('#end-page').show();  // show end page
+      $('#next_button').addClass('disabled');
+      this.currentCardIndex = this.deck.cards.length;
+    }
+    else if (this.currentCardIndex == 0) {
+      $('#prev_button').removeClass('disabled');
+      this.currentCardIndex += 1;
+    }
+    else {
+      this.currentCardIndex += 1;
+    }
 
-    if (this.currentCardIndex == this.deck.cards.length) {
-      this.currentCardIndex = 0;
+    if (this.currentCardIndex+1 <= this.deck.cards.length){
+      this.currentCard = this.deck.cards[this.currentCardIndex];
+    }
+    
+  }
+
+  previousCard(): void {  
+    if (this.currentCardIndex == 0) {
+      $('#prev_button').addClass('disabled'); 
+    }
+    else {
+      this.prevTransition();
+      if (this.currentCardIndex == 1) {
+        $('#prev_button').addClass('disabled'); 
+        this.currentCardIndex -= 1;
+      }
+      else if (this.currentCardIndex == this.deck.cards.length) {
+        $('.card_space').show();
+        $('#end-page').hide();
+        $('#next_button').removeClass('disabled');
+        // this.currentCardIndex = this.deck.cards.length - 1;
+        this.currentCardIndex -= 1;
+      }
+      else {
+        this.currentCardIndex -= 1;
+      }
     }
     this.currentCard = this.deck.cards[this.currentCardIndex];
   }
 
-  previousCard(): void {
-    this.currentCardIndex -= 1;
-    if (this.currentCardIndex < 0) {
-      this.currentCardIndex = this.deck.cards.length-1;
-    }
-    this.currentCard = this.deck.cards[this.currentCardIndex];
-  }
-
+  // go back to deck page 
   goBack(): void {
     this.location.back();
   }
@@ -136,8 +180,17 @@ export class FlipComponent implements OnInit {
       j = Math.floor(Math.random()*(i+1));
       temp = this.deck.cards[i];
       this.deck.cards[i] = this.deck.cards[j];
-      this.deck.cards[j] = temp
+      this.deck.cards[j] = temp;
     }
-    this.currentCard = this.deck.cards[0]
+    this.currentCard = this.deck.cards[0];
+  }
+  
+  startOver(): void {
+    this.currentCardIndex = 0;
+    this.currentCard = this.deck.cards[0];
+    $('#end-page').hide();
+    $('.card_space').show();
+    $('#prev_button').addClass('disabled');
+    $('#next_button').removeClass('disabled');
   }
 }
