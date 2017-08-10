@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Deck} from "./deck";
-import {Card} from "./card";
-import {DeckService} from "./deck.service";
+import {Deck} from "../../models/deck";
+import {Card} from "../../models/card";
+import {DeckService} from "../../services/deck.service";
 import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'card-container',
-  templateUrl: './static/card-container.component.html',
+  templateUrl: './card-container.component.html',
 })
 
 export class CardContainerComponent implements OnInit {

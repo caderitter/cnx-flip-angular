@@ -1,13 +1,13 @@
 // component to display set of decks
 
 import {Component, OnInit} from "@angular/core";
-import {Deck} from "./deck";
-import {DeckService} from "./deck.service";
+import {Deck} from "../../models/deck";
+import {DeckService} from "../../services/deck.service";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'decks',
-  templateUrl: './static/decks.component.html',
+  templateUrl: './decks.component.html',
 })
 
 export class DecksComponent implements OnInit {

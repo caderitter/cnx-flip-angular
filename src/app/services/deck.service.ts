@@ -2,10 +2,10 @@
 
 import {Injectable} from '@angular/core';
 
-import {Deck} from './deck';
+import {Deck} from '../models/deck';
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
-import {Card} from "./card";
+import {Card} from "../models/card";
 import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 
 @Injectable()

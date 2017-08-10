@@ -1,14 +1,14 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {Deck} from "./deck";
-import {DeckService} from "./deck.service";
+import {Deck} from "../../models/deck";
+import {DeckService} from "../../services/deck.service";
 import {Params, ActivatedRoute} from "@angular/router";
-import {BookService} from "./book.service";
-import {Module} from "./module";
-import {BookTreeComponent} from "./book-tree.component";
+import {BookService} from "../../services/book.service";
+import {Module} from "../../models/module";
+import {BookTreeComponent} from "../book-tree/book-tree.component";
 
 @Component({
   selector: 'choose-module',
-  templateUrl: `./static/choose-module.book-sync.component.html`
+  templateUrl: `./choose-module.book-sync.component.html`
 })
 
 export class ChooseModuleComponent implements OnInit {

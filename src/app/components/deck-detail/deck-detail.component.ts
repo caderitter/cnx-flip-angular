@@ -4,16 +4,16 @@ import {Component, Input, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 
-import {DeckService} from "./deck.service";
-import {Deck} from "./deck";
+import {DeckService} from "../../services/deck.service";
+import {Deck} from "../../models/deck";
 import 'rxjs/add/operator/switchMap';
-import {CardContainerComponent} from "./card-container.component";
+import {CardContainerComponent} from "../card-container/card-container.component";
 import {Observable, Subscription} from "rxjs/Rx";
 
 
 @Component({
   selector: 'deck-detail',
-  templateUrl: './static/deck-detail.component.html',
+  templateUrl: './deck-detail.component.html',
 })
 
 export class DeckDetailComponent implements OnInit {

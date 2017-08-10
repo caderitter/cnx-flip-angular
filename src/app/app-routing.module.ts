@@ -1,13 +1,12 @@
 import {NgModule}             from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent}   from './dashboard.component';
-import {DeckDetailComponent} from "./deck-detail.component";
-import {DecksComponent} from "./decks.component";
-import {FlipComponent} from "./flip.component";
-import {NotFoundComponent} from "./not-found.component";
-import {LandingComponent} from "./landing.component";
-import {ChooseBookComponent} from "./choose-book.book-sync.component";
-import {ChooseModuleComponent} from "./choose-module.book-sync.component";
+import {DeckDetailComponent} from "./components/deck-detail/deck-detail.component";
+import {DecksComponent} from "./components/decks/decks.component";
+import {FlipComponent} from "./components/flip/flip.component";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {LandingComponent} from "./components/landing/landing.component";
+import {ChooseBookComponent} from "./components/choose-book.book-sync/choose-book.book-sync.component";
+import {ChooseModuleComponent} from "./components/choose-module.book-sync/choose-module.book-sync.component";
 
 const routes: Routes = [
 
@@ -20,11 +19,6 @@ const routes: Routes = [
   {
     path: 'landing',
     component: LandingComponent
-  },
-
-  {
-    path: 'dashboard',
-    component: DashboardComponent
   },
 
   {

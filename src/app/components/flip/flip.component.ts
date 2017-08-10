@@ -3,9 +3,9 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
-import {DeckService} from "./deck.service";
-import {Deck} from "./deck";
-import {Card} from "./card";
+import {DeckService} from "../../services/deck.service";
+import {Deck} from "../../models/deck";
+import {Card} from "../../models/card";
 import 'rxjs/add/operator/switchMap';
 import {Observable} from "rxjs/Rx";
 
@@ -14,8 +14,8 @@ declare var $ :any;
 
 @Component({
   selector: 'flip',
-  templateUrl: './static/flip.component.html',
-  styleUrls: ['./static/flip.component.css'],
+  templateUrl: './flip.component.html',
+  styleUrls: ['./flip.component.css'],
 })
 
 

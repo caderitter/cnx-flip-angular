@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {Deck} from './deck';
+import {Deck} from '../models/deck';
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {BehaviorSubject, Subject} from "rxjs/Rx";

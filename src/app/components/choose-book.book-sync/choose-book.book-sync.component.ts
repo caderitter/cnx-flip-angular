@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
-import {Deck} from "./deck";
-import {DeckService} from "./deck.service";
+import {Deck} from "../../models/deck";
+import {DeckService} from "../../services/deck.service";
 import {Params, ActivatedRoute} from "@angular/router";
-import {BookService} from "./book.service";
+import {BookService} from "../../services/book.service";
 
 @Component({
   selector: 'choose-book',
-  templateUrl: `./static/choose-book.book-sync.component.html`
+  templateUrl: `./choose-book.book-sync.component.html`
 })
 
 export class ChooseBookComponent implements OnInit {

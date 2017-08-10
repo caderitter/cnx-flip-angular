@@ -1,12 +1,12 @@
 import {Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
 
-import {Card} from './card';
-import {DeckService} from "./deck.service";
-import {Deck} from "./deck";
+import {Card} from '../../models/card';
+import {DeckService} from "../../services/deck.service";
+import {Deck} from "../../models/deck";
 
 @Component({
   selector: 'card-form',
-  templateUrl: './static/card-form.component.html'
+  templateUrl: './card-form.component.html'
 })
 
 export class CardFormComponent {

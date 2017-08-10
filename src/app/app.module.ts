@@ -2,26 +2,25 @@
 
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {DashboardComponent}  from './dashboard.component';
 import {AppComponent} from "./app.component";
-import {DeckService} from "./deck.service";
-import {DecksComponent} from "./decks.component";
-import {DeckDetailComponent} from "./deck-detail.component";
+import {DeckService} from "./services/deck.service";
+import {DecksComponent} from "./components/decks/decks.component";
+import {DeckDetailComponent} from "./components/deck-detail/deck-detail.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule, JsonpModule} from "@angular/http";
-import {CardFormComponent} from "./card-form.component";
+import {CardFormComponent} from "./components/card-form/card-form.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgLoadingBarModule} from 'ng-loading-bar';
 import {TooltipModule} from 'ngx-bootstrap';
-import {FlipComponent} from "./flip.component";
-import {NotFoundComponent} from "./not-found.component";
-import {LandingComponent} from "./landing.component";
-import {CardContainerComponent} from "./card-container.component";
-import {BookService} from "./book.service";
-import {ChooseBookComponent} from "./choose-book.book-sync.component";
-import {ChooseModuleComponent} from "./choose-module.book-sync.component";
-import {BookTreeComponent} from "./book-tree.component";
+import {FlipComponent} from "./components/flip/flip.component";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {LandingComponent} from "./components/landing/landing.component";
+import {CardContainerComponent} from "./components/card-container/card-container.component";
+import {BookService} from "./services/book.service";
+import {ChooseBookComponent} from "./components/choose-book.book-sync/choose-book.book-sync.component";
+import {ChooseModuleComponent} from "./components/choose-module.book-sync/choose-module.book-sync.component";
+import {BookTreeComponent} from "./components/book-tree/book-tree.component";
 
 @NgModule({
   imports: [
@@ -38,7 +37,6 @@ import {BookTreeComponent} from "./book-tree.component";
 
   declarations: [
     AppComponent,
-    DashboardComponent,
     DecksComponent,
     DeckDetailComponent,
     CardFormComponent,
