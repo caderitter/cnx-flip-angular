@@ -5,7 +5,7 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {Deck} from "../../models/deck";
 import {DeckService} from "../../services/deck.service";
-import {Params, ActivatedRoute} from "@angular/router";
+import {Params, ActivatedRoute, Router} from "@angular/router";
 import {BookService} from "../../services/book.service";
 import {Module} from "../../models/module";
 import {BookTreeComponent} from "../book-tree/book-tree.component";
@@ -25,6 +25,7 @@ export class ChooseModuleComponent implements OnInit {
     private deckService: DeckService,
     private bookService: BookService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -67,6 +68,7 @@ export class ChooseModuleComponent implements OnInit {
   // get the selected module UUIDs and call the backend to generate cards
   sync(): void {
     let uuidArray = this.bookTree.getValue();
-    console.log(uuidArray);
+    this.deckService.syncWithBook(this.deck.id, uuidArray);
+    this.router.navigate(['deck-detail', this.deck.id]);
   }
 }
