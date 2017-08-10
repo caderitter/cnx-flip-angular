@@ -1,3 +1,7 @@
+/**
+ * Doubly-linked tree representing a book.
+ */
+
 export class Module {
 
   title: string;

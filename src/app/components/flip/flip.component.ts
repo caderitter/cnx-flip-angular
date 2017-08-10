@@ -1,3 +1,7 @@
+/**
+ * Component to study flashcards.
+ */
+
 import {Component, Input, OnInit, HostListener} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";

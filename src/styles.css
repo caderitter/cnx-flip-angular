@@ -142,12 +142,6 @@
   right: 5px;
 }
 
-/*@media (min-width: 1200px) {*/
-  /*.container {*/
-    /*width: 1000px;*/
-  /*}*/
-/*}*/
-
 @media screen and (max-width: 1024px) {
   .deck {
     height: 100px;

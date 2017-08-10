@@ -1,4 +1,7 @@
-// component to display deck detail
+/**
+ * Component to display a deck's detail - the dashboard for a deck.
+ * Edit deck/delete deck, add/edit/remove cards, sync with book, study flashcards.
+ */
 
 import {Component, Input, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
@@ -10,7 +13,6 @@ import 'rxjs/add/operator/switchMap';
 import {CardContainerComponent} from "../card-container/card-container.component";
 import {Observable, Subscription} from "rxjs/Rx";
 
-
 @Component({
   selector: 'deck-detail',
   templateUrl: './deck-detail.component.html',
@@ -20,10 +22,9 @@ export class DeckDetailComponent implements OnInit {
 
   deck: Deck;
 
+  // access deck title form and delete button in the DOM
   @ViewChild('titlefocusable') vc: any;
   @ViewChild('deleteButton') vcDeleteButton: any;
-
-  @ViewChild(CardContainerComponent) cardContainer: CardContainerComponent;
 
   // html/style variables
   addCardButtonClicked: boolean = false;
@@ -63,6 +64,7 @@ export class DeckDetailComponent implements OnInit {
     this.goBack();
   }
 
+  // change delete button text if it's clicked ("Are you sure?")
   deleteDeckClicked(deck: Deck): void {
     if (this.deleteButtonClicked) {
       this.deleteDeck(deck);
@@ -74,6 +76,7 @@ export class DeckDetailComponent implements OnInit {
     }
   }
 
+  // Slides the card-form.component out when clicked
   toggleAddCardButton(): void {
     this.addCardButtonClicked = !this.addCardButtonClicked;
     if (this.top == "0") {
@@ -85,6 +88,8 @@ export class DeckDetailComponent implements OnInit {
     }
   }
 
+  // checks if the user clicks away from the delete button after pressing once
+  // to cancel
   clickOutsideDeleteButton(event: any) {
     if (!this.vcDeleteButton.nativeElement.contains(event.target)) {
       this.deleteButtonClicked = false;
@@ -92,6 +97,7 @@ export class DeckDetailComponent implements OnInit {
     }
   }
 
+  // focuses/unfocuses on the title form
   toggleEditTitle(): void {
     this.editTitle = !this.editTitle;
     this.vc.nativeElement.focus();

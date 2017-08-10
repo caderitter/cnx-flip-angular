@@ -1,4 +1,6 @@
-// service to get decks
+/**
+ * Reactive service which keeps track of a deck in the form of a BehaviorSubject.
+ */
 
 import {Injectable} from '@angular/core';
 
@@ -6,21 +8,29 @@ import {Deck} from '../models/deck';
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Card} from "../models/card";
-import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
+import {BehaviorSubject} from "rxjs/Rx";
 
 @Injectable()
 export class DeckService {
 
+  // a BehaviorSubject is a type of Observable that stores a value. When we update
+  // the deck, all of this deck's subscribers (components) receive an event and
+  // update their copy of the deck.
   deck: BehaviorSubject<Deck>;
 
   private decksUrl = 'http://localhost:5000/api/decks/1';
-  cardsUrl = 'http://localhost:5000/api/cards/1';
+  private cardsUrl = 'http://localhost:5000/api/cards/1';
+  private textbookUrl = 'http://localhost:5000/api/textbook';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
     this.deck = new BehaviorSubject<Deck>(null);
   }
+
+  /*
+  DECK METHODS
+   */
 
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl + '/')
@@ -56,7 +66,7 @@ export class DeckService {
   }
 
   /*
-  The below methods are for creating, updating, and deleting cards. Each returns a new deck with the updated card state.
+  CARD METHODS
    */
 
   createCard(id: number, term: string, def: string): void {
@@ -82,4 +92,14 @@ export class DeckService {
         this.deck.next(deck);
       }, error => console.log("Error deleting card"));
   }
+
+  syncWithBook(id: number, ids: string[]): void {
+    let json = {deckid: id, uuids: ids};
+    this.http.post(`${this.textbookUrl}/`, json)
+      .map(res => res.json())
+      .subscribe(deck => {
+        this.deck.next(deck);
+      }, error => console.log("Error getting terms from book"));
+  }
+
 }

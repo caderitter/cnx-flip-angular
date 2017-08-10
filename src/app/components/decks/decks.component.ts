@@ -1,4 +1,6 @@
-// component to display set of decks
+/**
+ * Component to display list of user's decks, or add a new one.
+ */
 
 import {Component, OnInit} from "@angular/core";
 import {Deck} from "../../models/deck";
@@ -16,6 +18,8 @@ export class DecksComponent implements OnInit {
   constructor(private deckService: DeckService, private router: Router) {}
 
   ngOnInit(): void {
+    // we don't subscribe here, because this component doesn't modify data
+    // without switching components. We just get the latest set of decks.
     this.deckService.getDecks().then(decks => this.decks = decks);
   }
 

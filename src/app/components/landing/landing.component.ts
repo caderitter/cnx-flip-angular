@@ -1,3 +1,7 @@
+/**
+ * Landing page/
+ */
+
 import {Component} from "@angular/core";
 
 @Component({

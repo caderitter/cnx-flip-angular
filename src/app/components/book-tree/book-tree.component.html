@@ -9,7 +9,9 @@
   <div *ngIf="module?.children.length" id="{{bootstrapDataParent + 'collapse'}}" class="panel-collapse collapse" role="tabpanel" [attr.aria-labelledby]="bootstrapDataParent + 'heading'">
     <div class="panel-body">
       <div class="panel-group" id="{{bootstrapDataParent}}" aria-multiselectable="true">
+        <!--recursion-->
         <book-tree *ngFor="let child of module?.children" [selected]="selected" [module]="child"></book-tree>
+        <!--/recursion-->
       </div>
     </div>
   </div>

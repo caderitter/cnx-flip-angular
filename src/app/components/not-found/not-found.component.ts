@@ -1,3 +1,7 @@
+/**
+ * Not found component that is displayed if no route is matched.
+ */
+
 import {Component} from "@angular/core";
 
 @Component({

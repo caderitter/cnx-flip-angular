@@ -1,6 +1,8 @@
-import {Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
+/**
+ * Component to add cards to a deck.
+ */
 
-import {Card} from '../../models/card';
+import {Component, Input, ViewChild} from '@angular/core';
 import {DeckService} from "../../services/deck.service";
 import {Deck} from "../../models/deck";
 
@@ -10,6 +12,7 @@ import {Deck} from "../../models/deck";
 })
 
 export class CardFormComponent {
+  // Gets the deck from the parent deck-detail. See card-container.component for more details.
   @Input() deck: Deck;
 
   // declare "term" input field (id="focusable") so we can refocus to it when the user enters a card with tab or enter
@@ -23,9 +26,7 @@ export class CardFormComponent {
 
   addCard(event: any): void {
     if (this.term && this.def) {
-
       this.deckService.createCard(this.deck.id, this.term, this.def);
-
       this.term = "";
       this.def = "";
 
