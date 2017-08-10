@@ -24,16 +24,15 @@ Then, in a method called `ngOnInit` (required to implement `OnInit`):
 
 * Subscribe to the deck BehaviorSubject, specifying that our local deck should be equal to the BehaviorSubject's state.
  
-    
-    this.deckService.deck
-          .subscribe(deck => this.deck = deck);
+        this.deckService.deck
+              .subscribe(deck => this.deck = deck);
 
 * Load the deck into the BehaviorSubject from the backend. We subscribe to `this.route.params` because it returns an
 observable - essentially, this acts to retrieve the route `params` asynchronously. We only use it to get the `params` 
 object, and load the corresponding deck in to the deck BehaviorSubject.
     
     
-    this.route.params
-      .subscribe((params: Params) => {
-        this.deckService.getDeck(params['id']);
-      });
+        this.route.params
+          .subscribe((params: Params) => {
+            this.deckService.getDeck(params['id']);
+          });
