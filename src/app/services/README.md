@@ -4,14 +4,17 @@ Here's the general pattern for setting up a reactive deck object and subscribing
 happen).
 
 Import `ngOnInit`, `DeckService`, `ActivatedRoute` and inject the latter two in the constructor:
-
+   
+    ...
+    ...
     import {OnInit} from "@angular/core";
     import {DeckService} from "../../services/deck.service";
     import {ActivatedRoute} from "@angular/router";
     ...
     ...
     export class ExampleComponent implements OnInit {
-
+      deck: Deck;
+      
       constructor(
         private deckService: DeckService,
         private route: ActivatedRoute,
