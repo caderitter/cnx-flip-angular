@@ -1,0 +1,37 @@
+<div class="container-fluid" style="background-color: lightgray;">
+    <div class="container">
+        <h3>Study</h3>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="flashcard-container">
+            <div class="flashcard" (click)="flipCard()" [ngClass]="{'flipped': cardFlipped}">
+                <div class="flashcard-face front">
+                    <div class="flashcard-text">
+                        FrontFrontFrontFrontFrontFront
+                    </div>
+                </div>
+                <div class="flashcard-face back">
+                    <div class="flashcard-text">
+                        Back
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <div class="btn-group" role="group" aria-label="">
+                <button type="button" class="btn btn-lg btn-default">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                </button>
+                <button type="button" class="btn btn-lg btn-default">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

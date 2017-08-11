@@ -1,7 +1,7 @@
 <a *ngFor="let card of deck.cards" class="list-group-item clearfix card-list-item">
 
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-xs-6">
       <h5 *ngIf="!getInputVisible(card, 'term')" class="list-group-item-text">{{card.term}}</h5>
       <div *ngIf="getInputVisible(card, 'term')" class="input-group" style="width: 100%">
         <input [(ngModel)]="card.term" type="text" class="form-control">
@@ -15,7 +15,7 @@
         </span>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-xs-6">
       <p *ngIf="!getInputVisible(card, 'def')" class="list-group-item-text">{{card.definition}}</p>
       <div *ngIf="getInputVisible(card, 'def')" class="input-group" style="width: 100%;">
         <textarea [(ngModel)]="card.def" class="form-control" style="height: 100px;"></textarea>

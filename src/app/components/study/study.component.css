@@ -1,0 +1,100 @@
+@media screen and (max-width: 767px) {
+    .flashcard-container {
+        height: 250px !important;
+    }
+}
+
+.flashcard-container {
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+    width: 75%;
+    max-width: 563px;
+    height: 350px;
+    margin: auto;
+    padding: 20px;
+}
+
+.flashcard-container .flashcard.flipped {
+    -webkit-transform: rotatex(-180deg);
+    -moz-transform: rotatex(-180deg);
+    -ms-transform: rotatex(-180deg);
+    -o-transform: rotatex(-180deg);
+    transform: rotatex(-180deg);
+}
+.flashcard-container .flashcard .front:hover {
+    -webkit-transform: rotatex(-8deg);
+    -moz-transform: rotatex(-8deg);
+    -ms-transform: rotatex(-8deg);
+    -o-transform: rotatex(-8deg);
+    transform: rotatex(-8deg);
+    -webkit-box-shadow: 0 -5px 25px -5px #888888;
+    -moz-box-shadow: 0 -5px 25px -5px #888888;
+    box-shadow: 0 -5px 25px -5px #adadad;
+
+}
+.flashcard-container .flashcard {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.flashcard-container .flashcard .flashcard-face {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 2;
+    font-size: 4vw;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    padding: 10px;
+}
+
+.flashcard-container .flashcard .flashcard-text {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: center;
+}
+.flashcard-container .flashcard .front {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    background-color: #eeeeee;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.flashcard-container .flashcard .back {
+    -webkit-transform: rotatex(-180deg);
+    -moz-transform: rotatex(-180deg);
+    -ms-transform: rotatex(-180deg);
+    -o-transform: rotatex(-180deg);
+    transform: rotatex(-180deg);
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+

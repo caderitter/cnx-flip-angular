@@ -10,7 +10,8 @@ import {BookService} from "../../services/book.service";
 
 @Component({
   selector: 'choose-book',
-  templateUrl: `./choose-book.book-sync.component.html`
+  templateUrl: `./choose-book.book-sync.component.html`,
+  styleUrls: ['./choose-book.book-sync.component.css',]
 })
 
 export class ChooseBookComponent implements OnInit {
@@ -18,15 +19,10 @@ export class ChooseBookComponent implements OnInit {
   booksJSON: any;
 
   constructor(
-    private deckService: DeckService,
     private bookService: BookService,
-    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
-    this.deckService.deck.subscribe(deck => this.deck = deck);
-    this.route.params.subscribe((params: Params) => this.deckService.getDeck(params['id']));
-
     // retrieve the JSON of featured books for display
     this.bookService.getBooksJSON()
       .then(res => this.booksJSON = res);

@@ -1,10 +1,10 @@
 <div *ngIf="deck">
 <div class="container-fluid" [style.background]="hexToRGB(deck.color, 1)">
-  <div class="container" style="max-height: 56px;">
+  <div class="container" style="min-height: 56px;">
     <h3 *ngIf="!editTitle" style="color: white;">{{deck.title}}</h3>
 
     <div *ngIf="editTitle">
-      <input [(ngModel)]="deck.title" type="text" placeholder="Deck name" #titlefocusable class="input-deck-title"/>
+      <input [(ngModel)]="deck.title" (keyDown.enter)="saveDeck()" (keydown.esc)="hideEditTitle()" type="text" placeholder="Deck name" class="input-deck-title"/>
       <button (click)="saveDeck()" class="btn-deck-title-edit" type="button">
         <div style="font-size: 20px;" class="glyphicon glyphicon-ok-sign"></div>
       </button>
@@ -51,9 +51,13 @@
         <div class="panel-body">
 
             <a type="button" class="btn btn-lg btn-default btn-large-main" (click)="toggleAddCardButton()">
+              <span class="glyphicon glyphicon-plus btn-main-icon"></span>
               Add flashcards
             </a>
-            <a type="button" [routerLink]="['book-sync']" class="btn btn-lg btn-default btn-large-main pull-right">Connect to book</a>
+            <a type="button" [routerLink]="['book-sync']" class="btn btn-lg btn-default btn-large-main pull-right">
+              <span class="glyphicon glyphicon-cloud-download btn-main-icon"></span>
+              Sync with textbook
+            </a>
 
         </div>
       </div>

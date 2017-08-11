@@ -16,14 +16,14 @@ import {Observable, Subscription} from "rxjs/Rx";
 @Component({
   selector: 'deck-detail',
   templateUrl: './deck-detail.component.html',
+  styleUrls: ['./deck-detail.component.css',]
 })
 
 export class DeckDetailComponent implements OnInit {
 
   deck: Deck;
 
-  // access deck title form and delete button in the DOM
-  @ViewChild('titlefocusable') vc: any;
+  // access deck delete button in the DOM
   @ViewChild('deleteButton') vcDeleteButton: any;
 
   // html/style variables
@@ -100,11 +100,11 @@ export class DeckDetailComponent implements OnInit {
   // focuses/unfocuses on the title form
   toggleEditTitle(): void {
     this.editTitle = !this.editTitle;
-    this.vc.nativeElement.focus();
   }
 
   hideEditTitle(): void {
     this.editTitle = false;
+    this.deckService.getDeck(this.deck.id);
   }
 
   changeDeckColor(color: string): void {

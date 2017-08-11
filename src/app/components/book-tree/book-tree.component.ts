@@ -28,7 +28,11 @@ export class BookTreeComponent implements OnInit {
     if (!this.module.parent) {
       this.bootstrapDataParent = 'book-root';
     } else {
-      this.bootstrapDataParent = this.module.title.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase();
+      if (this.module.uuid == 'subcol') {
+        this.bootstrapDataParent = Math.round(Math.random() * 10000) + 1;
+      } else {
+        this.bootstrapDataParent = this.module.uuid.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase();
+      }
     }
   }
 

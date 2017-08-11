@@ -7,6 +7,7 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {LandingComponent} from "./components/landing/landing.component";
 import {ChooseBookComponent} from "./components/choose-book.book-sync/choose-book.book-sync.component";
 import {ChooseModuleComponent} from "./components/choose-module.book-sync/choose-module.book-sync.component";
+import {StudyComponent} from "./components/study/study.component";
 
 const routes: Routes = [
 
@@ -39,6 +40,11 @@ const routes: Routes = [
       {
         path: 'flip',
         component: FlipComponent
+      },
+
+      {
+        path: 'study',
+        component: StudyComponent
       },
 
       {

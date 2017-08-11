@@ -17,10 +17,11 @@ export class DeckService {
   // the deck, all of this deck's subscribers (components) receive an event and
   // update their copy of the deck.
   deck: BehaviorSubject<Deck>;
+  decks: BehaviorSubject<Deck[]>;
 
   private decksUrl = 'http://localhost:5000/api/decks/1';
   private cardsUrl = 'http://localhost:5000/api/cards/1';
-  private textbookUrl = 'http://localhost:5000/api/textbook';
+  private textbookUrl = 'http://localhost:5000/api/textbook/1';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -31,6 +32,12 @@ export class DeckService {
   /*
   DECK METHODS
    */
+
+  getDecksNew(): void {
+    this.http.get(this.decksUrl + '/')
+      .map(res => res.json() as Deck[])
+      .subscribe(decks => this.decks.next(decks), error => console.log("Error retrieving decks") || error);
+  }
 
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl + '/')
@@ -94,8 +101,9 @@ export class DeckService {
   }
 
   syncWithBook(id: number, ids: string[]): void {
+    ids = ['5152cea8-829a-4aaf-bcc5-c58a416ecb66'];
     let json = {deckid: id, uuids: ids};
-    this.http.post(`${this.textbookUrl}/`, json)
+    this.http.post(`${this.textbookUrl}`, json)
       .map(res => res.json())
       .subscribe(deck => {
         this.deck.next(deck);

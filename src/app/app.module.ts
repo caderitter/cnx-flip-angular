@@ -21,6 +21,7 @@ import {BookService} from "./services/book.service";
 import {ChooseBookComponent} from "./components/choose-book.book-sync/choose-book.book-sync.component";
 import {ChooseModuleComponent} from "./components/choose-module.book-sync/choose-module.book-sync.component";
 import {BookTreeComponent} from "./components/book-tree/book-tree.component";
+import {StudyComponent} from "./components/study/study.component";
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import {BookTreeComponent} from "./components/book-tree/book-tree.component";
     ChooseBookComponent,
     ChooseModuleComponent,
     BookTreeComponent,
+    StudyComponent,
   ],
 
   providers: [

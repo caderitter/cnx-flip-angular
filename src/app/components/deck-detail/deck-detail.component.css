@@ -1,0 +1,9 @@
+@media screen and (max-width: 767px) {
+    .btn-large-main {
+        font-size: 0;
+    }
+
+    .btn-main-icon {
+        font-size: initial;
+    }
+}
