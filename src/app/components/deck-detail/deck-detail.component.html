@@ -39,7 +39,7 @@
 
   <div class="container-fluid" [style.background]="hexToRGB(deck.color, 0.3)">
     <div class="container" style="padding-top: 10px; padding-bottom: 10px">
-      <button type="button" style="width: 182px;" class="btn btn-default" [routerLink]="['flip']" [disabled]="deck.cards.length === 0" [ngClass]="{'disabled': deck.cards.length == 0}">Flip</button>
+      <button type="button" style="width: 182px;" class="btn btn-default" [routerLink]="['study']" [disabled]="deck.cards.length === 0" [ngClass]="{'disabled': deck.cards.length == 0}">Flip</button>
     </div>
   </div>
 

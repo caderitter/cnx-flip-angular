@@ -45,13 +45,6 @@ export class BookTreeComponent implements OnInit {
 
   // returns a list of the selected module UUIDs.
   getValue(): any {
-    // if the root is checked, just return the book's UUID.
-    // if (!this.module.parent) {
-    //   if (this.selected) {
-    //     return [this.module.uuid.split('@')[0]];
-    //   }
-    // }
-
     // if we have children, get all of our children's values.
     if (this.subTrees.length) {
       return this.flatMap(this.subTrees, (t) => t.getValue())

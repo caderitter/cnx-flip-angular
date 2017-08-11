@@ -112,7 +112,6 @@ export class DeckService {
           resolve(deck);
         }, error => reject(console.log("Error getting terms from book") || error));
     });
-
   }
 
 }
