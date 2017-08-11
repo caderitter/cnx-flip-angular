@@ -4,7 +4,7 @@
  */
 
 import {Component, Input, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Location} from "@angular/common";
 
 import {DeckService} from "../../services/deck.service";
@@ -40,7 +40,7 @@ export class DeckDetailComponent implements OnInit {
   constructor(
     private deckService: DeckService,
     private route: ActivatedRoute,
-    private location: Location,
+    private router: Router,
   ) {
     document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
   }
@@ -51,7 +51,7 @@ export class DeckDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['decks']);
   }
 
   saveDeck(): void {
@@ -60,8 +60,8 @@ export class DeckDetailComponent implements OnInit {
   }
 
   deleteDeck(deck: Deck): void {
-    this.deckService.deleteDeck(deck.id);
-    this.goBack();
+    this.deleteText = "Deleting...";
+    this.deckService.deleteDeck(deck.id).then(res => this.router.navigate(['decks']));
   }
 
   // change delete button text if it's clicked ("Are you sure?")

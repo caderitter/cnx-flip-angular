@@ -7,12 +7,13 @@
 <div class="container-fluid">
   <div class="container" style="margin-top: 15px;">
     <div class="row">
-      <div class="panel-group" id="book-root" role="tablist" aria-multiselectable="true">
+      <span *ngIf="loading" class="glyphicon glyphicon-refresh spinning"></span>
+      <div *ngIf="!loading" class="panel-group" id="book-root" role="tablist" aria-multiselectable="true">
         <book-tree [module]="module" [selected]="false"></book-tree>
       </div>
     </div>
     <div class="row">
-      <button class="btn btn-large btn-primary" (click)="sync()">Sync!</button>
+      <button class="btn btn-large btn-primary" (click)="sync()">{{syncButtonText}}</button>
     </div>
   </div>
 </div>

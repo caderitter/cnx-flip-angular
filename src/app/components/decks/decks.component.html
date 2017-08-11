@@ -8,6 +8,8 @@
   <div class="container">
   <div class="row">
 
+    <span *ngIf="loading" class="glyphicon glyphicon-refresh spinning"></span>
+
     <div *ngFor="let deck of decks" class="col-md-4 deck-container" style="padding-left: 0">
       <div [routerLink]="['/deck-detail', deck.id]" class="deck" [style.background-color]="deck.color">
         <div class="deck-text">

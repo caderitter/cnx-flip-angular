@@ -20,13 +20,18 @@ export class ChooseModuleComponent implements OnInit {
 
   deck: Deck;
   module: Module;
+  syncButtonText: string;
+  loading: boolean;
 
   constructor(
     private deckService: DeckService,
     private bookService: BookService,
     private route: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) {
+    this.syncButtonText = 'Sync!';
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     // subscribe to the deck BehaviorSubject
@@ -45,6 +50,7 @@ export class ChooseModuleComponent implements OnInit {
   getBookTreeFromJSON(uuid: string): void {
     this.bookService.getBookJSON(uuid).then(data => {
       this.module = this.getBookTreeHelper(data[0].table_of_contents);
+      this.loading = false;
     })
   }
 
@@ -67,8 +73,13 @@ export class ChooseModuleComponent implements OnInit {
 
   // get the selected module UUIDs and call the backend to generate cards
   sync(): void {
+    this.syncButtonText = "Syncing...";
     let uuidArray = this.bookTree.getValue();
-    this.deckService.syncWithBook(this.deck.id, uuidArray);
-    this.router.navigate(['deck-detail', this.deck.id]);
+    this.deckService.syncWithBook(this.deck.id, uuidArray)
+      .then(res => {
+        this.syncButtonText = "Sync!";
+        this.router.navigate(['deck-detail', this.deck.id]);
+      });
+
   }
 }

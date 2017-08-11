@@ -33,12 +33,6 @@ export class DeckService {
   DECK METHODS
    */
 
-  getDecksNew(): void {
-    this.http.get(this.decksUrl + '/')
-      .map(res => res.json() as Deck[])
-      .subscribe(decks => this.decks.next(decks), error => console.log("Error retrieving decks") || error);
-  }
-
   getDecks(): Promise<Deck[]> {
     return this.http.get(this.decksUrl + '/')
       .toPromise()
@@ -67,9 +61,14 @@ export class DeckService {
       }, error => console.log("Error updating deck"));
   }
 
-  deleteDeck(id: number): void {
-    this.http.delete(`${this.decksUrl}/${id}`, {headers: this.headers})
-      .subscribe(() => this.deck.next(null), error => console.log("Error deleting deck"));
+  deleteDeck(id: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.delete(`${this.decksUrl}/${id}`, {headers: this.headers})
+      .subscribe(() => {
+        this.deck.next(null);
+        resolve();
+      }, error => reject(console.log("Error deleting deck") || error));
+    });
   }
 
   /*
@@ -92,22 +91,28 @@ export class DeckService {
       }, error => console.log("Error updating card"));
   }
 
-  deleteCard(card: Card): void {
-    this.http.delete(`${this.cardsUrl}/${card.id}`, {headers: this.headers})
+  deleteCard(card: Card): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.delete(`${this.cardsUrl}/${card.id}`)
       .map(res => res.json())
       .subscribe(deck => {
         this.deck.next(deck);
-      }, error => console.log("Error deleting card"));
+        resolve(deck);
+      }, error => reject(console.log("Error deleting card") || error));
+    });
   }
 
-  syncWithBook(id: number, ids: string[]): void {
-    ids = ['5152cea8-829a-4aaf-bcc5-c58a416ecb66'];
+  syncWithBook(id: number, ids: string[]): Promise<any> {
     let json = {deckid: id, uuids: ids};
-    this.http.post(`${this.textbookUrl}`, json)
-      .map(res => res.json())
-      .subscribe(deck => {
-        this.deck.next(deck);
-      }, error => console.log("Error getting terms from book"));
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.textbookUrl}`, json)
+        .map(res => res.json())
+        .subscribe(deck => {
+          this.deck.next(deck);
+          resolve(deck);
+        }, error => reject(console.log("Error getting terms from book") || error));
+    });
+
   }
 
 }

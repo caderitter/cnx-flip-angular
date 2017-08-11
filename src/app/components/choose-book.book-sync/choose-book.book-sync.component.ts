@@ -18,13 +18,21 @@ export class ChooseBookComponent implements OnInit {
   deck: Deck;
   booksJSON: any;
 
+  loading: boolean;
+
   constructor(
     private bookService: BookService,
-  ) {}
+  ) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     // retrieve the JSON of featured books for display
     this.bookService.getBooksJSON()
-      .then(res => this.booksJSON = res);
+      .then(res => {
+        this.loading = false;
+        this.booksJSON = res;
+      });
+
   }
 }

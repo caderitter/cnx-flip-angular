@@ -29,7 +29,8 @@ export class BookTreeComponent implements OnInit {
       this.bootstrapDataParent = 'book-root';
     } else {
       if (this.module.uuid == 'subcol') {
-        this.bootstrapDataParent = Math.round(Math.random() * 10000) + 1;
+        // assign random ID to subcol modules - 0.02% chance of duplicates, assuming ~25 modules
+        this.bootstrapDataParent = (Math.round(Math.random() * 1000000) + 1).toString();
       } else {
         this.bootstrapDataParent = this.module.uuid.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase();
       }
@@ -45,11 +46,11 @@ export class BookTreeComponent implements OnInit {
   // returns a list of the selected module UUIDs.
   getValue(): any {
     // if the root is checked, just return the book's UUID.
-    if (!this.module.parent) {
-      if (this.selected) {
-        return this.module.uuid;
-      }
-    }
+    // if (!this.module.parent) {
+    //   if (this.selected) {
+    //     return [this.module.uuid.split('@')[0]];
+    //   }
+    // }
 
     // if we have children, get all of our children's values.
     if (this.subTrees.length) {
@@ -58,7 +59,7 @@ export class BookTreeComponent implements OnInit {
 
     // if we're at a leaf, return the uuid if it's selected.
     if (this.selected) {
-      return [this.module.uuid];
+      return [this.module.uuid.split('@')[0]];
     }
 
     return [];

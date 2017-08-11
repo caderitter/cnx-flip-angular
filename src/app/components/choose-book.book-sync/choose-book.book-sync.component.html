@@ -8,6 +8,8 @@
   <div class="container" style="margin: 20px auto;">
     <div class="row">
 
+      <span *ngIf="loading" class="glyphicon glyphicon-refresh spinning"></span>
+
       <div *ngFor="let book of booksJSON" class="col-lg-3 col-md-4 col-xs-6 book">
         <a *ngIf="!book.coming_soon" [routerLink]="['./', book.cnx_id]">
             <img src="{{book.cover_url}}" alt="{{book.title}}" class="cover">

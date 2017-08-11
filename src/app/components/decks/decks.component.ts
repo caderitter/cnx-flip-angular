@@ -14,13 +14,19 @@ import {Router} from "@angular/router";
 
 export class DecksComponent implements OnInit {
   decks: Deck[];
+  loading: boolean;
 
-  constructor(private deckService: DeckService, private router: Router) {}
+  constructor(private deckService: DeckService, private router: Router) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     // we don't subscribe here, because this component doesn't modify data
     // without switching components. We just get the latest set of decks.
-    this.deckService.getDecks().then(decks => this.decks = decks);
+    this.deckService.getDecks().then(decks => {
+      this.loading = false;
+      this.decks = decks;
+    });
   }
 
   addDeck(): void {
