@@ -5,6 +5,8 @@ Angular frontend for OpenStax Flip, a textbook-integrated flashcard application
 
 [node >= v4.x.x](https://nodejs.org/en/)
 
+[cnx-flip backend](https://github.com/tianlantianlan95/CNX_Flip)
+
 # Setup
 
 Currently using [lite-server](https://github.com/johnpapa/lite-server) that ships with [angular-quickstart.](https://github.com/angular/quickstart) 
