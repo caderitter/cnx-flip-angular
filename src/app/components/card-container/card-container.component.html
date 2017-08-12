@@ -18,7 +18,15 @@
     <div class="col-xs-6">
       <p *ngIf="!getInputVisible(card, 'def')" class="list-group-item-text">{{card.definition}}</p>
       <div *ngIf="getInputVisible(card, 'def')" class="input-group" style="width: 100%;">
-        <textarea [(ngModel)]="card.def" class="form-control" style="height: 100px;"></textarea>
+        <textarea [(ngModel)]="card.definition" class="form-control" style="height: 100px;"></textarea>
+        <span class="input-group-addon btn btn-default">
+          <button class="btn btn-default" type="button" (click)="saveCard(card, 'def')" style="height: 100%;">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+          <button class="btn btn-default" type="button" (click)="toggleInput(card, 'def')">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </span>
       </div>
     </div>
   </div>

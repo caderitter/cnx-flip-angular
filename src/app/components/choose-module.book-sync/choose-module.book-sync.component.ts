@@ -21,6 +21,7 @@ export class ChooseModuleComponent implements OnInit {
   deck: Deck;
   module: Module;
   syncButtonText: string;
+  syncing: boolean;
   loading: boolean;
 
   constructor(
@@ -31,6 +32,7 @@ export class ChooseModuleComponent implements OnInit {
   ) {
     this.syncButtonText = 'Sync!';
     this.loading = true;
+    this.syncing = false;
   }
 
   ngOnInit(): void {
@@ -73,10 +75,12 @@ export class ChooseModuleComponent implements OnInit {
 
   // get the selected module UUIDs and call the backend to generate cards
   sync(): void {
+    this.syncing = true;
     this.syncButtonText = "Syncing...";
     let uuidArray = this.bookTree.getValue();
     this.deckService.syncWithBook(this.deck.id, uuidArray)
       .then(res => {
+        this.syncing = false;
         this.syncButtonText = "Sync!";
         this.router.navigate(['deck-detail', this.deck.id]);
       });

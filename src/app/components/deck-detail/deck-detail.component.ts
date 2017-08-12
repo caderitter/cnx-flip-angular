@@ -30,7 +30,7 @@ export class DeckDetailComponent implements OnInit {
   addCardButtonClicked: boolean = false;
   editTitle: boolean = false;
   deleteButtonClicked: boolean = false;
-  deleteText: string = "Delete deck";
+  deleteText: string;
   deckNotFound: boolean = false;
   colors: string[] = ["#15837D", "#EF5F33", "#1B2152", "#1BB3D3", "#B30B26", "#FDB32F", "#F0C916", "#65A234", "#8f8f8f"];
   top: string = "-200px";
@@ -43,6 +43,7 @@ export class DeckDetailComponent implements OnInit {
     private router: Router,
   ) {
     document.addEventListener('click', this.clickOutsideDeleteButton.bind(this));
+    this.deleteText = 'Delete deck';
   }
 
   ngOnInit(): void {
@@ -68,7 +69,6 @@ export class DeckDetailComponent implements OnInit {
   deleteDeckClicked(deck: Deck): void {
     if (this.deleteButtonClicked) {
       this.deleteDeck(deck);
-      this.deleteText = "Delete deck";
       this.deleteButtonClicked = false;
     } else {
       this.deleteText = "Are you sure?";

@@ -155,8 +155,12 @@
 .glyphicon.spinning {
   animation: spin 1s infinite linear;
   -webkit-animation: spin2 1s infinite linear;
-  display:block;
+  display:inline-block;
   text-align:center;
+}
+
+.glyphicon.spinning.spinning-centered {
+  display: block !important;
 }
 
 

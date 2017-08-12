@@ -35,19 +35,37 @@ export class StudyComponent implements OnInit {
     this.cardFlipped = !this.cardFlipped;
   }
 
-  // change font size depending on length of content
+  // change font size depending on length of content. element is either 'term' or 'definition'.
   getFontSize(element: string): string {
     length = this.deck.cards[this.currentCardIndex][element].length;
-    console.log(length);
-    let ret = '4';
-    if (length < 15) {
-      ret = '4';
-    } else if (length > 100) {
-      ret = '2';
+    return StudyComponent.getFontSizeHelper(length, 10, 1, 3, 50, 300);
+  }
+
+  /**
+   * Returns 'calc({number}px + {number}vw)' for use in a 'font-size' style attribute. This allows responsive and
+   * dynamic text size based on the content length, also ensuring text doesn't get too small on small screens (a
+   * common problem with view-width text size).
+   *
+   * @param contentLength
+   * @param minPx - font pixel value to act a 'minimum.' Play with this to find the ideal size.
+   * @param minVW - minimum VW value.
+   * @param maxVW - maximum VW value.
+   * @param minLength - minimum content length at which to stop scaling VW value.
+   * @param maxLength - maximum content length at which to stop scaling VW value.
+   */
+  static getFontSizeHelper(contentLength: number, minPx: number, minVW: number,
+                 maxVW: number, minLength: number, maxLength: number): string {
+    var val;
+    if (contentLength < minLength) {
+      val = maxVW;
+    } else if (contentLength > maxLength) {
+      val = minVW;
     } else {
-      ret = (this.deck.cards[this.currentCardIndex][element].length / -50 + 4).toString();
+      let slope = (minVW - maxVW) / contentLength;
+      let intercept = maxVW - (minLength * (slope));
+      val = ((slope * contentLength) + intercept).toString();
     }
-    return ret + 'vw';
+    return 'calc('+ minPx.toString() + 'px' + ' + ' + val + 'vw' + ')';
   }
 
   nextCard(): void {
